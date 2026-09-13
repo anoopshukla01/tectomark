@@ -84,18 +84,24 @@ function isValidPhone(phone) {
 }
 
 // ── Email Transporter Setup ─────────────────────────────────────
+const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
+const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
+const smtpUser = process.env.SMTP_USER || 'tectomarksupport@gmail.com';
+const smtpPass = process.env.SMTP_PASS || 'pzzcylzqlwtzxtnl';
+
 let transporter = null;
-if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+if (smtpHost && smtpUser && smtpPass) {
   transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || '465', 10),
-    secure: process.env.SMTP_SECURE === 'true' || process.env.SMTP_PORT === '465',
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpSecure,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS
+      user: smtpUser,
+      pass: smtpPass
     }
   });
-  console.log('✓ SMTP Email Transporter configured for:', process.env.SMTP_USER);
+  console.log('✓ SMTP Email Transporter configured for:', smtpUser);
 } else {
   console.log('ℹ SMTP credentials not set in .env — inquiries will be safely saved to SQLite and emails logged to console.');
 }
