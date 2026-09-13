@@ -870,7 +870,7 @@ const isMobile = () => window.innerWidth <= 768;
       name: 'Rishabh Maurya',
       title: 'CO-FOUNDER, COO & CSO',
       bio: 'MBA, NMIMS.',
-      photoSrc: 'assets/team/rishabh-maurya.svg',
+      photoSrc: 'assets/team/rishabh-maurya.jpg',
       fallbackSrc: 'assets/team/rishabh-maurya.svg',
       links: []
     },
