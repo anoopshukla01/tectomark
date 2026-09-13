@@ -847,6 +847,128 @@ const isMobile = () => window.innerWidth <= 768;
   });
 })();
 
+// ── Founders & Team Grid ───────────────────────────────────────
+(function initTeamGrid() {
+  const container = $('#teamGrid');
+  if (!container) return;
+
+  const founders = [
+    {
+      id: '01',
+      name: 'Anoop Shukla',
+      title: 'FOUNDER, CEO & CTO',
+      bio: 'Student at IIT Madras & full-stack developer.',
+      photoSrc: 'assets/team/anoop-shukla.svg',
+      fallbackSrc: 'assets/team/anoop-shukla.svg',
+      links: [
+        { label: 'IG', url: 'https://www.instagram.com/tf_anooppp', type: 'instagram' },
+        { label: 'LI', url: 'https://www.linkedin.com/in/anoop-shukla-429028367', type: 'linkedin' }
+      ]
+    },
+    {
+      id: '02',
+      name: 'Rishabh Maurya',
+      title: 'CO-FOUNDER, COO & CSO',
+      bio: 'MBA, NMIMS.',
+      photoSrc: 'assets/team/rishabh-maurya.svg',
+      fallbackSrc: 'assets/team/rishabh-maurya.svg',
+      links: []
+    },
+    {
+      id: '03',
+      name: 'Sachin Maurya',
+      title: 'CO-FOUNDER, CFO & CRO',
+      bio: null,
+      photoSrc: 'assets/team/sachin-maurya.svg',
+      fallbackSrc: 'assets/team/sachin-maurya.svg',
+      links: []
+    },
+    {
+      id: '04',
+      name: 'Amit Chaudhary',
+      title: 'CO-FOUNDER, CMO & CCO',
+      bio: null,
+      photoSrc: 'assets/team/amit-chaudhary.svg',
+      fallbackSrc: 'assets/team/amit-chaudhary.svg',
+      links: []
+    }
+  ];
+
+  const svgIcons = {
+    instagram: '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v7.6h2.79v-7.6H6.46M7.86 6.3a1.62 1.62 0 1 0 1.62 1.62A1.62 1.62 0 0 0 7.86 6.3z"/></svg>'
+  };
+
+  const cardsHtml = founders.map((founder, index) => {
+    // Bio row: conditionally rendered (collapses with 0 margin if absent)
+    const bioHtml = founder.bio
+      ? `<p class="founder-bio">${founder.bio}</p>`
+      : '';
+
+    // Links row: conditionally rendered
+    let linksHtml = '';
+    if (founder.links && founder.links.length > 0) {
+      const linkItems = founder.links.map(l => `
+        <a href="${l.url}" class="founder-social-link" target="_blank" rel="noopener noreferrer" aria-label="${founder.name} on ${l.label}">
+          ${svgIcons[l.type] || ''}
+          <span>${l.label}</span>
+        </a>
+      `).join('<span class="founder-link-sep">·</span>');
+      linksHtml = `<div class="founder-links">${linkItems}</div>`;
+    }
+
+    return `
+      <article class="founder-card reveal-up" style="--card-index: ${index};">
+        <div class="founder-photo-box">
+          <span class="founder-badge">${founder.id}</span>
+          <div class="founder-photo-inner">
+            <img 
+              src="${founder.photoSrc}" 
+              alt="${founder.name} — ${founder.title}" 
+              class="founder-photo" 
+              width="400" 
+              height="500" 
+              loading="lazy"
+              onerror="this.onerror=null; this.src='${founder.fallbackSrc}';"
+            >
+            <div class="founder-photo-tint"></div>
+          </div>
+          <div class="founder-photo-border"></div>
+        </div>
+        <div class="founder-content">
+          <div class="founder-meta">
+            <h3 class="founder-name">${founder.name}</h3>
+            <span class="founder-title">${founder.title}</span>
+          </div>
+          ${bioHtml}
+          ${linksHtml}
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  container.innerHTML = cardsHtml;
+
+  // Observe dynamically generated .reveal-up elements
+  const newCards = container.querySelectorAll('.reveal-up');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    newCards.forEach(c => observer.observe(c));
+  } else {
+    newCards.forEach(c => c.classList.add('visible'));
+  }
+})();
+
 // ── Init ───────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   console.log(

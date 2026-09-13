@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#11141A"/>
+      <stop offset="50%" stop-color="#0A0C10"/>
+      <stop offset="100%" stop-color="#050608"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#2D5BFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#2D5BFF" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255, 255, 255, 0.035)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="400" height="500" fill="url(#bgGrad)"/>
+  <rect width="400" height="500" fill="url(#grid)"/>
+  <circle cx="200" cy="210" r="140" fill="url(#glow)"/>
+
+  <!-- Stylized Silhouette -->
+  <g opacity="0.85">
+    <!-- Head -->
+    <circle cx="200" cy="180" r="56" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="2" stroke-dasharray="4 4"/>
+    <circle cx="200" cy="180" r="50" fill="#161A24" stroke="rgba(45, 91, 255, 0.35)" stroke-width="1.5"/>
+    <!-- Monogram inside head -->
+    <text x="200" y="190" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#FFFFFF" letter-spacing="2">AS</text>
+    
+    <!-- Shoulders -->
+    <path d="M 100 370 C 100 270, 300 270, 300 370 L 300 450 C 300 450, 200 460, 100 450 Z" fill="#12151F" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5"/>
+  </g>
+
+  <!-- Framing Accents -->
+  <path d="M 25 35 L 25 25 L 35 25" fill="none" stroke="rgba(45, 91, 255, 0.6)" stroke-width="1.5"/>
+  <path d="M 375 35 L 375 25 L 365 25" fill="none" stroke="rgba(45, 91, 255, 0.6)" stroke-width="1.5"/>
+  <path d="M 25 465 L 25 475 L 35 475" fill="none" stroke="rgba(45, 91, 255, 0.6)" stroke-width="1.5"/>
+  <path d="M 375 465 L 375 475 L 365 475" fill="none" stroke="rgba(45, 91, 255, 0.6)" stroke-width="1.5"/>
+
+  <text x="200" y="470" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="rgba(255, 255, 255, 0.3)" letter-spacing="3">TECTO MARK // AS</text>
+</svg>
