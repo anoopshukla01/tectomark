@@ -858,7 +858,7 @@ const isMobile = () => window.innerWidth <= 768;
       name: 'Anoop Shukla',
       title: 'FOUNDER, CEO & CTO',
       bio: 'Student at IIT Madras & full-stack developer.',
-      photoSrc: 'assets/team/anoop-shukla.svg',
+      photoSrc: 'assets/team/anoop-shukla.jpg',
       fallbackSrc: 'assets/team/anoop-shukla.svg',
       links: [
         { label: 'IG', url: 'https://www.instagram.com/tf_anooppp', type: 'instagram' },
