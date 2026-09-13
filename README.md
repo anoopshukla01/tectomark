@@ -14,7 +14,7 @@ This project is pre-configured with a `render.yaml` blueprint for zero-friction 
 3. Click **Create repository**.
 4. Push your local code:
    ```bash
-   git remote add origin https://github.com/anoopshukla69/tectomark.git
+   git remote add origin https://github.com/anoopshukla01/tectomark.git
    git branch -M main
    git push -u origin main
    ```
