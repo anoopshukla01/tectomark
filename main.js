@@ -177,6 +177,12 @@ const isMobile = () => window.innerWidth <= 768;
     } else {
       nav.classList.remove('scrolled');
     }
+    // Compact shrink: nav height reduces after 80px
+    if (scrollY > 80) {
+      nav.classList.add('nav-compact');
+    } else {
+      nav.classList.remove('nav-compact');
+    }
     lastScroll = scrollY;
   }, { passive: true });
 
@@ -285,19 +291,81 @@ const isMobile = () => window.innerWidth <= 768;
   elements.forEach(el => observer.observe(el));
 })();
 
-// ── Service Row — Accordion on mobile, hover on desktop ────────
+// ── Service Row — Accordion on tablet/mobile, hover on desktop ────
 (function initServiceRows() {
   const rows = $$('.service-row');
-  if (isMobile()) {
+  if (!rows.length) return;
+
+  const ACCORDION_BREAKPOINT = 1023; // px – matches CSS tablet breakpoint
+
+  // Close all rows
+  function closeAll() {
+    rows.forEach(r => {
+      r.classList.remove('active');
+      r.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Toggle a single row (single-open accordion)
+  function toggleRow(row) {
+    const isActive = row.classList.contains('active');
+    closeAll();
+    if (!isActive) {
+      row.classList.add('active');
+      row.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // Bind accordion interactions
+  function bindAccordion() {
     rows.forEach(row => {
+      // Mark as accordion-enabled for ARIA
+      row.setAttribute('role', 'button');
+      row.setAttribute('tabindex', '0');
+      if (!row.getAttribute('aria-expanded')) {
+        row.setAttribute('aria-expanded', 'false');
+      }
+
       row.addEventListener('click', (e) => {
         if (e.target.closest('a, button, .service-inquire-btn')) return;
-        const isActive = row.classList.contains('active');
-        rows.forEach(r => r.classList.remove('active'));
-        if (!isActive) row.classList.add('active');
+        toggleRow(row);
+      });
+
+      // Keyboard: Enter / Space to toggle
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleRow(row);
+        }
       });
     });
   }
+
+  // Unbind accordion (desktop: remove role/tabindex overrides)
+  function unbindAccordion() {
+    rows.forEach(row => {
+      row.removeAttribute('role');
+      row.removeAttribute('tabindex');
+      row.removeAttribute('aria-expanded');
+      row.classList.remove('active');
+    });
+  }
+
+  let accordionActive = false;
+
+  function syncMode() {
+    const isAccordionMode = window.innerWidth <= ACCORDION_BREAKPOINT;
+    if (isAccordionMode && !accordionActive) {
+      accordionActive = true;
+      bindAccordion();
+    } else if (!isAccordionMode && accordionActive) {
+      accordionActive = false;
+      unbindAccordion();
+    }
+  }
+
+  syncMode();
+  window.addEventListener('resize', syncMode, { passive: true });
 })();
 
 

@@ -531,6 +531,7 @@
       <!-- NOVA FITNESS — Phone frame -->
       <article class="work-item reveal-up" data-delay="0.05" data-cursor="view">
         <div class="work-item-visual" style="background: #0a0a0a;">
+          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
           <div class="work-frame work-frame--phone">
             <div class="wf-phone-notch"></div>
             <div class="wf-phone-screen">
@@ -558,6 +559,7 @@
       <!-- TERRA ESTATES — Browser chrome -->
       <article class="work-item reveal-up" data-delay="0.1" data-cursor="view">
         <div class="work-item-visual" style="background: #050d1a;">
+          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
           <div class="work-frame work-frame--browser">
             <div class="wf-browser-bar">
               <div class="wf-browser-dots"><span></span><span></span><span></span></div>
@@ -587,6 +589,7 @@
       <!-- SABLE FASHION — Instagram frame -->
       <article class="work-item reveal-up" data-delay="0.15" data-cursor="view">
         <div class="work-item-visual" style="background: #0d0d0d;">
+          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
           <div class="work-frame work-frame--instagram">
             <div class="wf-ig-header">
               <div class="wf-ig-avatar"></div>
@@ -621,6 +624,7 @@
       <!-- VELO RESTAURANT — Phone frame -->
       <article class="work-item reveal-up" data-delay="0.2" data-cursor="view">
         <div class="work-item-visual" style="background: #050505;">
+          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
           <div class="work-frame work-frame--phone">
             <div class="wf-phone-notch"></div>
             <div class="wf-phone-screen">
@@ -1028,12 +1032,12 @@
                 <div class="form-row">
                   <div class="form-group">
                     <label for="name">Full Name <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" placeholder="Aarav Sharma" required />
+                    <input type="text" id="name" name="name" placeholder="Aarav Sharma" required autocomplete="name" />
                     <span class="field-error"></span>
                   </div>
                   <div class="form-group">
                     <label for="company">Company / Brand Name <span class="required">*</span></label>
-                    <input type="text" id="company" name="company" placeholder="e.g. Acme Studio" required />
+                    <input type="text" id="company" name="company" placeholder="e.g. Acme Studio" required autocomplete="organization" />
                     <span class="field-error"></span>
                   </div>
                 </div>
@@ -1060,14 +1064,14 @@
                   </div>
                   <div class="form-group">
                     <label for="email">Work Email <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="aarav@company.com" required />
+                    <input type="email" id="email" name="email" placeholder="aarav@company.com" required inputmode="email" autocomplete="email" />
                     <span class="field-error"></span>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="phone">Phone / WhatsApp Number <span class="required">*</span></label>
-                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required inputmode="tel" autocomplete="tel" />
                   <span class="field-error"></span>
                 </div>
               </div>

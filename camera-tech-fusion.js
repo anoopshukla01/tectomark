@@ -491,10 +491,16 @@
 
   // ── Render Loop ───────────────────────────────────────────────
   let animId = null;
+  let heroVisible = true; // toggled by IntersectionObserver
   let frameCount = 0;
   let fpsTimer = performance.now();
 
   function animate(now) {
+    // Stop rescheduling when hero is off-screen (IntersectionObserver pauses)
+    if (!heroVisible) {
+      animId = null;
+      return;
+    }
     animId = requestAnimationFrame(animate);
 
     const delta = Math.min((now - lastTime) / 1000, 0.1);
@@ -569,7 +575,26 @@
     renderer.render(scene, camera);
   }
 
-  requestAnimationFrame(animate);
+  // ── IntersectionObserver — Pause WebGL when hero is off-screen ─
+  // Saves significant GPU/battery on mobile when user scrolls down.
+  const heroObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        heroVisible = entry.isIntersecting;
+        if (heroVisible && !animId) {
+          // Hero came back into view — restart the loop
+          animId = requestAnimationFrame(animate);
+        }
+        // If heroVisible becomes false, animate() will naturally stop
+        // rescheduling itself on its next frame invocation
+      });
+    },
+    { threshold: 0.01 }
+  );
+  heroObserver.observe(container);
+
+  // Start initial render loop
+  animId = requestAnimationFrame(animate);
 
   // ── Resize Observer ───────────────────────────────────────────
   let resizeTimeout = null;
