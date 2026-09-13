@@ -919,21 +919,23 @@ const isMobile = () => window.innerWidth <= 768;
 
     return `
       <article class="founder-card reveal-up" style="--card-index: ${index};">
-        <div class="founder-photo-box">
+        <div class="founder-avatar-wrap">
           <span class="founder-badge">${founder.id}</span>
-          <div class="founder-photo-inner">
-            <img 
-              src="${founder.photoSrc}" 
-              alt="${founder.name} — ${founder.title}" 
-              class="founder-photo" 
-              width="400" 
-              height="500" 
-              loading="lazy"
-              onerror="this.onerror=null; this.src='${founder.fallbackSrc}';"
-            >
-            <div class="founder-photo-tint"></div>
+          <div class="founder-photo-box">
+            <div class="founder-photo-inner">
+              <img 
+                src="${founder.photoSrc}" 
+                alt="${founder.name} — ${founder.title}" 
+                class="founder-photo" 
+                width="400" 
+                height="400" 
+                loading="lazy"
+                onerror="this.onerror=null; this.src='${founder.fallbackSrc}';"
+              >
+              <div class="founder-photo-tint"></div>
+            </div>
+            <div class="founder-photo-border"></div>
           </div>
-          <div class="founder-photo-border"></div>
         </div>
         <div class="founder-content">
           <div class="founder-meta">

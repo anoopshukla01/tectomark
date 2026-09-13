@@ -11,6 +11,24 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const nodemailer = require('nodemailer');
 const Database = require('better-sqlite3');
+const multer = require('multer');
+
+// ── Multer config: save directly to assets/team/ with original name ──
+const teamUpload = multer({
+  storage: multer.diskStorage({
+    destination: path.join(__dirname, 'assets', 'team'),
+    filename: (req, file, cb) => {
+      // Use the fieldname (e.g. "anoop-shukla") + detected extension
+      const ext = path.extname(file.originalname) || '.jpg';
+      cb(null, req.body.slug ? req.body.slug + ext : file.originalname);
+    }
+  }),
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) cb(null, true);
+    else cb(new Error('Only images allowed'));
+  },
+  limits: { fileSize: 10 * 1024 * 1024 } // 10 MB
+});
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -491,6 +509,12 @@ app.get('/api/inquiries', (req, res) => {
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
+});
+
+// ── Team Photo Upload (TEMP — remove after uploading photos) ────
+app.post('/api/upload-team-photo', teamUpload.single('photo'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file received' });
+  res.json({ success: true, saved: req.file.filename, path: `assets/team/${req.file.filename}` });
 });
 
 // ── Static Files & Fallback ────────────────────────────────────

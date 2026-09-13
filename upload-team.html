@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecto Mark — Upload Team Photos</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #fff; font-family: system-ui, sans-serif; min-height: 100vh; padding: 40px 20px; }
+  h1 { text-align: center; font-size: 1.5rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .sub { text-align: center; color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 40px; }
+  .accent { color: #3B82F6; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 960px; margin: 0 auto 40px; }
+  .card { background: #111; border: 1.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: border-color 0.2s; }
+  .card.dragover { border-color: #3B82F6; background: rgba(59,130,246,0.07); }
+  .card.done { border-color: #22c55e; }
+  .zone { width: 100%; aspect-ratio: 3/4; border: 2px dashed rgba(255,255,255,0.12); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; position: relative; background: rgba(255,255,255,0.02); transition: border-color 0.2s; }
+  .zone:hover { border-color: rgba(59,130,246,0.5); }
+  .zone img { width: 100%; height: 100%; object-fit: cover; object-position: top; position: absolute; inset: 0; }
+  .zone .hint { display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.3); font-size: 0.78rem; text-align: center; padding: 16px; pointer-events: none; }
+  .zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .fname { font-size: 0.95rem; font-weight: 700; }
+  .frole { font-size: 0.68rem; color: #3B82F6; letter-spacing: 0.1em; text-transform: uppercase; }
+  .st { font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); }
+  .st.uploading { background: rgba(59,130,246,0.15); color: #3B82F6; }
+  .st.ok { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .st.err { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .btn { display: block; margin: 0 auto; padding: 12px 32px; background: #3B82F6; color: #fff; border: none; border-radius: 999px; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; text-transform: uppercase; }
+  .btn:hover { background: #2563eb; }
+  .footer { text-align: center; color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 18px; }
+</style>
+</head>
+<body>
+<h1>— <span class="accent">Team</span> Photo Uploader</h1>
+<p class="sub">Drag &amp; drop each founder's photo · saves directly to <code>assets/team/</code></p>
+<div class="grid">
+  <div class="card" data-slug="anoop-shukla">
+    <div class="zone"><input type="file" accept="image/*"><div class="hint">⬆ Drop Anoop's photo<br>or click to browse</div></div>
+    <div class="fname">Anoop Shukla</div><div class="frole">Founder, CEO &amp; CTO</div>
+    <div class="st" id="st-anoop-shukla">Awaiting</div>
+  </div>
+  <div class="card" data-slug="rishabh-maurya">
+    <div class="zone"><input type="file" accept="image/*"><div class="hint">⬆ Drop Rishabh's photo<br>or click to browse</div></div>
+    <div class="fname">Rishabh Maurya</div><div class="frole">Co-Founder, COO &amp; CSO</div>
+    <div class="st" id="st-rishabh-maurya">Awaiting</div>
+  </div>
+  <div class="card" data-slug="sachin-maurya">
+    <div class="zone"><input type="file" accept="image/*"><div class="hint">⬆ Drop Sachin's photo<br>or click to browse</div></div>
+    <div class="fname">Sachin Maurya</div><div class="frole">Co-Founder &amp; CMO</div>
+    <div class="st" id="st-sachin-maurya">Awaiting</div>
+  </div>
+  <div class="card" data-slug="amit-chaudhary">
+    <div class="zone"><input type="file" accept="image/*"><div class="hint">⬆ Drop Amit's photo<br>or click to browse</div></div>
+    <div class="fname">Amit Chaudhary</div><div class="frole">Co-Founder &amp; CBO</div>
+    <div class="st" id="st-amit-chaudhary">Awaiting</div>
+  </div>
+</div>
+<button class="btn" onclick="window.location='/#team'">← Back to Site</button>
+<p class="footer" style="margin-top:18px">After all 4 uploads show ✓, tell the AI: <strong>"done"</strong></p>
+<script>
+async function upload(slug, file) {
+  const st = document.getElementById('st-' + slug);
+  const card = document.querySelector('[data-slug="' + slug + '"]');
+  const zone = card.querySelector('.zone');
+  const reader = new FileReader();
+  reader.onload = e => {
+    zone.querySelector('.hint').style.display = 'none';
+    let img = zone.querySelector('img'); if (!img) { img = document.createElement('img'); zone.insertBefore(img, zone.querySelector('input')); }
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  st.textContent = 'Uploading…'; st.className = 'st uploading';
+  const fd = new FormData(); fd.append('photo', file); fd.append('slug', slug);
+  try {
+    const r = await fetch('/api/upload-team-photo', { method: 'POST', body: fd });
+    const d = await r.json();
+    if (d.success) { st.textContent = '✓ ' + d.saved; st.className = 'st ok'; card.classList.add('done'); }
+    else { st.textContent = '✗ ' + d.error; st.className = 'st err'; }
+  } catch(e) { st.textContent = '✗ Failed'; st.className = 'st err'; }
+}
+document.querySelectorAll('.card').forEach(card => {
+  const slug = card.dataset.slug;
+  const zone = card.querySelector('.zone');
+  const input = zone.querySelector('input');
+  input.onchange = () => input.files[0] && upload(slug, input.files[0]);
+  zone.addEventListener('dragover', e => { e.preventDefault(); card.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => card.classList.remove('dragover'));
+  zone.addEventListener('drop', e => { e.preventDefault(); card.classList.remove('dragover'); const f = e.dataTransfer.files[0]; if(f && f.type.startsWith('image/')) upload(slug, f); });
+});
+</script>
+</body>
+</html>
