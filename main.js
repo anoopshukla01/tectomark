@@ -858,7 +858,7 @@ const isMobile = () => window.innerWidth <= 768;
       name: 'Anoop Shukla',
       title: 'FOUNDER, CEO & CTO',
       bio: 'Student at IIT Madras & full-stack developer.',
-      photoSrc: 'assets/team/anoop-shukla.jpg',
+      photoSrc: 'assets/team/anoop-shukla.png',
       fallbackSrc: 'assets/team/anoop-shukla.svg',
       links: [
         { label: 'IG', url: 'https://www.instagram.com/tf_anooppp', type: 'instagram' },
@@ -870,7 +870,7 @@ const isMobile = () => window.innerWidth <= 768;
       name: 'Rishabh Maurya',
       title: 'CO-FOUNDER, COO & CSO',
       bio: 'MBA, NMIMS.',
-      photoSrc: 'assets/team/rishabh-maurya.jpg',
+      photoSrc: 'assets/team/rishabh-maurya.png',
       fallbackSrc: 'assets/team/rishabh-maurya.svg',
       links: []
     },
@@ -879,7 +879,7 @@ const isMobile = () => window.innerWidth <= 768;
       name: 'Sachin Maurya',
       title: 'CO-FOUNDER, CFO & CRO',
       bio: null,
-      photoSrc: 'assets/team/sachin-maurya.svg',
+      photoSrc: 'assets/team/sachin-maurya.png',
       fallbackSrc: 'assets/team/sachin-maurya.svg',
       links: []
     },
@@ -888,7 +888,7 @@ const isMobile = () => window.innerWidth <= 768;
       name: 'Amit Chaudhary',
       title: 'CO-FOUNDER, CMO & CCO',
       bio: null,
-      photoSrc: 'assets/team/amit-chaudhary.svg',
+      photoSrc: 'assets/team/amit-chaudhary.png',
       fallbackSrc: 'assets/team/amit-chaudhary.svg',
       links: []
     }
