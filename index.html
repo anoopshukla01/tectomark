@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tecto Mark — Build. Promote. Grow.</title>
+  <meta name="description" content="Tecto Mark is a digital media and growth company helping ambitious businesses build, promote and scale their presence online." />
+  <meta name="keywords" content="digital media, web design, social media, content creation, advertising, digital growth" />
+  <meta property="og:title" content="Tecto Mark — Build. Promote. Grow." />
+  <meta property="og:description" content="Digital media and growth company helping ambitious businesses build, promote and scale their presence online." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Page Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">TECTO MARK</div>
+      <div class="preloader-bar"><div class="preloader-progress" id="preloaderProgress"></div></div>
+      <div class="preloader-count" id="preloaderCount">0</div>
+    </div>
+  </div>
+
+  <!-- Floating Action Button Group -->
+  <div class="fab-group" id="fabGroup">
+    <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="fab fab-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span class="fab-label">WhatsApp</span>
+    </a>
+    <a href="#contact" class="fab fab-cta">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="fab-label">Start Project</span>
+    </a>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"><span class="cursor-text" id="cursorText"></span></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" id="nav-logo-link">TECTO MARK</a>
+      <div class="nav-links">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#insights" class="nav-link">Insights</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <a href="#contact" class="nav-cta">Start a Project <span class="arrow">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <div class="mobile-menu-top">
+        <span class="mobile-menu-logo">TECTO MARK</span>
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+      </div>
+      <nav class="mobile-nav">
+        <a href="#work" class="mobile-nav-link" data-close-menu>Work</a>
+        <a href="#services" class="mobile-nav-link" data-close-menu>Services</a>
+        <a href="#about" class="mobile-nav-link" data-close-menu>About</a>
+        <a href="#insights" class="mobile-nav-link" data-close-menu>Insights</a>
+        <a href="#contact" class="mobile-nav-link" data-close-menu>Contact</a>
+      </nav>
+      <a href="#contact" class="mobile-menu-cta" data-close-menu>Start a Project →</a>
+      <div class="mobile-menu-social">
+        <a href="https://www.instagram.com/tectomark?stkn=NW4zc3VpdmNlNmlm" class="mobile-social-icon social-pill-insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/share/17ofPfL7yH/" class="mobile-social-icon social-pill-fb" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/tectomark-undefined-966a24436?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="mobile-social-icon social-pill-li" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v7.6h2.79v-7.6H6.46M7.86 6.3a1.62 1.62 0 1 0 1.62 1.62A1.62 1.62 0 0 0 7.86 6.3z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/Tectomark" class="mobile-social-icon social-pill-x" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-lines">
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow reveal-up">
+        <span class="dot"></span> Digital Media & Growth Company
+      </div>
+      <h1 class="hero-headline">
+        <span class="hero-line-text reveal-up" data-delay="0.1">WE BUILD</span>
+        <span class="hero-line-text reveal-up" data-delay="0.2">DIGITAL</span>
+        <span class="hero-line-text reveal-up accent-word" data-delay="0.3">PRESENCE.</span>
+        <span class="hero-line-text reveal-up" data-delay="0.4">WE CREATE</span>
+        <span class="hero-line-text reveal-up accent-word" data-delay="0.5">GROWTH.</span>
+      </h1>
+      <p class="hero-sub reveal-up" data-delay="0.6">
+        Tecto Mark is a digital media and growth company helping ambitious businesses build, promote and scale their presence online.
+      </p>
+      <div class="hero-actions reveal-up" data-delay="0.7">
+        <a href="#contact" class="btn-primary" id="ctaMagnetic">Start a Project <span class="arrow">→</span></a>
+        <a href="#work" class="btn-secondary">Explore Our Work</a>
+      </div>
+    </div>
+
+    <!-- "Camera × Tech Fusion" 3D Graphic — Signature 3D Moment -->
+    <div class="hero-3d-container" id="hero3dContainer" aria-label="Tecto Mark 3D Camera Tech Fusion">
+      <canvas id="cameraTechCanvas"></canvas>
+      <!-- Graceful fallback for non-WebGL / low-power devices -->
+      <div class="hero-3d-fallback" id="cameraFallback">
+        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none">
+          <rect x="25" y="45" width="150" height="95" rx="10" stroke="#3A3A3A" stroke-width="2" fill="#141414"/>
+          <path d="M75 45 L85 25 L115 25 L125 45 Z" stroke="#3A3A3A" stroke-width="2" fill="#18181c"/>
+          <circle cx="100" cy="92" r="34" stroke="#3A3A3A" stroke-width="2" fill="#111114"/>
+          <circle cx="100" cy="92" r="24" stroke="#2D5BFF" stroke-width="2" stroke-dasharray="8 4"/>
+          <circle cx="100" cy="92" r="8" fill="#2D5BFF"/>
+          <circle cx="150" cy="36" r="6" stroke="#3A3A3A" stroke-width="1.5" fill="#222"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-corner-tag">EST. 2024</div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-section" data-cursor="drag">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>WEB</span><span class="sep">•</span>
+        <span>SOCIAL</span><span class="sep">•</span>
+        <span>CONTENT</span><span class="sep">•</span>
+        <span>MEDIA</span><span class="sep">•</span>
+        <span>PERFORMANCE</span><span class="sep">•</span>
+        <span>GROWTH</span><span class="sep">•</span>
+        <span>WEB</span><span class="sep">•</span>
+        <span>SOCIAL</span><span class="sep">•</span>
+        <span>CONTENT</span><span class="sep">•</span>
+        <span>MEDIA</span><span class="sep">•</span>
+        <span>PERFORMANCE</span><span class="sep">•</span>
+        <span>GROWTH</span><span class="sep">•</span>
+        <span>WEB</span><span class="sep">•</span>
+        <span>SOCIAL</span><span class="sep">•</span>
+        <span>CONTENT</span><span class="sep">•</span>
+        <span>MEDIA</span><span class="sep">•</span>
+        <span>PERFORMANCE</span><span class="sep">•</span>
+        <span>GROWTH</span><span class="sep">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TRUST BAR ============ -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item reveal-up">
+          <span class="trust-icon">◈</span>
+          <span>Digital Experiences</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal-up" data-delay="0.1">
+          <span class="trust-icon">◈</span>
+          <span>Social Media</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal-up" data-delay="0.2">
+          <span class="trust-icon">◈</span>
+          <span>Content Creation</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal-up" data-delay="0.3">
+          <span class="trust-icon">◈</span>
+          <span>Performance Marketing</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal-up" data-delay="0.4">
+          <span class="trust-icon">◈</span>
+          <span>Brand Growth</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <section class="intro-section" id="intro">
+    <div class="container">
+      <div class="intro-layout">
+        <div class="intro-left">
+          <span class="section-label reveal-up">ABOUT US</span>
+        </div>
+        <div class="intro-right">
+          <h2 class="intro-heading reveal-up">
+            Your digital presence is your <em class="accent">first impression.</em>
+          </h2>
+          <p class="intro-body reveal-up" data-delay="0.15">
+            We bring <strong>strategy</strong>, <strong>technology</strong>, <strong>creativity</strong> and <strong>media</strong> together to help businesses become more <em class="accent">visible</em>, more <em class="accent">relevant</em> and more <em class="accent">effective</em> online.
+          </p>
+          <div class="intro-stats reveal-up" data-delay="0.25">
+            <div class="stat-item">
+              <span class="stat-num">100<span class="accent">+</span></span>
+              <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">50<span class="accent">+</span></span>
+              <span class="stat-label">Brands Supported</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">5M<span class="accent">+</span></span>
+              <span class="stat-label">Content Views</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label reveal-up">OUR CAPABILITIES</span>
+        <h2 class="services-heading reveal-up">WHAT WE DO</h2>
+      </div>
+      <div class="services-list">
+
+        <!-- 01 DIGITAL -->
+        <div class="service-row reveal-up" data-delay="0.05" data-cursor="expand">
+          <div class="service-num">01</div>
+          <div class="service-main">
+            <div class="service-title-row">
+              <span class="service-category">DIGITAL</span>
+              <span class="service-name">Websites &amp; Digital Experiences</span>
+              <span class="service-arrow">↗</span>
+            </div>
+            <div class="service-expand">
+              <div class="service-expand-body">
+                <div class="service-expand-text">
+                  <p>High-performance websites designed to communicate your brand and convert visitors into customers. From strategy and UX to development and launch.</p>
+                  <div class="service-tags">
+                    <span>Web Design</span>
+                    <span>Development</span>
+                    <span>UX/UI</span>
+                    <span>Maintenance</span>
+                  </div>
+                  <a href="#contact?service=website" class="service-inquire-btn">Inquire About Websites →</a>
+                </div>
+                <!-- Interface fragment: Nav bar + card component -->
+                <div class="service-visual sv-digital" aria-hidden="true">
+                  <div class="sv-nav">
+                    <span class="sv-nav-logo">NOVA</span>
+                    <div class="sv-nav-links">
+                      <span>About</span><span>Work</span><a href="#contact?service=website" class="sv-nav-cta">Contact →</a>
+                    </div>
+                  </div>
+                  <div class="sv-card">
+                    <div class="sv-card-tag">Featured</div>
+                    <div class="sv-card-title">Brand Identity System</div>
+                    <div class="sv-card-meta">Web Design · UX/UI</div>
+                    <div class="sv-card-divider"></div>
+                    <div class="sv-card-footer">
+                      <span class="sv-card-price">From ₹45,000</span>
+                      <a href="#contact?service=website" class="sv-card-btn">Inquire →</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 SOCIAL -->
+        <div class="service-row reveal-up" data-delay="0.1" data-cursor="expand">
+          <div class="service-num">02</div>
+          <div class="service-main">
+            <div class="service-title-row">
+              <span class="service-category">SOCIAL</span>
+              <span class="service-name">Social Media &amp; Community</span>
+              <span class="service-arrow">↗</span>
+            </div>
+            <div class="service-expand">
+              <div class="service-expand-body">
+                <div class="service-expand-text">
+                  <p>Strategic social media management that builds genuine communities, increases brand visibility and turns followers into loyal customers.</p>
+                  <div class="service-tags">
+                    <span>Instagram Growth</span>
+                    <span>Content Strategy</span>
+                    <span>Community Management</span>
+                  </div>
+                  <a href="#contact?service=social" class="service-inquire-btn">Inquire About Social & Growth →</a>
+                </div>
+                <!-- Interface fragment: Instagram grid in phone notch -->
+                <div class="service-visual sv-social" aria-hidden="true">
+                  <div class="sv-phone-notch"></div>
+                  <div class="sv-insta-header">
+                    <div class="sv-insta-avatar"></div>
+                    <div class="sv-insta-info">
+                      <div class="sv-insta-name">@velofood</div>
+                      <div class="sv-insta-followers">12.4K followers</div>
+                    </div>
+                    <span class="sv-insta-follow">Follow</span>
+                  </div>
+                  <div class="sv-insta-grid">
+                    <div class="sv-post sv-post--1"></div>
+                    <div class="sv-post sv-post--2"></div>
+                    <div class="sv-post sv-post--3"></div>
+                    <div class="sv-post sv-post--4"></div>
+                    <div class="sv-post sv-post--5"></div>
+                    <div class="sv-post sv-post--6"></div>
+                    <div class="sv-post sv-post--7"></div>
+                    <div class="sv-post sv-post--8"></div>
+                    <div class="sv-post sv-post--9"></div>
+                  </div>
+                  <div class="sv-insta-bar">
+                    <span class="sv-bar-icon">⊞</span><span class="sv-bar-icon sv-bar-active">♡</span><span class="sv-bar-icon">☰</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 CONTENT -->
+        <div class="service-row reveal-up" data-delay="0.15" data-cursor="expand">
+          <div class="service-num">03</div>
+          <div class="service-main">
+            <div class="service-title-row">
+              <span class="service-category">CONTENT</span>
+              <span class="service-name">Reels, Video &amp; Creative</span>
+              <span class="service-arrow">↗</span>
+            </div>
+            <div class="service-expand">
+              <div class="service-expand-body">
+                <div class="service-expand-text">
+                  <p>Compelling short-form video, reels and creative content designed for modern audiences. We craft stories that stop the scroll and drive action.</p>
+                  <div class="service-tags">
+                    <span>Reels Production</span>
+                    <span>Short-form Video</span>
+                    <span>Creative Direction</span>
+                    <span>Copywriting</span>
+                  </div>
+                  <a href="#contact?service=content" class="service-inquire-btn">Inquire About Creative Content →</a>
+                </div>
+                <!-- Interface fragment: 9:16 vertical video frame -->
+                <div class="service-visual sv-content" aria-hidden="true">
+                  <div class="sv-video-frame">
+                    <div class="sv-rec-dot"></div>
+                    <div class="sv-video-overlay">
+                      <div class="sv-video-label">00:15</div>
+                    </div>
+                    <div class="sv-video-scene">
+                      <div class="sv-scene-grad"></div>
+                      <div class="sv-scene-text">@sablelook</div>
+                      <div class="sv-scene-caption">New arrivals. Only this week.</div>
+                    </div>
+                    <div class="sv-scrubber">
+                      <div class="sv-scrubber-fill"></div>
+                      <div class="sv-scrubber-dot"></div>
+                    </div>
+                    <div class="sv-video-actions">
+                      <span>♡ 4.2K</span>
+                      <span>↗ Share</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 MEDIA -->
+        <div class="service-row reveal-up" data-delay="0.2" data-cursor="expand">
+          <div class="service-num">04</div>
+          <div class="service-main">
+            <div class="service-title-row">
+              <span class="service-category">MEDIA</span>
+              <span class="service-name">Meta &amp; Google Advertising</span>
+              <span class="service-arrow">↗</span>
+            </div>
+            <div class="service-expand">
+              <div class="service-expand-body">
+                <div class="service-expand-text">
+                  <p>Performance-driven advertising campaigns across Meta and Google. We combine creative excellence with data intelligence to maximize your return on ad spend.</p>
+                  <div class="service-tags">
+                    <span>Meta Ads</span>
+                    <span>Google Ads</span>
+                    <span>Campaign Strategy</span>
+                    <span>Performance Tracking</span>
+                  </div>
+                  <a href="#contact?service=advertising" class="service-inquire-btn">Inquire About Paid Media →</a>
+                </div>
+                <!-- Interface fragment: Meta feed ad card -->
+                <div class="service-visual sv-media" aria-hidden="true">
+                  <div class="sv-ad-card">
+                    <div class="sv-ad-header">
+                      <div class="sv-ad-avatar"></div>
+                      <div class="sv-ad-meta">
+                        <div class="sv-ad-name">Terra Estates</div>
+                        <div class="sv-ad-sponsored">Sponsored · <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.5" fill="#1877F2"/><path d="M7 3.5H5.5V2.5c0-.28.22-.5.5-.5h1V.5H5.5C4.67.5 4 1.17 4 2v1.5H3V5h1v4.5h1.5V5H7l.5-1.5z" fill="white"/></svg></div>
+                      </div>
+                    </div>
+                    <div class="sv-ad-image">
+                      <div class="sv-ad-img-content">Luxury 3BHK — From ₹1.2Cr</div>
+                    </div>
+                    <div class="sv-ad-body">
+                      <div class="sv-ad-headline">Discover Terra Estates — Premium Living</div>
+                      <div class="sv-ad-desc">terr-aestates.com · Real Estate</div>
+                      <a href="#contact?service=advertising" class="sv-ad-cta">Inquire →</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 GROWTH -->
+        <div class="service-row reveal-up" data-delay="0.25" data-cursor="expand">
+          <div class="service-num">05</div>
+          <div class="service-main">
+            <div class="service-title-row">
+              <span class="service-category">GROWTH</span>
+              <span class="service-name">Strategy, Analytics &amp; Optimization</span>
+              <span class="service-arrow">↗</span>
+            </div>
+            <div class="service-expand">
+              <div class="service-expand-body">
+                <div class="service-expand-text">
+                  <p>Integrated digital growth strategy backed by analytics. We continuously measure, learn and optimize to ensure your digital ecosystem keeps improving.</p>
+                  <div class="service-tags">
+                    <span>Growth Strategy</span>
+                    <span>Analytics</span>
+                    <span>CRO</span>
+                    <span>Reporting</span>
+                  </div>
+                  <a href="#contact?service=growth" class="service-inquire-btn">Inquire About Growth Package →</a>
+                </div>
+                <!-- Interface fragment: Growth chart with real axes -->
+                <div class="service-visual sv-growth" aria-hidden="true">
+                  <div class="sv-chart-header">
+                    <span class="sv-chart-label">Sessions / month</span>
+                    <span class="sv-chart-period">Last 6 months</span>
+                  </div>
+                  <div class="sv-chart-wrap">
+                    <div class="sv-chart-yaxis">
+                      <span>24K</span><span>18K</span><span>12K</span><span>6K</span><span>0</span>
+                    </div>
+                    <div class="sv-chart-area">
+                      <svg viewBox="0 0 260 100" preserveAspectRatio="none" class="sv-sparkline">
+                        <!-- Gridlines -->
+                        <line x1="0" y1="25" x2="260" y2="25" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="0" y1="50" x2="260" y2="50" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="0" y1="75" x2="260" y2="75" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <!-- Area fill -->
+                        <defs>
+                          <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.3"/>
+                            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+                          </linearGradient>
+                        </defs>
+                        <polygon points="0,85 45,78 95,68 140,52 185,35 230,18 260,10 260,100 0,100" fill="url(#chartGrad)"/>
+                        <!-- Line -->
+                        <polyline points="0,85 45,78 95,68 140,52 185,35 230,18 260,10" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                        <!-- Data point callout -->
+                        <circle cx="260" cy="10" r="4" fill="#3B82F6"/>
+                      </svg>
+                      <div class="sv-callout">
+                        <div class="sv-callout-val">+287%</div>
+                        <div class="sv-callout-sub">Traffic growth</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sv-chart-xaxis">
+                    <span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED WORK ============ -->
+  <section class="work-section" id="work">
+    <div class="container">
+      <div class="work-header">
+        <span class="section-label reveal-up">PORTFOLIO</span>
+        <h2 class="work-heading reveal-up">SELECTED WORK</h2>
+        <p class="work-sub reveal-up" data-delay="0.1">A selection of conceptual projects showcasing our approach and capabilities.</p>
+      </div>
+    </div>
+
+    <div class="work-grid">
+
+      <!-- NOVA FITNESS — Phone frame -->
+      <article class="work-item reveal-up" data-delay="0.05" data-cursor="view">
+        <div class="work-item-visual" style="background: #0a0a0a;">
+          <div class="work-frame work-frame--phone">
+            <div class="wf-phone-notch"></div>
+            <div class="wf-phone-screen">
+              <div class="mock-body">
+                <div class="mock-hero-text">NOVA</div>
+                <div class="mock-sub-text">FITNESS</div>
+                <div class="mock-line"></div>
+                <div class="mock-cta-btn">Join Now →</div>
+              </div>
+            </div>
+            <div class="wf-phone-bar"></div>
+          </div>
+        </div>
+        <div class="work-item-info">
+          <div class="work-meta">
+            <span class="work-industry">Fitness &amp; Wellness</span>
+            <span class="work-year">2024</span>
+          </div>
+          <h3 class="work-title">NOVA FITNESS</h3>
+          <p class="work-services">Digital Experience / Social / Performance</p>
+          <p class="work-desc">Repositioning a local fitness brand through a new digital identity and conversion-focused website.</p>
+        </div>
+      </article>
+
+      <!-- TERRA ESTATES — Browser chrome -->
+      <article class="work-item reveal-up" data-delay="0.1" data-cursor="view">
+        <div class="work-item-visual" style="background: #050d1a;">
+          <div class="work-frame work-frame--browser">
+            <div class="wf-browser-bar">
+              <div class="wf-browser-dots"><span></span><span></span><span></span></div>
+              <div class="wf-browser-url">terra-estates.com</div>
+            </div>
+            <div class="wf-browser-screen">
+              <div class="mock-body">
+                <div class="mock-hero-text" style="color:#4A9EFF;">TERRA</div>
+                <div class="mock-sub-text" style="color:#aaa;">ESTATES</div>
+                <div class="mock-line" style="background:#4A9EFF;"></div>
+                <div class="mock-cta-btn" style="border-color:#4A9EFF;color:#4A9EFF;">Explore →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-item-info">
+          <div class="work-meta">
+            <span class="work-industry">Real Estate</span>
+            <span class="work-year">2024</span>
+          </div>
+          <h3 class="work-title">TERRA ESTATES</h3>
+          <p class="work-services">Web Design / Content / Social Media</p>
+          <p class="work-desc">Building a premium digital presence for an emerging real estate developer targeting high-net-worth buyers.</p>
+        </div>
+      </article>
+
+      <!-- SABLE FASHION — Instagram frame -->
+      <article class="work-item reveal-up" data-delay="0.15" data-cursor="view">
+        <div class="work-item-visual" style="background: #0d0d0d;">
+          <div class="work-frame work-frame--instagram">
+            <div class="wf-ig-header">
+              <div class="wf-ig-avatar"></div>
+              <div class="wf-ig-name">sable.look</div>
+              <div class="wf-ig-follow">Follow</div>
+            </div>
+            <div class="wf-ig-post">
+              <div class="wf-ig-post-content">
+                <div class="wf-ig-post-text">SABLE</div>
+                <div class="wf-ig-post-sub">FASHION HOUSE</div>
+              </div>
+            </div>
+            <div class="wf-ig-actions">
+              <span>&#9825; 4,291</span>
+              <span>&#128172; 87</span>
+              <span>&#8599;</span>
+            </div>
+            <div class="wf-ig-caption"><strong>sable.look</strong> New season. New rules. Shop the drop &rarr;</div>
+          </div>
+        </div>
+        <div class="work-item-info">
+          <div class="work-meta">
+            <span class="work-industry">Fashion &amp; Retail</span>
+            <span class="work-year">2025</span>
+          </div>
+          <h3 class="work-title">SABLE FASHION</h3>
+          <p class="work-services">Instagram Growth / Reels / Meta Advertising</p>
+          <p class="work-desc">A comprehensive social media and advertising strategy that scaled a fashion brand's Instagram audience and online sales.</p>
+        </div>
+      </article>
+
+      <!-- VELO RESTAURANT — Phone frame -->
+      <article class="work-item reveal-up" data-delay="0.2" data-cursor="view">
+        <div class="work-item-visual" style="background: #050505;">
+          <div class="work-frame work-frame--phone">
+            <div class="wf-phone-notch"></div>
+            <div class="wf-phone-screen">
+              <div class="mock-body">
+                <div class="mock-hero-text" style="font-size:1.8rem;">VELO</div>
+                <div class="mock-sub-text" style="color:#4A9EFF;">RESTAURANT</div>
+                <div class="mock-line" style="background:#4A9EFF;"></div>
+                <div class="mock-cta-btn" style="border-color:#fff;">Reserve Table &rarr;</div>
+              </div>
+            </div>
+            <div class="wf-phone-bar"></div>
+          </div>
+        </div>
+        <div class="work-item-info">
+          <div class="work-meta">
+            <span class="work-industry">Food &amp; Hospitality</span>
+            <span class="work-year">2025</span>
+          </div>
+          <h3 class="work-title">VELO RESTAURANT</h3>
+          <p class="work-services">Web / Content / Google Ads / Social</p>
+          <p class="work-desc">Full digital ecosystem for a premium restaurant — from website to social storytelling to performance campaigns.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="approach-section" id="approach">
+    <div class="container">
+      <div class="approach-inner">
+        <div class="approach-left">
+          <span class="section-label reveal-up">OUR PHILOSOPHY</span>
+        </div>
+        <div class="approach-right">
+          <div class="approach-statement reveal-up">
+            <p>ONE PART STRATEGY.</p>
+            <p>ONE PART CREATIVITY.</p>
+            <p class="accent-line">ALL FOCUSED ON GROWTH.</p>
+          </div>
+          <div class="approach-desc reveal-up" data-delay="0.15">
+            <p>Tecto Mark combines <span class="accent">Strategy</span> + <span class="accent">Design</span> + <span class="accent">Technology</span> + <span class="accent">Content</span> + <span class="accent">Media</span> into one integrated growth system — so your business doesn't just look good online, it grows online.</p>
+          </div>
+          <div class="approach-pillars reveal-up" data-delay="0.25">
+            <div class="pillar">
+              <span class="pillar-icon">◈</span>
+              <span class="pillar-name">Strategy</span>
+            </div>
+            <div class="pillar">
+              <span class="pillar-icon">◈</span>
+              <span class="pillar-name">Design</span>
+            </div>
+            <div class="pillar">
+              <span class="pillar-icon">◈</span>
+              <span class="pillar-name">Technology</span>
+            </div>
+            <div class="pillar">
+              <span class="pillar-icon">◈</span>
+              <span class="pillar-name">Content</span>
+            </div>
+            <div class="pillar">
+              <span class="pillar-icon">◈</span>
+              <span class="pillar-name">Media</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="process-header">
+        <span class="section-label reveal-up">METHODOLOGY</span>
+        <h2 class="process-heading reveal-up">HOW WE WORK</h2>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step reveal-up" data-delay="0.05">
+          <div class="process-step-num">01</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">DISCOVER</h3>
+            <p class="process-step-desc">Understand your business, audience and objectives. We go deep before we go wide.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal-up" data-delay="0.1">
+          <div class="process-step-num">02</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">DEFINE</h3>
+            <p class="process-step-desc">Develop the strategy, positioning and creative direction that will drive your growth.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal-up" data-delay="0.15">
+          <div class="process-step-num">03</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">CREATE</h3>
+            <p class="process-step-desc">Build the website, content and digital experiences that bring your brand to life.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal-up" data-delay="0.2">
+          <div class="process-step-num">04</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">AMPLIFY</h3>
+            <p class="process-step-desc">Launch campaigns, social media and advertising to reach and engage your audience.</p>
+          </div>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal-up" data-delay="0.25">
+          <div class="process-step-num">05</div>
+          <div class="process-step-content">
+            <h3 class="process-step-title">OPTIMIZE</h3>
+            <p class="process-step-desc">Measure performance and continuously improve to maximize your return on investment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-left reveal-up">
+          <span class="section-label">WHO WE ARE</span>
+          <div class="about-tagline">
+            <span>BUILD.</span>
+            <span>PROMOTE.</span>
+            <span class="accent">GROW.</span>
+          </div>
+          <p class="about-subtagline">A disciplined growth system fusing creative velocity with full-stack digital technology.</p>
+          <div class="about-actions-row">
+            <a href="#contact" class="btn-outline">Work With Us →</a>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="about-narrative reveal-up">
+            <h2 class="about-heading">
+              "WE BELIEVE GOOD DIGITAL WORK SHOULD DO MORE THAN LOOK GOOD."
+            </h2>
+            <p class="about-body">
+              Tecto Mark exists to help businesses turn attention into action. We combine creative thinking with technology, content and performance marketing to create digital ecosystems that actually move businesses forward.
+            </p>
+            <p class="about-body">
+              We're not a generic agency. We're a growth partner — deeply invested in the success of every brand we work with.
+            </p>
+          </div>
+
+          <!-- 3D Interactive Growth Network Card -->
+          <div class="about-growth-card reveal-up" id="aboutGrowthContainer" data-delay="0.15">
+            <div class="growth-card-hud-top">
+              <div class="growth-hud-badge">
+                <span class="hud-status-dot"></span>
+                <span>SYSTEM // TOPOLOGY 02</span>
+              </div>
+              <div class="growth-hud-label">REAL-TIME GROWTH NETWORK</div>
+            </div>
+            <div class="growth-canvas-wrap">
+              <canvas id="aboutGrowthCanvas"></canvas>
+            </div>
+            <div class="growth-card-hud-bottom">
+              <div class="growth-metric-col">
+                <span class="growth-m-label">CORE SYNC</span>
+                <span class="growth-m-val">99.8%</span>
+              </div>
+              <div class="growth-metric-col">
+                <span class="growth-m-label">ACTIVE NODES</span>
+                <span class="growth-m-val">12 // LINKED</span>
+              </div>
+              <div class="growth-metric-col">
+                <span class="growth-m-label">STATE</span>
+                <span class="growth-m-val accent-val">ORBITING</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ============ INDUSTRIES ============ -->
+  <section class="industries-section" id="industries">
+    <div class="container">
+      <div class="industries-header">
+        <span class="section-label reveal-up">WHO WE SERVE</span>
+        <h2 class="industries-heading reveal-up">WE WORK WITH<br>AMBITIOUS BUSINESSES.</h2>
+      </div>
+    </div>
+    <div class="industries-scroll-wrap">
+      <div class="industries-track">
+        <div class="industries-inner">
+          <span class="industry-tag">RESTAURANTS</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">FITNESS</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">REAL ESTATE</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">FASHION</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">E-COMMERCE</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">STARTUPS</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">EDUCATION</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">LOCAL BUSINESS</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">RESTAURANTS</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">FITNESS</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">REAL ESTATE</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">FASHION</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">E-COMMERCE</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">STARTUPS</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">EDUCATION</span>
+          <span class="ind-sep">—</span>
+          <span class="industry-tag">LOCAL BUSINESS</span>
+          <span class="ind-sep">—</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSIGHTS ============ -->
+  <section class="insights-section" id="insights">
+    <div class="container">
+      <div class="insights-header">
+        <span class="section-label reveal-up">INSIGHTS</span>
+        <h2 class="insights-heading reveal-up">THINKING OUT LOUD.</h2>
+      </div>
+      <div class="insights-grid">
+
+        <article class="insight-item reveal-up" data-delay="0.05">
+          <div class="insight-meta">
+            <span class="insight-category">Digital Strategy</span>
+            <span class="insight-date">Sep 2025</span>
+          </div>
+          <h3 class="insight-title">WHY EVERY BUSINESS NEEDS A DIGITAL-FIRST PRESENCE</h3>
+          <p class="insight-excerpt">In a world where attention is the most valuable currency, your digital presence is either your greatest asset or your biggest missed opportunity.</p>
+          <a href="#" class="insight-link">Read Article →</a>
+        </article>
+
+        <article class="insight-item reveal-up" data-delay="0.1">
+          <div class="insight-meta">
+            <span class="insight-category">Content</span>
+            <span class="insight-date">Aug 2025</span>
+          </div>
+          <h3 class="insight-title">HOW SHORT-FORM VIDEO IS CHANGING BRAND DISCOVERY</h3>
+          <p class="insight-excerpt">Reels, Shorts and TikToks aren't just trends — they're reshaping how consumers find, evaluate and decide to trust brands.</p>
+          <a href="#" class="insight-link">Read Article →</a>
+        </article>
+
+        <article class="insight-item reveal-up" data-delay="0.15">
+          <div class="insight-meta">
+            <span class="insight-category">Growth</span>
+            <span class="insight-date">Jul 2025</span>
+          </div>
+          <h3 class="insight-title">WEBSITE VS SOCIAL MEDIA: WHERE SHOULD A BUSINESS INVEST?</h3>
+          <p class="insight-excerpt">The debate is real — but the answer isn't either/or. Here's how smart businesses are using both to create compounding digital growth.</p>
+          <a href="#" class="insight-link">Read Article →</a>
+        </article>
+
+        <article class="insight-item reveal-up" data-delay="0.2">
+          <div class="insight-meta">
+            <span class="insight-category">Performance</span>
+            <span class="insight-date">Jun 2025</span>
+          </div>
+          <h3 class="insight-title">THE HIDDEN COST OF A BAD DIGITAL STRATEGY</h3>
+          <p class="insight-excerpt">Most businesses focus on what they're spending. Few think about what they're losing. A weak digital strategy costs more than you think.</p>
+          <a href="#" class="insight-link">Read Article →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final-cta-section" id="cta">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="final-cta-text reveal-up">
+          <h2 class="final-cta-heading">
+            LET'S BUILD<br>
+            SOMETHING<br>
+            <span class="accent">THAT GROWS.</span>
+          </h2>
+        </div>
+        <div class="final-cta-right reveal-up" data-delay="0.15">
+          <p class="final-cta-desc">Have a business, idea or brand that deserves more attention? Let's talk.</p>
+          <div class="final-cta-actions">
+            <a href="#contact" class="btn-primary large-btn">Start a Project →</a>
+            <a href="mailto:tectomarksupport@gmail.com" class="final-email">tectomarksupport@gmail.com</a>
+          </div>
+          <div class="whatsapp-group-btns">
+            <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="whatsapp-btn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Chat with +91 95550 13580
+            </a>
+            <a href="https://wa.me/919120700838?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="whatsapp-btn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Chat with +91 91207 00838
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-layout">
+        <div class="contact-left">
+          <span class="section-label reveal-up">GET IN TOUCH</span>
+          <h2 class="contact-heading reveal-up">START A<br>PROJECT</h2>
+          <div class="contact-details reveal-up" data-delay="0.1">
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Email</span>
+              <a href="mailto:tectomarksupport@gmail.com" class="contact-detail-value">tectomarksupport@gmail.com</a>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Direct Call</span>
+              <div class="contact-links-stack">
+                <a href="tel:+919555013580" class="contact-detail-value">+91 95550 13580</a>
+                <a href="tel:+919120700838" class="contact-detail-value">+91 91207 00838</a>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">WhatsApp (Direct Chat)</span>
+              <div class="contact-wa-stack">
+                <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="wa-direct-link" target="_blank" rel="noopener">
+                  <span class="wa-live-dot"></span>
+                  <span>+91 95550 13580 (Connect on WhatsApp)</span>
+                </a>
+                <a href="https://wa.me/919120700838?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="wa-direct-link" target="_blank" rel="noopener">
+                  <span class="wa-live-dot"></span>
+                  <span>+91 91207 00838 (Connect on WhatsApp)</span>
+                </a>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <span class="contact-detail-label">Based in</span>
+              <span class="contact-detail-value">India, Working Globally</span>
+            </div>
+          </div>
+          <div class="contact-social-grid reveal-up" data-delay="0.15">
+            <a href="https://www.instagram.com/tectomark?stkn=NW4zc3VpdmNlNmlm" class="social-pill-link social-pill-insta" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on Instagram">
+              <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/share/17ofPfL7yH/" class="social-pill-link social-pill-fb" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on Facebook">
+              <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+            <a href="https://www.linkedin.com/in/tectomark-undefined-966a24436?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-pill-link social-pill-li" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on LinkedIn">
+              <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v7.6h2.79v-7.6H6.46M7.86 6.3a1.62 1.62 0 1 0 1.62 1.62A1.62 1.62 0 0 0 7.86 6.3z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://x.com/Tectomark" class="social-pill-link social-pill-x" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on X">
+              <svg class="social-icon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span>X (Twitter)</span>
+            </a>
+          </div>
+        </div>
+        <div class="contact-right reveal-up" data-delay="0.1">
+          <div class="inquiry-system-wrap">
+            <!-- INQUIRY FORM -->
+            <form class="inquiry-form" id="inquiryForm" novalidate data-cursor="none">
+              <!-- Honeypot anti-spam trap field (invisible to users) -->
+              <div class="hp-wrap" aria-hidden="true" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;">
+                <label for="hp_field">Do not fill this field</label>
+                <input type="text" id="hp_field" name="honeypot" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- GROUP 1: WHO YOU ARE -->
+              <div class="inquiry-group">
+                <div class="inquiry-group-header">
+                  <span class="inquiry-group-num">01</span>
+                  <div class="inquiry-group-title-wrap">
+                    <h3 class="inquiry-group-title">WHO YOU ARE</h3>
+                    <p class="inquiry-group-hint">Tell us about you and the brand you represent.</p>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Aarav Sharma" required />
+                    <span class="field-error"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="company">Company / Brand Name <span class="required">*</span></label>
+                    <input type="text" id="company" name="company" placeholder="e.g. Acme Studio" required />
+                    <span class="field-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="companyType">Company Type <span class="required">*</span></label>
+                    <div class="select-wrap">
+                      <select id="companyType" name="companyType" required>
+                        <option value="" disabled selected>Select industry or business type</option>
+                        <option value="Restaurant & Hospitality">Restaurant & Hospitality</option>
+                        <option value="Fitness & Wellness">Fitness & Wellness</option>
+                        <option value="Real Estate & Architecture">Real Estate & Architecture</option>
+                        <option value="Fashion & Apparel">Fashion & Apparel</option>
+                        <option value="E-commerce & D2C">E-commerce & D2C</option>
+                        <option value="Tech & Startup">Tech & Startup</option>
+                        <option value="Education & EdTech">Education & EdTech</option>
+                        <option value="Local Business & Services">Local Business & Services</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <span class="select-arrow">↓</span>
+                    </div>
+                    <span class="field-error"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Work Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="aarav@company.com" required />
+                    <span class="field-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone / WhatsApp Number <span class="required">*</span></label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+                  <span class="field-error"></span>
+                </div>
+              </div>
+
+              <!-- GROUP 2: WHAT DO YOU NEED -->
+              <div class="inquiry-group">
+                <div class="inquiry-group-header">
+                  <span class="inquiry-group-num">02</span>
+                  <div class="inquiry-group-title-wrap">
+                    <h3 class="inquiry-group-title">WHAT DO YOU NEED? <span class="required">*</span></h3>
+                    <p class="inquiry-group-hint">Select one or multiple services you want to partner on.</p>
+                  </div>
+                </div>
+
+                <div class="services-chips-grid" id="servicesChipsGrid">
+                  <button type="button" class="chip-item" data-value="Website Design & Development">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Website Design & Development</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Website Maintenance">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Website Maintenance</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Social Media Management">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Social Media Management</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Instagram Growth">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Instagram Growth</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Reels & Short-Form Content">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Reels & Short-Form Content</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Creative Content">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Creative Content</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Meta / Facebook Advertising">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Meta / Facebook Advertising</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Google Advertising">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Google Advertising</span>
+                  </button>
+                  <button type="button" class="chip-item" data-value="Digital Growth Strategy (Full Package)">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Digital Growth Strategy (Full Package)</span>
+                  </button>
+                  <button type="button" class="chip-item chip-other" data-value="Other">
+                    <span class="chip-check">✓</span>
+                    <span class="chip-label">Other</span>
+                  </button>
+                </div>
+
+                <!-- Inline input revealed when 'Other' is checked -->
+                <div class="other-service-wrap" id="otherServiceWrap" style="display: none;">
+                  <label for="otherService">Specify Custom Need</label>
+                  <input type="text" id="otherService" name="otherService" placeholder="Tell us what custom solution you're looking for..." />
+                </div>
+                <span class="field-error" id="servicesError"></span>
+              </div>
+
+              <!-- GROUP 3: PROJECT DETAILS & BUDGET -->
+              <div class="inquiry-group">
+                <div class="inquiry-group-header">
+                  <span class="inquiry-group-num">03</span>
+                  <div class="inquiry-group-title-wrap">
+                    <h3 class="inquiry-group-title">PROJECT SCOPE & BUDGET</h3>
+                    <p class="inquiry-group-hint">Helps us assemble the right team and triage without delay.</p>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="projectDetails">Tell us about your project, goals, or challenge <span class="required">*</span></label>
+                  <textarea id="projectDetails" name="projectDetails" rows="4" placeholder="What are you aiming to build, launch, or scale? Any current metrics, timeline requirements or reference links..." required></textarea>
+                  <span class="field-error"></span>
+                </div>
+
+                <div class="form-row pills-row">
+                  <div class="form-group">
+                    <label>Budget Range <span class="optional-tag">(Optional)</span></label>
+                    <div class="pill-group" id="budgetPills">
+                      <button type="button" class="pill-option" data-value="Under ₹25K">Under ₹25K</button>
+                      <button type="button" class="pill-option" data-value="₹25K–₹1L">₹25K–₹1L</button>
+                      <button type="button" class="pill-option" data-value="₹1L–₹5L">₹1L–₹5L</button>
+                      <button type="button" class="pill-option" data-value="₹5L+">₹5L+</button>
+                      <button type="button" class="pill-option" data-value="Not sure yet">Not sure yet</button>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Target Timeline <span class="optional-tag">(Optional)</span></label>
+                    <div class="pill-group" id="timelinePills">
+                      <button type="button" class="pill-option" data-value="ASAP">ASAP</button>
+                      <button type="button" class="pill-option" data-value="Within a month">Within a month</button>
+                      <button type="button" class="pill-option" data-value="1–3 months">1–3 months</button>
+                      <button type="button" class="pill-option" data-value="Just exploring">Just exploring</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUBMIT & TRUST ANCHORS -->
+              <div class="form-footer-actions">
+                <button type="submit" class="btn-primary form-submit" id="formSubmit">
+                  <span class="btn-spinner"></span>
+                  <span class="btn-text">Send Inquiry →</span>
+                </button>
+                <div class="form-meta-row">
+                  <p class="form-note">We reply within 24 hours.</p>
+                  <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20prefer%20discussing%20my%20inquiry%20via%20WhatsApp" class="inquiry-wa-alt" target="_blank" rel="noopener">
+                    <span class="wa-status-mini"></span> Prefer WhatsApp? Message us directly →
+                  </a>
+                </div>
+                <div class="form-general-error" id="formGeneralError" style="display: none;"></div>
+              </div>
+            </form>
+
+            <!-- IN-SITE CONFIRMATION STATE (Replaces form on success) -->
+            <div class="inquiry-confirmation" id="inquiryConfirmation" style="display: none;">
+              <div class="confirm-pill-label">INQUIRY RECEIVED</div>
+              <h3 class="confirm-heading">THANKS, <span id="confirmName">THERE</span>.<br>WE'LL BE IN TOUCH.</h3>
+              <p class="confirm-body">
+                Your project inquiry has been securely sent to our core strategy team. Expect a response within <strong>24 hours</strong> at <span class="confirm-email-highlight" id="confirmEmail">your email</span>.
+              </p>
+              <div class="confirm-recap" id="confirmRecap"></div>
+              <div class="confirm-actions">
+                <button type="button" class="btn-secondary" id="resetInquiryBtn">Submit Another Inquiry</button>
+                <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20following%20up%20on%20my%20recent%20inquiry" class="whatsapp-btn" target="_blank" rel="noopener">
+                  Chat on WhatsApp →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" data-cursor="none">
+    <div class="footer-top">
+      <div class="footer-top-inner container">
+        <div class="footer-brand">
+          <span class="footer-logo">TECTO MARK</span>
+          <p class="footer-tagline">Build. Promote. Grow.</p>
+          <div class="footer-contact-quick">
+            <a href="mailto:tectomarksupport@gmail.com" class="footer-quick-item">tectomarksupport@gmail.com</a>
+            <span class="footer-quick-sep">·</span>
+            <a href="tel:+919555013580" class="footer-quick-item">+91 95550 13580</a>
+            <span class="footer-quick-sep">·</span>
+            <a href="tel:+919120700838" class="footer-quick-item">+91 91207 00838</a>
+          </div>
+        </div>
+        <nav class="footer-nav">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#insights">Insights</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/tectomark?stkn=NW4zc3VpdmNlNmlm" class="footer-social-link footer-social-insta" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/share/17ofPfL7yH/" class="footer-social-link footer-social-fb" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on Facebook">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/tectomark-undefined-966a24436?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="footer-social-link footer-social-li" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on LinkedIn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v7.6h2.79v-7.6H6.46M7.86 6.3a1.62 1.62 0 1 0 1.62 1.62A1.62 1.62 0 0 0 7.86 6.3z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/Tectomark" class="footer-social-link footer-social-x" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on X">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="footer-copy">© 2026 Tecto Mark. All rights reserved.</p>
+        <p class="footer-right">Digital Media & Growth Company</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✓</span>
+    <span class="toast-msg">Message sent! We'll be in touch soon.</span>
+  </div>
+
+  <script src="three.min.js" defer></script>
+  <script src="camera-tech-fusion.js" defer></script>
+  <script src="about-growth-network.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
