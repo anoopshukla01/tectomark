@@ -517,6 +517,11 @@ app.post('/api/upload-team-photo', teamUpload.single('photo'), (req, res) => {
   res.json({ success: true, saved: req.file.filename, path: `assets/team/${req.file.filename}` });
 });
 
+// ── Google Search Console Verification ─────────────────────────
+app.get('/googlec1c7028a5e5c36e7.html', (req, res) => {
+  res.type('text/html').send('google-site-verification: googlec1c7028a5e5c36e7.html');
+});
+
 // ── Static Files & Fallback ────────────────────────────────────
 app.use(express.static(__dirname));
 
