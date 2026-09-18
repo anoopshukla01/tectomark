@@ -225,7 +225,7 @@ ${inquiry.projectDetails}
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Referer': 'https://tectomark.com'
+          'Referer': 'https://tectomark.online'
         },
         body: JSON.stringify({
           _subject: `New Inquiry — ${inquiry.company} (${inquiry.services.slice(0, 2).join(', ')})`,
@@ -278,7 +278,7 @@ If your project requires urgent discussion or you prefer chatting in real-time, 
 https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20following%20up%20on%20my%20inquiry%20${inquiry.inquiryRef}
 
 In the meantime, feel free to explore some of our recent work:
-https://tectomark.com/#work
+https://tectomark.online/#work
 
 Talk soon,
 The Tecto Mark Team

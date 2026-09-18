@@ -37,12 +37,16 @@ This project is pre-configured with a `render.yaml` blueprint for zero-friction 
 
 ---
 
-## 🌐 Custom Domain Setup (e.g. `tectomark.com`)
+## 🌐 Custom Domain Setup (`tectomark.online`)
 
 Once deployed on Render:
 1. In the Render Dashboard, go to your Web Service → **Settings** → **Custom Domains**.
-2. Click **Add Custom Domain** and enter your domain (e.g., `tectomark.com` or `www.tectomark.com`).
-3. Add the DNS records (CNAME or A record) provided by Render into your domain registrar (GoDaddy, Namecheap, Cloudflare, etc.).
+2. Click **Add Custom Domain** and enter:
+   - `tectomark.online`
+   - `www.tectomark.online`
+3. In your GoDaddy DNS Manager for `tectomark.online`, add:
+   - **Type A**: Name `@` → Value `216.24.57.1` (Delete old parked A records first)
+   - **Type CNAME**: Name `www` → Value `tectomark.onrender.com`
 4. Render automatically provisions a free Let's Encrypt SSL certificate within a few minutes.
 
 ---
