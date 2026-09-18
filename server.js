@@ -522,6 +522,15 @@ app.get('/googlec1c7028a5e5c36e7.html', (req, res) => {
   res.type('text/html').send('google-site-verification: googlec1c7028a5e5c36e7.html');
 });
 
+// ── Search Engine Crawlers & Sitemap ───────────────────────────
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain').sendFile(path.join(__dirname, 'robots.txt'));
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml').sendFile(path.join(__dirname, 'sitemap.xml'));
+});
+
 // ── Static Files & Fallback ────────────────────────────────────
 app.use(express.static(__dirname));
 
