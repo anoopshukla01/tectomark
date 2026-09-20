@@ -4362,3 +4362,54 @@ body.keyboard-nav textarea:focus {
   }
 }
 
+
+/* ══════════════════════════════════════════════════════════
+   LOGO IMAGE STYLES  —  Navbar · Preloader · Mobile Menu
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Navbar logo image ─────────────────────────────────── */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  line-height: 1;
+}
+.nav-logo-img {
+  display: block;
+  height: 36px;
+  width: auto;
+  /* The SVG has a dark bg; let it breathe naturally */
+  object-fit: contain;
+  transition: opacity 0.22s ease, transform 0.28s var(--ease-smooth);
+}
+.nav-logo:hover .nav-logo-img {
+  opacity: 0.82;
+  transform: scale(1.03);
+}
+
+/* ── Preloader logo image ───────────────────────────────── */
+.preloader-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.preloader-logo-img {
+  display: block;
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ── Mobile menu logo image ─────────────────────────────── */
+.mobile-menu-logo {
+  display: flex;
+  align-items: center;
+}
+.mobile-menu-logo-img {
+  display: block;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
