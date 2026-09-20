@@ -517,9 +517,17 @@ app.post('/api/upload-team-photo', teamUpload.single('photo'), (req, res) => {
   res.json({ success: true, saved: req.file.filename, path: `assets/team/${req.file.filename}` });
 });
 
-// ── Google Search Console Verification ─────────────────────────
+// ── Site Verification Endpoints ─────────────────────────
 app.get('/googlec1c7028a5e5c36e7.html', (req, res) => {
   res.type('text/html').send('google-site-verification: googlec1c7028a5e5c36e7.html');
+});
+
+app.get('/e95e1de3-2942-4fe1-88a7-492d941e629d.html', (req, res) => {
+  res.type('text/html').send('e95e1de3-2942-4fe1-88a7-492d941e629d');
+});
+
+app.get('/e95e1de3-2942-4fe1-88a7-492d941e629d.txt', (req, res) => {
+  res.type('text/plain').send('e95e1de3-2942-4fe1-88a7-492d941e629d');
 });
 
 // ── Search Engine Crawlers & Sitemap ───────────────────────────
