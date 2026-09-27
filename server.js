@@ -212,6 +212,7 @@ ${inquiry.projectDetails}
     await transporter.sendMail({
       from: process.env.EMAIL_FROM || `"Tecto Mark Alerts" <${ADMIN_EMAIL}>`,
       to: ADMIN_EMAIL,
+      replyTo: inquiry.email,
       subject,
       text: textBody,
       html: htmlBody
@@ -350,7 +351,247 @@ call: +91 95550 13580 / +91 91207 00838
   }
 }
 
+// ── Start A Project Specific Notification ────────────────────────
+async function sendStartProjectNotification(data) {
+  const subject = `New Project Inquiry — ${data.name} (${data.projectType})`;
+  const textBody = `
+NEW PROJECT INQUIRY — TECTO MARK
+================================
+Reference: ${data.inquiryRef}
+Received: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (IST)
+
+CLIENT DETAILS:
+- Name: ${data.name}
+- Email: ${data.email}
+- Phone / WhatsApp: ${data.phone}
+- Company / Brand: ${data.company || 'Not specified'}
+
+PROJECT SPECIFICATIONS:
+- Project Type: ${data.projectType}
+- Budget Range: ${data.budget || 'Not specified'}
+
+PROJECT DETAILS / MESSAGE:
+${data.message}
+================================
+Reply to this email directly to contact ${data.name} at ${data.email}.
+`;
+
+  const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:#111;background:#0d0e12;padding:30px 15px;margin:0;">
+  <div style="max-width:580px;margin:0 auto;background:#141419;border:1px solid rgba(255,255,255,0.12);border-radius:16px;overflow:hidden;box-shadow:0 12px 36px rgba(0,0,0,0.6);">
+    <div style="background:#07080a;padding:24px 28px;border-bottom:2px solid #2D5BFF;">
+      <h1 style="color:#ffffff;font-size:20px;letter-spacing:0.08em;margin:0;font-weight:800;">TECTO MARK</h1>
+      <p style="color:#2D5BFF;font-size:13px;margin:4px 0 0 0;font-weight:600;letter-spacing:0.04em;">NEW PROJECT INQUIRY — ${data.inquiryRef}</p>
+    </div>
+    <div style="padding:28px 28px 20px 28px;color:#e1e4e8;">
+      <div style="display:flex;gap:12px;margin-bottom:24px;">
+        <a href="mailto:${data.email}" style="display:inline-block;padding:10px 18px;background:#2D5BFF;color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;">Reply via Email →</a>
+        <a href="https://wa.me/${data.phone.replace(/\D/g, '')}" style="display:inline-block;padding:10px 18px;background:#25D366;color:#fff;text-decoration:none;border-radius:8px;font-size:13px;font-weight:700;">WhatsApp Client →</a>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;margin-bottom:24px;font-size:14px;color:#d0d4dc;">
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 0;color:#8a90a0;width:140px;font-weight:600;">Prospect Name:</td><td style="padding:10px 0;font-weight:700;color:#ffffff;">${data.name}</td></tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 0;color:#8a90a0;font-weight:600;">Project Type:</td><td style="padding:10px 0;font-weight:700;color:#2D5BFF;">${data.projectType}</td></tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 0;color:#8a90a0;font-weight:600;">Email:</td><td style="padding:10px 0;"><a href="mailto:${data.email}" style="color:#508CFF;text-decoration:none;">${data.email}</a></td></tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 0;color:#8a90a0;font-weight:600;">Phone / WhatsApp:</td><td style="padding:10px 0;"><a href="tel:${data.phone}" style="color:#ffffff;text-decoration:none;font-weight:600;">${data.phone}</a></td></tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 0;color:#8a90a0;font-weight:600;">Company / Brand:</td><td style="padding:10px 0;color:#ffffff;">${data.company || 'Not specified'}</td></tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px 0;color:#8a90a0;font-weight:600;">Budget Range:</td><td style="padding:10px 0;color:#2D5BFF;font-weight:600;">${data.budget || 'Not specified'}</td></tr>
+      </table>
+
+      <h3 style="font-size:12px;letter-spacing:0.1em;color:#8a90a0;text-transform:uppercase;margin:20px 0 8px 0;">Project Details / Goals:</h3>
+      <div style="background:rgba(255,255,255,0.04);border-left:3px solid #2D5BFF;padding:14px 18px;border-radius:6px;font-size:14px;color:#f0f2f5;white-space:pre-wrap;line-height:1.6;">${data.message}</div>
+    </div>
+    <div style="background:#0a0b0e;padding:16px 28px;font-size:12px;color:#6b7280;border-top:1px solid rgba(255,255,255,0.08);">
+      Tecto Mark Inquiries Engine • Stored in inquiries.db (${data.inquiryRef})
+    </div>
+  </div>
+</body>
+</html>
+`;
+
+  if (transporter) {
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_FROM || `"Tecto Mark Alerts" <${ADMIN_EMAIL}>`,
+        to: ADMIN_EMAIL,
+        replyTo: data.email,
+        subject,
+        text: textBody,
+        html: htmlBody
+      });
+      console.log(`✓ Project notification email sent via SMTP to ${ADMIN_EMAIL} for ${data.inquiryRef}`);
+    } catch (err) {
+      console.error('SMTP start-project notification error:', err.message);
+    }
+  } else {
+    try {
+      const fsRes = await fetch(`https://formsubmit.co/ajax/${ADMIN_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Referer': 'https://tectomark.online'
+        },
+        body: JSON.stringify({
+          _subject: subject,
+          Reference: data.inquiryRef,
+          Name: data.name,
+          Email: data.email,
+          Phone: data.phone,
+          Company: data.company || 'Not specified',
+          Project_Type: data.projectType,
+          Budget: data.budget || 'Not specified',
+          Message: data.message,
+          Quick_WhatsApp: `https://wa.me/${data.phone.replace(/\D/g, '')}`
+        })
+      });
+      const fsData = await fsRes.json();
+      console.log(`✓ Outbound start-project email delivered to ${ADMIN_EMAIL} via webhook:`, fsData.message || fsData.success);
+    } catch (fsErr) {
+      console.error('Webhook start-project email dispatch error:', fsErr.message);
+    }
+    console.log(`\n--- [OUTBOUND PROJECT INQUIRY EMAIL LOGGED: ${ADMIN_EMAIL}] ---`);
+    console.log(`To: ${ADMIN_EMAIL}`);
+    console.log(`Subject: ${subject}`);
+    console.log(textBody);
+    console.log(`----------------------------------------------------------------\n`);
+  }
+}
+
 // ── API Routes ──────────────────────────────────────────────────
+
+/**
+ * POST /api/start-project (and alias /api/contact)
+ * Dedicated endpoint for the "Start a Project" modal
+ */
+const handleStartProject = async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+      phone,
+      company,
+      projectType,
+      budget,
+      message,
+      projectDetails,
+      hp_field,
+      honeypot
+    } = req.body;
+
+    // 1. Honeypot anti-spam check
+    if ((hp_field && String(hp_field).trim() !== '') || (honeypot && String(honeypot).trim() !== '')) {
+      console.warn(`[SPAM BLOCKED] Honeypot triggered by IP ${req.ip}`);
+      return res.status(200).json({
+        success: true,
+        inquiryId: 'TM-' + Math.random().toString(36).substring(2, 9).toUpperCase()
+      });
+    }
+
+    // 2. Field sanitization & validation
+    const cleanName = sanitizeText(name);
+    const cleanEmail = sanitizeText(email).toLowerCase();
+    const cleanPhone = sanitizeText(phone);
+    const cleanCompany = sanitizeText(company);
+    const cleanProjectType = sanitizeText(projectType);
+    const cleanBudget = sanitizeText(budget);
+    const cleanMessage = sanitizeText(message || projectDetails);
+
+    if (!cleanName || cleanName.length < 2) {
+      return res.status(400).json({ success: false, error: 'Please enter your name.' });
+    }
+    if (!cleanEmail || !isValidEmail(cleanEmail)) {
+      return res.status(400).json({ success: false, error: 'Please enter a valid email address.' });
+    }
+    if (!cleanPhone || !isValidPhone(cleanPhone)) {
+      return res.status(400).json({ success: false, error: 'Please enter a valid phone or WhatsApp number.' });
+    }
+    if (!cleanProjectType) {
+      return res.status(400).json({ success: false, error: 'Please select a project type.' });
+    }
+    if (!cleanMessage || cleanMessage.length < 5) {
+      return res.status(400).json({ success: false, error: 'Please provide some details about your project or goals.' });
+    }
+
+    // 3. Generate unique inquiry reference (e.g. TM-2026-K4L9)
+    const randomHex = Math.random().toString(36).substring(2, 6).toUpperCase();
+    const inquiryRef = `TM-${new Date().getFullYear()}-${randomHex}`;
+
+    // 4. Persist to SQLite inquiries database
+    const insertStmt = db.prepare(`
+      INSERT INTO inquiries (
+        inquiry_ref, name, company, company_type, email, phone,
+        services, other_service, project_details, budget_range,
+        timeline, source, ip_address
+      ) VALUES (
+        @inquiryRef, @name, @company, @companyType, @email, @phone,
+        @services, @otherService, @projectDetails, @budgetRange,
+        @timeline, @source, @ipAddress
+      )
+    `);
+
+    insertStmt.run({
+      inquiryRef,
+      name: cleanName,
+      company: cleanCompany || 'Direct Client',
+      companyType: 'Start a Project',
+      email: cleanEmail,
+      phone: cleanPhone,
+      services: JSON.stringify([cleanProjectType]),
+      otherService: null,
+      projectDetails: cleanMessage,
+      budgetRange: cleanBudget || 'Not specified',
+      timeline: 'ASAP',
+      source: 'Start a Project Modal',
+      ipAddress: req.ip || 'unknown'
+    });
+
+    const projectPayload = {
+      inquiryRef,
+      name: cleanName,
+      email: cleanEmail,
+      phone: cleanPhone,
+      company: cleanCompany,
+      projectType: cleanProjectType,
+      budget: cleanBudget,
+      message: cleanMessage
+    };
+
+    // 5. Asynchronously dispatch email notification with Reply-To header
+    sendStartProjectNotification(projectPayload).catch(err => {
+      console.error('Start project email dispatch error:', err);
+    });
+
+    // Also send user confirmation email if possible
+    sendProspectConfirmation({
+      ...projectPayload,
+      services: [cleanProjectType],
+      company: cleanCompany || 'Your Project'
+    }).catch(err => {
+      console.error('Prospect confirmation error:', err);
+    });
+
+    return res.status(200).json({
+      success: true,
+      inquiryId: inquiryRef,
+      name: cleanName,
+      message: "Thanks, we've got your details — we'll reach out within 24 hours."
+    });
+
+  } catch (err) {
+    console.error('Start project processing error:', err);
+    return res.status(500).json({
+      success: false,
+      error: 'An unexpected error occurred while processing your request. Please try again or chat with us on WhatsApp.'
+    });
+  }
+};
+
+app.post('/api/start-project', inquiryLimiter, handleStartProject);
+app.post('/api/contact', inquiryLimiter, handleStartProject);
 
 /**
  * POST /api/inquiries
@@ -539,8 +780,23 @@ app.get('/sitemap.xml', (req, res) => {
   res.type('application/xml').sendFile(path.join(__dirname, 'sitemap.xml'));
 });
 
-// ── Static Files & Fallback ────────────────────────────────────
-app.use(express.static(__dirname));
+// ── Static Files & Fallback (No-cache headers for development) ─
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  next();
+});
+
+app.use(express.static(__dirname, {
+  etag: false,
+  lastModified: false,
+  maxAge: 0
+}));
+
+app.get(['/start-project', '/contact'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));

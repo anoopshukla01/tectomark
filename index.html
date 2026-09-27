@@ -52,7 +52,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=1.3" />
+  <link rel="stylesheet" href="styles.css?v=6.0" />
+  <link rel="stylesheet" href="hero-sequence.css?v=5.0" />
 
   <!-- Organization & ProfessionalService Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -117,7 +118,7 @@
       <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       <span class="fab-label">WhatsApp</span>
     </a>
-    <a href="#contact" class="fab fab-cta">
+    <a href="#contact" class="fab fab-cta" data-open-modal="projectModal" aria-label="Start a Project">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <span class="fab-label">Start Project</span>
     </a>
@@ -137,14 +138,13 @@
         <img src="assets/logo.svg" alt="Tecto Mark" class="nav-logo-img" width="160" height="38" loading="eager" />
       </a>
       <div class="nav-links">
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#team" class="nav-link">Team</a>
-        <a href="#insights" class="nav-link">Insights</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#hero-scene-1" class="nav-link">Identity</a>
+        <a href="#hero-scene-2" class="nav-link">Content</a>
+        <a href="#hero-scene-3" class="nav-link">Websites</a>
+        <a href="#hero-scene-4" class="nav-link">Growth</a>
+        <a href="#hero-scene-5" class="nav-link">Contact</a>
       </div>
-      <a href="#contact" class="nav-cta">Start a Project <span class="arrow">→</span></a>
+      <a href="#contact" class="nav-cta" data-open-modal="projectModal">Start a Project <span class="arrow">→</span></a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu">
         <span></span><span></span>
       </button>
@@ -161,14 +161,13 @@
         <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
       </div>
       <nav class="mobile-nav">
-        <a href="#work" class="mobile-nav-link" data-close-menu>Work</a>
-        <a href="#services" class="mobile-nav-link" data-close-menu>Services</a>
-        <a href="#about" class="mobile-nav-link" data-close-menu>About</a>
-        <a href="#team" class="mobile-nav-link" data-close-menu>Team</a>
-        <a href="#insights" class="mobile-nav-link" data-close-menu>Insights</a>
-        <a href="#contact" class="mobile-nav-link" data-close-menu>Contact</a>
+        <a href="#hero-scene-1" class="mobile-nav-link" data-close-menu>Identity</a>
+        <a href="#hero-scene-2" class="mobile-nav-link" data-close-menu>Content</a>
+        <a href="#hero-scene-3" class="mobile-nav-link" data-close-menu>Websites</a>
+        <a href="#hero-scene-4" class="mobile-nav-link" data-close-menu>Growth</a>
+        <a href="#hero-scene-5" class="mobile-nav-link" data-close-menu>Contact</a>
       </nav>
-      <a href="#contact" class="mobile-menu-cta" data-close-menu>Start a Project →</a>
+      <a href="#contact" class="mobile-menu-cta" data-open-modal="projectModal" data-close-menu>Start a Project →</a>
       <div class="mobile-menu-social">
         <a href="https://www.instagram.com/tectomark?stkn=NW4zc3VpdmNlNmlm" class="mobile-social-icon social-pill-insta" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -196,1133 +195,257 @@
     </div>
   </div>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="hero">
-    <div class="hero-grid-overlay"></div>
-    <div class="hero-lines">
-      <div class="hero-line"></div>
-      <div class="hero-line"></div>
-      <div class="hero-line"></div>
-      <div class="hero-line"></div>
-      <div class="hero-line"></div>
-    </div>
-    <div class="hero-inner">
-      <div class="hero-eyebrow reveal-up">
-        <span class="dot"></span> Digital Media & Growth Company
-      </div>
-      <h1 class="hero-headline">
-        <span class="sr-only">Tecto Mark — Digital Marketing &amp; Growth Agency: </span>
-        <span class="hero-line-text reveal-up" data-delay="0.1">WE BUILD</span>
-        <span class="hero-line-text reveal-up" data-delay="0.2">DIGITAL</span>
-        <span class="hero-line-text reveal-up accent-word" data-delay="0.3">PRESENCE.</span>
-        <span class="hero-line-text reveal-up" data-delay="0.4">WE CREATE</span>
-        <span class="hero-line-text reveal-up accent-word" data-delay="0.5">GROWTH.</span>
-      </h1>
-      <p class="hero-sub reveal-up" data-delay="0.6">
-        Tecto Mark is a digital media and growth company helping ambitious businesses build, promote and scale their presence online.
-      </p>
-      <div class="hero-actions reveal-up" data-delay="0.7">
-        <a href="#contact" class="btn-primary" id="ctaMagnetic">Start a Project <span class="arrow">→</span></a>
-        <a href="#work" class="btn-secondary">Explore Our Work</a>
-      </div>
-    </div>
+  <!-- ============ HERO CHARACTER FRAME-SEQUENCE (SCENES 1–5) ============ -->
+  <div class="hero-sequence" id="hero">
 
-    <!-- "Camera × Tech Fusion" 3D Graphic — Signature 3D Moment -->
-    <div class="hero-3d-container" id="hero3dContainer" aria-label="Tecto Mark 3D Camera Tech Fusion">
-      <canvas id="cameraTechCanvas"></canvas>
-      <!-- Graceful fallback for non-WebGL / low-power devices -->
-      <div class="hero-3d-fallback" id="cameraFallback">
-        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none">
-          <rect x="25" y="45" width="150" height="95" rx="10" stroke="#3A3A3A" stroke-width="2" fill="#141414"/>
-          <path d="M75 45 L85 25 L115 25 L125 45 Z" stroke="#3A3A3A" stroke-width="2" fill="#18181c"/>
-          <circle cx="100" cy="92" r="34" stroke="#3A3A3A" stroke-width="2" fill="#111114"/>
-          <circle cx="100" cy="92" r="24" stroke="#2D5BFF" stroke-width="2" stroke-dasharray="8 4"/>
-          <circle cx="100" cy="92" r="8" fill="#2D5BFF"/>
-          <circle cx="150" cy="36" r="6" stroke="#3A3A3A" stroke-width="1.5" fill="#222"/>
-        </svg>
-      </div>
+    <!-- Interactive Scene HUD Timeline -->
+    <nav class="scene-hud" id="sceneHud" aria-label="Hero Scene Navigation">
+      <button class="scene-hud-item active" data-goto="1" aria-label="Go to Scene 1: Identity">
+        <span class="scene-hud-num">01</span>
+        <span class="scene-hud-label">IDENTITY</span>
+        <span class="scene-hud-bar"><span class="scene-hud-fill"></span></span>
+      </button>
+      <button class="scene-hud-item" data-goto="2" aria-label="Go to Scene 2: Content">
+        <span class="scene-hud-num">02</span>
+        <span class="scene-hud-label">CONTENT</span>
+        <span class="scene-hud-bar"><span class="scene-hud-fill"></span></span>
+      </button>
+      <button class="scene-hud-item" data-goto="3" aria-label="Go to Scene 3: Websites">
+        <span class="scene-hud-num">03</span>
+        <span class="scene-hud-label">WEBSITES</span>
+        <span class="scene-hud-bar"><span class="scene-hud-fill"></span></span>
+      </button>
+      <button class="scene-hud-item" data-goto="4" aria-label="Go to Scene 4: Growth">
+        <span class="scene-hud-num">04</span>
+        <span class="scene-hud-label">GROWTH</span>
+        <span class="scene-hud-bar"><span class="scene-hud-fill"></span></span>
+      </button>
+      <button class="scene-hud-item" data-goto="5" aria-label="Go to Scene 5: Contact">
+        <span class="scene-hud-num">05</span>
+        <span class="scene-hud-label">CONTACT</span>
+        <span class="scene-hud-bar"><span class="scene-hud-fill"></span></span>
+      </button>
+    </nav>
+
+
+
+    <!-- Lightweight Preload HUD (Matches Dark Theme) -->
+    <div class="scene-preload-hud" id="scenePreloadHud" role="status" aria-live="polite">
+      <div class="scene-preload-spinner"></div>
+      <span id="scenePreloadText">INITIALIZING EXPERIENCE • 0%</span>
     </div>
 
-    <div class="hero-corner-tag">EST. 2024</div>
-    <div class="hero-scroll-indicator">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
+    <!-- SCENE 1: IDENTITY & VISION -->
+    <section class="hero-scene" id="hero-scene-1" data-scene="1">
+      <div class="scene-sticky">
+        <div class="scene-canvas-wrap">
+          <canvas class="scene-canvas" id="canvas-scene-1"></canvas>
+        </div>
+        <div class="scene-overlay"></div>
+        <div class="scene-grid-overlay"></div>
 
-  <!-- Marquee -->
-  <div class="marquee-section" data-cursor="drag">
-    <div class="marquee-track">
-      <div class="marquee-content">
-        <span>WEB</span><span class="sep">•</span>
-        <span>SOCIAL</span><span class="sep">•</span>
-        <span>CONTENT</span><span class="sep">•</span>
-        <span>MEDIA</span><span class="sep">•</span>
-        <span>PERFORMANCE</span><span class="sep">•</span>
-        <span>GROWTH</span><span class="sep">•</span>
-        <span>WEB</span><span class="sep">•</span>
-        <span>SOCIAL</span><span class="sep">•</span>
-        <span>CONTENT</span><span class="sep">•</span>
-        <span>MEDIA</span><span class="sep">•</span>
-        <span>PERFORMANCE</span><span class="sep">•</span>
-        <span>GROWTH</span><span class="sep">•</span>
-        <span>WEB</span><span class="sep">•</span>
-        <span>SOCIAL</span><span class="sep">•</span>
-        <span>CONTENT</span><span class="sep">•</span>
-        <span>MEDIA</span><span class="sep">•</span>
-        <span>PERFORMANCE</span><span class="sep">•</span>
-        <span>GROWTH</span><span class="sep">•</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- ============ TRUST BAR ============ -->
-  <section class="trust-bar">
-    <div class="container">
-      <div class="trust-items">
-        <div class="trust-item reveal-up">
-          <span class="trust-icon">◈</span>
-          <span>Digital Experiences</span>
+        <div class="scene-inner container">
+          <div class="scene-content">
+            <div class="scene-eyebrow">
+              <span class="dot"></span> Digital Media &amp; Growth Company <span style="opacity:0.4;margin:0 4px;">•</span> EST. 2024
+            </div>
+            <h1 class="scene-headline">
+              <span class="scene-line-mask"><span class="scene-line-text">WE BUILD</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text">DIGITAL <span class="accent-word">PRESENCE.</span></span></span>
+              <span class="scene-line-mask"><span class="scene-line-text">WE CREATE <span class="accent-word">GROWTH.</span></span></span>
+            </h1>
+            <p class="scene-sub">
+              Tecto Mark is an elite digital media and growth company helping ambitious businesses build, promote and scale their presence online.
+            </p>
+            <div class="scene-actions">
+              <a href="#contact" class="btn-primary" id="ctaMagnetic" data-open-modal="projectModal">Start a Project <span class="arrow">→</span></a>
+              <a href="#work" class="btn-secondary" id="btnExploreWork" data-open-modal="workModal">Explore Our Work</a>
+            </div>
+          </div>
+
+          <div class="scene-meta">
+            <span class="scene-counter"><span class="scene-current">01</span> / 05</span>
+            <span class="scene-badge-phase">Identity &amp; Vision</span>
+          </div>
         </div>
-        <div class="trust-divider"></div>
-        <div class="trust-item reveal-up" data-delay="0.1">
-          <span class="trust-icon">◈</span>
-          <span>Social Media</span>
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-item reveal-up" data-delay="0.2">
-          <span class="trust-icon">◈</span>
-          <span>Content Creation</span>
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-item reveal-up" data-delay="0.3">
-          <span class="trust-icon">◈</span>
-          <span>Performance Marketing</span>
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-item reveal-up" data-delay="0.4">
-          <span class="trust-icon">◈</span>
-          <span>Brand Growth</span>
+
+        <div class="scene-scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>Scroll to Explore</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ INTRODUCTION ============ -->
-  <section class="intro-section" id="intro">
-    <div class="container">
-      <div class="intro-layout">
-        <div class="intro-left">
-          <span class="section-label reveal-up">ABOUT US</span>
+    <!-- SCENE 2: CONTENT CREATION & VIRAL REELS -->
+    <section class="hero-scene" id="hero-scene-2" data-scene="2">
+      <div class="scene-sticky">
+        <div class="scene-canvas-wrap">
+          <canvas class="scene-canvas" id="canvas-scene-2"></canvas>
         </div>
-        <div class="intro-right">
-          <h2 class="intro-heading reveal-up">
-            Your digital presence is your <em class="accent">first impression.</em>
-          </h2>
-          <p class="intro-body reveal-up" data-delay="0.15">
-            We bring <strong>strategy</strong>, <strong>technology</strong>, <strong>creativity</strong> and <strong>media</strong> together to help businesses become more <em class="accent">visible</em>, more <em class="accent">relevant</em> and more <em class="accent">effective</em> online.
-          </p>
-          <div class="intro-stats reveal-up" data-delay="0.25">
-            <div class="stat-item">
-              <span class="stat-num">100<span class="accent">+</span></span>
-              <span class="stat-label">Projects Delivered</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-num">50<span class="accent">+</span></span>
-              <span class="stat-label">Brands Supported</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-num">5M<span class="accent">+</span></span>
-              <span class="stat-label">Content Views</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="scene-overlay"></div>
+        <div class="scene-grid-overlay"></div>
 
-  <!-- ============ SERVICES ============ -->
-  <section class="services-section" id="services">
-    <div class="container">
-      <div class="services-header">
-        <span class="section-label reveal-up">OUR CAPABILITIES</span>
-        <h2 class="services-heading reveal-up">WHAT WE DO</h2>
-      </div>
-      <div class="services-list">
 
-        <!-- 01 DIGITAL -->
-        <div class="service-row reveal-up" data-delay="0.05" data-cursor="expand">
-          <div class="service-num">01</div>
-          <div class="service-main">
-            <div class="service-title-row">
-              <span class="service-category">DIGITAL</span>
-              <span class="service-name">Websites &amp; Digital Experiences</span>
-              <span class="service-arrow">↗</span>
+        <div class="scene-inner container">
+          <div class="scene-content">
+            <div class="scene-eyebrow">
+              <span class="dot"></span> Cinematic Content &amp; Reels
             </div>
-            <div class="service-expand">
-              <div class="service-expand-body">
-                <div class="service-expand-text">
-                  <p>High-performance websites designed to communicate your brand and convert visitors into customers. From strategy and UX to development and launch.</p>
-                  <div class="service-tags">
-                    <span>Web Design</span>
-                    <span>Development</span>
-                    <span>UX/UI</span>
-                    <span>Maintenance</span>
-                  </div>
-                  <a href="#contact?service=website" class="service-inquire-btn">Inquire About Websites →</a>
-                </div>
-                <!-- Interface fragment: Nav bar + card component -->
-                <div class="service-visual sv-digital" aria-hidden="true">
-                  <div class="sv-nav">
-                    <span class="sv-nav-logo">NOVA</span>
-                    <div class="sv-nav-links">
-                      <span>About</span><span>Work</span><a href="#contact?service=website" class="sv-nav-cta">Contact →</a>
-                    </div>
-                  </div>
-                  <div class="sv-card">
-                    <div class="sv-card-tag">Featured</div>
-                    <div class="sv-card-title">Brand Identity System</div>
-                    <div class="sv-card-meta">Web Design · UX/UI</div>
-                    <div class="sv-card-divider"></div>
-                    <div class="sv-card-footer">
-                      <span class="sv-card-price">From ₹45,000</span>
-                      <a href="#contact?service=website" class="sv-card-btn">Inquire →</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 02 SOCIAL -->
-        <div class="service-row reveal-up" data-delay="0.1" data-cursor="expand">
-          <div class="service-num">02</div>
-          <div class="service-main">
-            <div class="service-title-row">
-              <span class="service-category">SOCIAL</span>
-              <span class="service-name">Social Media &amp; Community</span>
-              <span class="service-arrow">↗</span>
-            </div>
-            <div class="service-expand">
-              <div class="service-expand-body">
-                <div class="service-expand-text">
-                  <p>Strategic social media management that builds genuine communities, increases brand visibility and turns followers into loyal customers.</p>
-                  <div class="service-tags">
-                    <span>Instagram Growth</span>
-                    <span>Content Strategy</span>
-                    <span>Community Management</span>
-                  </div>
-                  <a href="#contact?service=social" class="service-inquire-btn">Inquire About Social & Growth →</a>
-                </div>
-                <!-- Interface fragment: Instagram grid in phone notch -->
-                <div class="service-visual sv-social" aria-hidden="true">
-                  <div class="sv-phone-notch"></div>
-                  <div class="sv-insta-header">
-                    <div class="sv-insta-avatar"></div>
-                    <div class="sv-insta-info">
-                      <div class="sv-insta-name">@velofood</div>
-                      <div class="sv-insta-followers">12.4K followers</div>
-                    </div>
-                    <span class="sv-insta-follow">Follow</span>
-                  </div>
-                  <div class="sv-insta-grid">
-                    <div class="sv-post sv-post--1"></div>
-                    <div class="sv-post sv-post--2"></div>
-                    <div class="sv-post sv-post--3"></div>
-                    <div class="sv-post sv-post--4"></div>
-                    <div class="sv-post sv-post--5"></div>
-                    <div class="sv-post sv-post--6"></div>
-                    <div class="sv-post sv-post--7"></div>
-                    <div class="sv-post sv-post--8"></div>
-                    <div class="sv-post sv-post--9"></div>
-                  </div>
-                  <div class="sv-insta-bar">
-                    <span class="sv-bar-icon">⊞</span><span class="sv-bar-icon sv-bar-active">♡</span><span class="sv-bar-icon">☰</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 03 CONTENT -->
-        <div class="service-row reveal-up" data-delay="0.15" data-cursor="expand">
-          <div class="service-num">03</div>
-          <div class="service-main">
-            <div class="service-title-row">
-              <span class="service-category">CONTENT</span>
-              <span class="service-name">Reels, Video &amp; Creative</span>
-              <span class="service-arrow">↗</span>
-            </div>
-            <div class="service-expand">
-              <div class="service-expand-body">
-                <div class="service-expand-text">
-                  <p>Compelling short-form video, reels and creative content designed for modern audiences. We craft stories that stop the scroll and drive action.</p>
-                  <div class="service-tags">
-                    <span>Reels Production</span>
-                    <span>Short-form Video</span>
-                    <span>Creative Direction</span>
-                    <span>Copywriting</span>
-                  </div>
-                  <a href="#contact?service=content" class="service-inquire-btn">Inquire About Creative Content →</a>
-                </div>
-                <!-- Interface fragment: 9:16 vertical video frame -->
-                <div class="service-visual sv-content" aria-hidden="true">
-                  <div class="sv-video-frame">
-                    <div class="sv-rec-dot"></div>
-                    <div class="sv-video-overlay">
-                      <div class="sv-video-label">00:15</div>
-                    </div>
-                    <div class="sv-video-scene">
-                      <div class="sv-scene-grad"></div>
-                      <div class="sv-scene-text">@sablelook</div>
-                      <div class="sv-scene-caption">New arrivals. Only this week.</div>
-                    </div>
-                    <div class="sv-scrubber">
-                      <div class="sv-scrubber-fill"></div>
-                      <div class="sv-scrubber-dot"></div>
-                    </div>
-                    <div class="sv-video-actions">
-                      <span>♡ 4.2K</span>
-                      <span>↗ Share</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 04 MEDIA -->
-        <div class="service-row reveal-up" data-delay="0.2" data-cursor="expand">
-          <div class="service-num">04</div>
-          <div class="service-main">
-            <div class="service-title-row">
-              <span class="service-category">MEDIA</span>
-              <span class="service-name">Meta &amp; Google Advertising</span>
-              <span class="service-arrow">↗</span>
-            </div>
-            <div class="service-expand">
-              <div class="service-expand-body">
-                <div class="service-expand-text">
-                  <p>Performance-driven advertising campaigns across Meta and Google. We combine creative excellence with data intelligence to maximize your return on ad spend.</p>
-                  <div class="service-tags">
-                    <span>Meta Ads</span>
-                    <span>Google Ads</span>
-                    <span>Campaign Strategy</span>
-                    <span>Performance Tracking</span>
-                  </div>
-                  <a href="#contact?service=advertising" class="service-inquire-btn">Inquire About Paid Media →</a>
-                </div>
-                <!-- Interface fragment: Meta feed ad card -->
-                <div class="service-visual sv-media" aria-hidden="true">
-                  <div class="sv-ad-card">
-                    <div class="sv-ad-header">
-                      <div class="sv-ad-avatar"></div>
-                      <div class="sv-ad-meta">
-                        <div class="sv-ad-name">Terra Estates</div>
-                        <div class="sv-ad-sponsored">Sponsored · <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.5" fill="#1877F2"/><path d="M7 3.5H5.5V2.5c0-.28.22-.5.5-.5h1V.5H5.5C4.67.5 4 1.17 4 2v1.5H3V5h1v4.5h1.5V5H7l.5-1.5z" fill="white"/></svg></div>
-                      </div>
-                    </div>
-                    <div class="sv-ad-image">
-                      <div class="sv-ad-img-content">Luxury 3BHK — From ₹1.2Cr</div>
-                    </div>
-                    <div class="sv-ad-body">
-                      <div class="sv-ad-headline">Discover Terra Estates — Premium Living</div>
-                      <div class="sv-ad-desc">terr-aestates.com · Real Estate</div>
-                      <a href="#contact?service=advertising" class="sv-ad-cta">Inquire →</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 05 GROWTH -->
-        <div class="service-row reveal-up" data-delay="0.25" data-cursor="expand">
-          <div class="service-num">05</div>
-          <div class="service-main">
-            <div class="service-title-row">
-              <span class="service-category">GROWTH</span>
-              <span class="service-name">Strategy, Analytics &amp; Optimization</span>
-              <span class="service-arrow">↗</span>
-            </div>
-            <div class="service-expand">
-              <div class="service-expand-body">
-                <div class="service-expand-text">
-                  <p>Integrated digital growth strategy backed by analytics. We continuously measure, learn and optimize to ensure your digital ecosystem keeps improving.</p>
-                  <div class="service-tags">
-                    <span>Growth Strategy</span>
-                    <span>Analytics</span>
-                    <span>CRO</span>
-                    <span>Reporting</span>
-                  </div>
-                  <a href="#contact?service=growth" class="service-inquire-btn">Inquire About Growth Package →</a>
-                </div>
-                <!-- Interface fragment: Growth chart with real axes -->
-                <div class="service-visual sv-growth" aria-hidden="true">
-                  <div class="sv-chart-header">
-                    <span class="sv-chart-label">Sessions / month</span>
-                    <span class="sv-chart-period">Last 6 months</span>
-                  </div>
-                  <div class="sv-chart-wrap">
-                    <div class="sv-chart-yaxis">
-                      <span>24K</span><span>18K</span><span>12K</span><span>6K</span><span>0</span>
-                    </div>
-                    <div class="sv-chart-area">
-                      <svg viewBox="0 0 260 100" preserveAspectRatio="none" class="sv-sparkline">
-                        <!-- Gridlines -->
-                        <line x1="0" y1="25" x2="260" y2="25" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                        <line x1="0" y1="50" x2="260" y2="50" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                        <line x1="0" y1="75" x2="260" y2="75" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                        <!-- Area fill -->
-                        <defs>
-                          <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.3"/>
-                            <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
-                          </linearGradient>
-                        </defs>
-                        <polygon points="0,85 45,78 95,68 140,52 185,35 230,18 260,10 260,100 0,100" fill="url(#chartGrad)"/>
-                        <!-- Line -->
-                        <polyline points="0,85 45,78 95,68 140,52 185,35 230,18 260,10" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-                        <!-- Data point callout -->
-                        <circle cx="260" cy="10" r="4" fill="#3B82F6"/>
-                      </svg>
-                      <div class="sv-callout">
-                        <div class="sv-callout-val">+287%</div>
-                        <div class="sv-callout-sub">Traffic growth</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sv-chart-xaxis">
-                    <span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FEATURED WORK ============ -->
-  <section class="work-section" id="work">
-    <div class="container">
-      <div class="work-header">
-        <span class="section-label reveal-up">PORTFOLIO</span>
-        <h2 class="work-heading reveal-up">SELECTED WORK</h2>
-        <p class="work-sub reveal-up" data-delay="0.1">A selection of conceptual projects showcasing our approach and capabilities.</p>
-      </div>
-    </div>
-
-    <div class="work-grid">
-
-      <!-- NOVA FITNESS — Phone frame -->
-      <article class="work-item reveal-up" data-delay="0.05" data-cursor="view">
-        <div class="work-item-visual" style="background: #0a0a0a;">
-          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
-          <div class="work-frame work-frame--phone">
-            <div class="wf-phone-notch"></div>
-            <div class="wf-phone-screen">
-              <div class="mock-body">
-                <div class="mock-hero-text">NOVA</div>
-                <div class="mock-sub-text">FITNESS</div>
-                <div class="mock-line"></div>
-                <div class="mock-cta-btn">Join Now →</div>
-              </div>
-            </div>
-            <div class="wf-phone-bar"></div>
-          </div>
-        </div>
-        <div class="work-item-info">
-          <div class="work-meta">
-            <span class="work-industry">Fitness &amp; Wellness</span>
-            <span class="work-year">2024</span>
-          </div>
-          <h3 class="work-title">NOVA FITNESS</h3>
-          <p class="work-services">Digital Experience / Social / Performance</p>
-          <p class="work-desc">Repositioning a local fitness brand through a new digital identity and conversion-focused website.</p>
-        </div>
-      </article>
-
-      <!-- TERRA ESTATES — Browser chrome -->
-      <article class="work-item reveal-up" data-delay="0.1" data-cursor="view">
-        <div class="work-item-visual" style="background: #050d1a;">
-          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
-          <div class="work-frame work-frame--browser">
-            <div class="wf-browser-bar">
-              <div class="wf-browser-dots"><span></span><span></span><span></span></div>
-              <div class="wf-browser-url">terra-estates.com</div>
-            </div>
-            <div class="wf-browser-screen">
-              <div class="mock-body">
-                <div class="mock-hero-text" style="color:#4A9EFF;">TERRA</div>
-                <div class="mock-sub-text" style="color:#aaa;">ESTATES</div>
-                <div class="mock-line" style="background:#4A9EFF;"></div>
-                <div class="mock-cta-btn" style="border-color:#4A9EFF;color:#4A9EFF;">Explore →</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="work-item-info">
-          <div class="work-meta">
-            <span class="work-industry">Real Estate</span>
-            <span class="work-year">2024</span>
-          </div>
-          <h3 class="work-title">TERRA ESTATES</h3>
-          <p class="work-services">Web Design / Content / Social Media</p>
-          <p class="work-desc">Building a premium digital presence for an emerging real estate developer targeting high-net-worth buyers.</p>
-        </div>
-      </article>
-
-      <!-- SABLE FASHION — Instagram frame -->
-      <article class="work-item reveal-up" data-delay="0.15" data-cursor="view">
-        <div class="work-item-visual" style="background: #0d0d0d;">
-          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
-          <div class="work-frame work-frame--instagram">
-            <div class="wf-ig-header">
-              <div class="wf-ig-avatar"></div>
-              <div class="wf-ig-name">sable.look</div>
-              <div class="wf-ig-follow">Follow</div>
-            </div>
-            <div class="wf-ig-post">
-              <div class="wf-ig-post-content">
-                <div class="wf-ig-post-text">SABLE</div>
-                <div class="wf-ig-post-sub">FASHION HOUSE</div>
-              </div>
-            </div>
-            <div class="wf-ig-actions">
-              <span>&#9825; 4,291</span>
-              <span>&#128172; 87</span>
-              <span>&#8599;</span>
-            </div>
-            <div class="wf-ig-caption"><strong>sable.look</strong> New season. New rules. Shop the drop &rarr;</div>
-          </div>
-        </div>
-        <div class="work-item-info">
-          <div class="work-meta">
-            <span class="work-industry">Fashion &amp; Retail</span>
-            <span class="work-year">2025</span>
-          </div>
-          <h3 class="work-title">SABLE FASHION</h3>
-          <p class="work-services">Instagram Growth / Reels / Meta Advertising</p>
-          <p class="work-desc">A comprehensive social media and advertising strategy that scaled a fashion brand's Instagram audience and online sales.</p>
-        </div>
-      </article>
-
-      <!-- VELO RESTAURANT — Phone frame -->
-      <article class="work-item reveal-up" data-delay="0.2" data-cursor="view">
-        <div class="work-item-visual" style="background: #050505;">
-          <div class="work-touch-badge" aria-hidden="true">View ↗</div>
-          <div class="work-frame work-frame--phone">
-            <div class="wf-phone-notch"></div>
-            <div class="wf-phone-screen">
-              <div class="mock-body">
-                <div class="mock-hero-text" style="font-size:1.8rem;">VELO</div>
-                <div class="mock-sub-text" style="color:#4A9EFF;">RESTAURANT</div>
-                <div class="mock-line" style="background:#4A9EFF;"></div>
-                <div class="mock-cta-btn" style="border-color:#fff;">Reserve Table &rarr;</div>
-              </div>
-            </div>
-            <div class="wf-phone-bar"></div>
-          </div>
-        </div>
-        <div class="work-item-info">
-          <div class="work-meta">
-            <span class="work-industry">Food &amp; Hospitality</span>
-            <span class="work-year">2025</span>
-          </div>
-          <h3 class="work-title">VELO RESTAURANT</h3>
-          <p class="work-services">Web / Content / Google Ads / Social</p>
-          <p class="work-desc">Full digital ecosystem for a premium restaurant — from website to social storytelling to performance campaigns.</p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ APPROACH ============ -->
-  <section class="approach-section" id="approach">
-    <div class="container">
-      <div class="approach-inner">
-        <div class="approach-left">
-          <span class="section-label reveal-up">OUR PHILOSOPHY</span>
-        </div>
-        <div class="approach-right">
-          <div class="approach-statement reveal-up">
-            <p>ONE PART STRATEGY.</p>
-            <p>ONE PART CREATIVITY.</p>
-            <p class="accent-line">ALL FOCUSED ON GROWTH.</p>
-          </div>
-          <div class="approach-desc reveal-up" data-delay="0.15">
-            <p>Tecto Mark combines <span class="accent">Strategy</span> + <span class="accent">Design</span> + <span class="accent">Technology</span> + <span class="accent">Content</span> + <span class="accent">Media</span> into one integrated growth system — so your business doesn't just look good online, it grows online.</p>
-          </div>
-          <div class="approach-pillars reveal-up" data-delay="0.25">
-            <div class="pillar">
-              <span class="pillar-icon">◈</span>
-              <span class="pillar-name">Strategy</span>
-            </div>
-            <div class="pillar">
-              <span class="pillar-icon">◈</span>
-              <span class="pillar-name">Design</span>
-            </div>
-            <div class="pillar">
-              <span class="pillar-icon">◈</span>
-              <span class="pillar-name">Technology</span>
-            </div>
-            <div class="pillar">
-              <span class="pillar-icon">◈</span>
-              <span class="pillar-name">Content</span>
-            </div>
-            <div class="pillar">
-              <span class="pillar-icon">◈</span>
-              <span class="pillar-name">Media</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROCESS ============ -->
-  <section class="process-section" id="process">
-    <div class="container">
-      <div class="process-header">
-        <span class="section-label reveal-up">METHODOLOGY</span>
-        <h2 class="process-heading reveal-up">HOW WE WORK</h2>
-      </div>
-      <div class="process-timeline">
-        <div class="process-step reveal-up" data-delay="0.05">
-          <div class="process-step-num">01</div>
-          <div class="process-step-content">
-            <h3 class="process-step-title">DISCOVER</h3>
-            <p class="process-step-desc">Understand your business, audience and objectives. We go deep before we go wide.</p>
-          </div>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step reveal-up" data-delay="0.1">
-          <div class="process-step-num">02</div>
-          <div class="process-step-content">
-            <h3 class="process-step-title">DEFINE</h3>
-            <p class="process-step-desc">Develop the strategy, positioning and creative direction that will drive your growth.</p>
-          </div>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step reveal-up" data-delay="0.15">
-          <div class="process-step-num">03</div>
-          <div class="process-step-content">
-            <h3 class="process-step-title">CREATE</h3>
-            <p class="process-step-desc">Build the website, content and digital experiences that bring your brand to life.</p>
-          </div>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step reveal-up" data-delay="0.2">
-          <div class="process-step-num">04</div>
-          <div class="process-step-content">
-            <h3 class="process-step-title">AMPLIFY</h3>
-            <p class="process-step-desc">Launch campaigns, social media and advertising to reach and engage your audience.</p>
-          </div>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step reveal-up" data-delay="0.25">
-          <div class="process-step-num">05</div>
-          <div class="process-step-content">
-            <h3 class="process-step-title">OPTIMIZE</h3>
-            <p class="process-step-desc">Measure performance and continuously improve to maximize your return on investment.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="about-section" id="about">
-    <div class="container">
-      <div class="about-layout">
-        <div class="about-left reveal-up">
-          <span class="section-label">WHO WE ARE</span>
-          <div class="about-tagline">
-            <span>BUILD.</span>
-            <span>PROMOTE.</span>
-            <span class="accent">GROW.</span>
-          </div>
-          <p class="about-subtagline">A disciplined growth system fusing creative velocity with full-stack digital technology.</p>
-          <div class="about-actions-row">
-            <a href="#contact" class="btn-outline">Work With Us →</a>
-          </div>
-        </div>
-        <div class="about-right">
-          <div class="about-narrative reveal-up">
-            <h2 class="about-heading">
-              "WE BELIEVE GOOD DIGITAL WORK SHOULD DO MORE THAN LOOK GOOD."
+            <h2 class="scene-headline">
+              <span class="scene-line-mask"><span class="scene-line-text">CONTENT THAT</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text">COMMANDS</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text accent-word">ATTENTION.</span></span>
             </h2>
-            <p class="about-body">
-              Tecto Mark exists to help businesses turn attention into action. We combine creative thinking with technology, content and performance marketing to create digital ecosystems that actually move businesses forward.
+            <p class="scene-sub">
+              High-retention reels, studio-grade video production, and viral storytelling engineered to stop the scroll and turn casual viewers into loyal customers.
             </p>
-            <p class="about-body">
-              We're not a generic agency. We're a growth partner — deeply invested in the success of every brand we work with.
+            <div class="scene-actions">
+              <a href="#work" class="btn-primary" id="btnSeeVideoWork" data-open-modal="videoWorkModal">See Video Work <span class="arrow">→</span></a>
+              <a href="#services" class="btn-secondary" id="btnContentCapabilities" data-open-modal="contentCapabilitiesModal">Content Capabilities</a>
+            </div>
+          </div>
+
+          <div class="scene-meta">
+            <span class="scene-counter"><span class="scene-current">02</span> / 05</span>
+            <span class="scene-badge-phase">Content Production</span>
+          </div>
+        </div>
+
+        <div class="scene-scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 3: HIGH-CONVERTING WEBSITES & DIGITAL EXPERIENCES -->
+    <section class="hero-scene" id="hero-scene-3" data-scene="3">
+      <div class="scene-sticky">
+        <div class="scene-canvas-wrap">
+          <canvas class="scene-canvas" id="canvas-scene-3"></canvas>
+        </div>
+        <div class="scene-overlay"></div>
+        <div class="scene-grid-overlay"></div>
+
+
+        <div class="scene-inner container">
+          <div class="scene-content">
+            <div class="scene-eyebrow">
+              <span class="dot"></span> Bespoke Web Architecture
+            </div>
+            <h2 class="scene-headline">
+              <span class="scene-line-mask"><span class="scene-line-text">WEBSITES CRAFTED</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text">FOR UNMATCHED</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text accent-word">PERFORMANCE.</span></span>
+            </h2>
+            <p class="scene-sub">
+              Lightning-fast, bespoke digital architectures and interactive web platforms designed to captivate visitors and maximize conversion rates.
             </p>
-          </div>
-
-          <!-- 3D Interactive Growth Network Card -->
-          <div class="about-growth-card reveal-up" id="aboutGrowthContainer" data-delay="0.15">
-            <div class="growth-card-hud-top">
-              <div class="growth-hud-badge">
-                <span class="hud-status-dot"></span>
-                <span>SYSTEM // TOPOLOGY 02</span>
-              </div>
-              <div class="growth-hud-label">REAL-TIME GROWTH NETWORK</div>
-            </div>
-            <div class="growth-canvas-wrap">
-              <canvas id="aboutGrowthCanvas"></canvas>
-            </div>
-            <div class="growth-card-hud-bottom">
-              <div class="growth-metric-col">
-                <span class="growth-m-label">CORE SYNC</span>
-                <span class="growth-m-val">99.8%</span>
-              </div>
-              <div class="growth-metric-col">
-                <span class="growth-m-label">ACTIVE NODES</span>
-                <span class="growth-m-val">12 // LINKED</span>
-              </div>
-              <div class="growth-metric-col">
-                <span class="growth-m-label">STATE</span>
-                <span class="growth-m-val accent-val">ORBITING</span>
-              </div>
+            <div class="scene-actions">
+              <a href="#contact" class="btn-primary" id="btnBuildWebsite" data-open-modal="projectModal" data-preset-project-type="Website" data-service="Website">Build Your Website <span class="arrow">→</span></a>
+              <a href="#services" class="btn-secondary" id="btnExploreTechStack" data-open-modal="techStackModal">Explore Tech Stack</a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ============ THE TEAM ============ -->
-    <div class="team-block" id="team">
-      <div class="container">
-        <div class="team-header reveal-up">
-          <span class="section-label">THE TEAM</span>
-          <h2 class="team-heading">
-            FOUR PEOPLE.<br>ONE OBSESSION WITH <span class="accent">GROWTH.</span>
-          </h2>
-          <p class="team-subheading">The founders building Tecto Mark from the ground up.</p>
-        </div>
-
-        <div class="team-grid" id="teamGrid">
-          <!-- Populated dynamically via initTeamGrid() in main.js -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <!-- ============ INDUSTRIES ============ -->
-  <section class="industries-section" id="industries">
-    <div class="container">
-      <div class="industries-header">
-        <span class="section-label reveal-up">WHO WE SERVE</span>
-        <h2 class="industries-heading reveal-up">WE WORK WITH<br>AMBITIOUS BUSINESSES.</h2>
-      </div>
-    </div>
-    <div class="industries-scroll-wrap">
-      <div class="industries-track">
-        <div class="industries-inner">
-          <span class="industry-tag">RESTAURANTS</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">FITNESS</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">REAL ESTATE</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">FASHION</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">E-COMMERCE</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">STARTUPS</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">EDUCATION</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">LOCAL BUSINESS</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">RESTAURANTS</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">FITNESS</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">REAL ESTATE</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">FASHION</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">E-COMMERCE</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">STARTUPS</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">EDUCATION</span>
-          <span class="ind-sep">—</span>
-          <span class="industry-tag">LOCAL BUSINESS</span>
-          <span class="ind-sep">—</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ INSIGHTS ============ -->
-  <section class="insights-section" id="insights">
-    <div class="container">
-      <div class="insights-header">
-        <span class="section-label reveal-up">INSIGHTS</span>
-        <h2 class="insights-heading reveal-up">THINKING OUT LOUD.</h2>
-      </div>
-      <div class="insights-grid">
-
-        <article class="insight-item reveal-up" data-delay="0.05">
-          <div class="insight-meta">
-            <span class="insight-category">Digital Strategy</span>
-            <span class="insight-date">Sep 2025</span>
-          </div>
-          <h3 class="insight-title">WHY EVERY BUSINESS NEEDS A DIGITAL-FIRST PRESENCE</h3>
-          <p class="insight-excerpt">In a world where attention is the most valuable currency, your digital presence is either your greatest asset or your biggest missed opportunity.</p>
-          <a href="#" class="insight-link">Read Article →</a>
-        </article>
-
-        <article class="insight-item reveal-up" data-delay="0.1">
-          <div class="insight-meta">
-            <span class="insight-category">Content</span>
-            <span class="insight-date">Aug 2025</span>
-          </div>
-          <h3 class="insight-title">HOW SHORT-FORM VIDEO IS CHANGING BRAND DISCOVERY</h3>
-          <p class="insight-excerpt">Reels, Shorts and TikToks aren't just trends — they're reshaping how consumers find, evaluate and decide to trust brands.</p>
-          <a href="#" class="insight-link">Read Article →</a>
-        </article>
-
-        <article class="insight-item reveal-up" data-delay="0.15">
-          <div class="insight-meta">
-            <span class="insight-category">Growth</span>
-            <span class="insight-date">Jul 2025</span>
-          </div>
-          <h3 class="insight-title">WEBSITE VS SOCIAL MEDIA: WHERE SHOULD A BUSINESS INVEST?</h3>
-          <p class="insight-excerpt">The debate is real — but the answer isn't either/or. Here's how smart businesses are using both to create compounding digital growth.</p>
-          <a href="#" class="insight-link">Read Article →</a>
-        </article>
-
-        <article class="insight-item reveal-up" data-delay="0.2">
-          <div class="insight-meta">
-            <span class="insight-category">Performance</span>
-            <span class="insight-date">Jun 2025</span>
-          </div>
-          <h3 class="insight-title">THE HIDDEN COST OF A BAD DIGITAL STRATEGY</h3>
-          <p class="insight-excerpt">Most businesses focus on what they're spending. Few think about what they're losing. A weak digital strategy costs more than you think.</p>
-          <a href="#" class="insight-link">Read Article →</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FINAL CTA ============ -->
-  <section class="final-cta-section" id="cta">
-    <div class="container">
-      <div class="final-cta-inner">
-        <div class="final-cta-text reveal-up">
-          <h2 class="final-cta-heading">
-            LET'S BUILD<br>
-            SOMETHING<br>
-            <span class="accent">THAT GROWS.</span>
-          </h2>
-        </div>
-        <div class="final-cta-right reveal-up" data-delay="0.15">
-          <p class="final-cta-desc">Have a business, idea or brand that deserves more attention? Let's talk.</p>
-          <div class="final-cta-actions">
-            <a href="#contact" class="btn-primary large-btn">Start a Project →</a>
-            <a href="mailto:tectomarksupport@gmail.com" class="final-email">tectomarksupport@gmail.com</a>
-          </div>
-          <div class="whatsapp-group-btns">
-            <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="whatsapp-btn" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Chat with +91 95550 13580
-            </a>
-            <a href="https://wa.me/919120700838?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="whatsapp-btn" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Chat with +91 91207 00838
-            </a>
+          <div class="scene-meta">
+            <span class="scene-counter"><span class="scene-current">03</span> / 05</span>
+            <span class="scene-badge-phase">Digital Build</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ CONTACT ============ -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="contact-layout">
-        <div class="contact-left">
-          <span class="section-label reveal-up">GET IN TOUCH</span>
-          <h2 class="contact-heading reveal-up">START A<br>PROJECT</h2>
-          <div class="contact-details reveal-up" data-delay="0.1">
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Email</span>
-              <a href="mailto:tectomarksupport@gmail.com" class="contact-detail-value">tectomarksupport@gmail.com</a>
+        <div class="scene-scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 4: DIGITAL PRESENCE & SCALABLE GROWTH -->
+    <section class="hero-scene" id="hero-scene-4" data-scene="4">
+      <div class="scene-sticky">
+        <div class="scene-canvas-wrap">
+          <canvas class="scene-canvas" id="canvas-scene-4"></canvas>
+        </div>
+        <div class="scene-overlay"></div>
+        <div class="scene-grid-overlay"></div>
+
+
+        <div class="scene-inner container">
+          <div class="scene-content">
+            <div class="scene-eyebrow">
+              <span class="dot"></span> Performance &amp; Brand Scale
             </div>
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Direct Call</span>
-              <div class="contact-links-stack">
-                <a href="tel:+919555013580" class="contact-detail-value">+91 95550 13580</a>
-                <a href="tel:+919120700838" class="contact-detail-value">+91 91207 00838</a>
-              </div>
-            </div>
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">WhatsApp (Direct Chat)</span>
-              <div class="contact-wa-stack">
-                <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="wa-direct-link" target="_blank" rel="noopener">
-                  <span class="wa-live-dot"></span>
-                  <span>+91 95550 13580 (Connect on WhatsApp)</span>
-                </a>
-                <a href="https://wa.me/919120700838?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="wa-direct-link" target="_blank" rel="noopener">
-                  <span class="wa-live-dot"></span>
-                  <span>+91 91207 00838 (Connect on WhatsApp)</span>
-                </a>
-              </div>
-            </div>
-            <div class="contact-detail-item">
-              <span class="contact-detail-label">Based in</span>
-              <span class="contact-detail-value">India, Working Globally</span>
+            <h2 class="scene-headline">
+              <span class="scene-line-mask"><span class="scene-line-text">SCALING YOUR</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text">BRAND INTO A</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text accent-word">CATEGORY LEADER.</span></span>
+            </h2>
+            <p class="scene-sub">
+              Data-backed performance marketing, paid acquisition, and organic social engines calibrated for measurable, compound audience and revenue growth.
+            </p>
+            <div class="scene-actions">
+              <a href="#contact" class="btn-primary" id="btnScaleBrand" data-open-modal="projectModal" data-preset-project-type="Full Growth Package" data-service="Full Growth Package">Scale Your Brand <span class="arrow">→</span></a>
+              <a href="#approach" class="btn-secondary" id="btnGrowthProcess" data-open-modal="growthProcessModal">Our Growth Process</a>
             </div>
           </div>
-          <div class="contact-social-grid reveal-up" data-delay="0.15">
-            <a href="https://www.instagram.com/tectomark?stkn=NW4zc3VpdmNlNmlm" class="social-pill-link social-pill-insta" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on Instagram">
-              <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-              <span>Instagram</span>
-            </a>
-            <a href="https://www.facebook.com/share/17ofPfL7yH/" class="social-pill-link social-pill-fb" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on Facebook">
-              <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-              <span>Facebook</span>
-            </a>
-            <a href="https://www.linkedin.com/in/tectomark-undefined-966a24436?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-pill-link social-pill-li" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on LinkedIn">
-              <svg class="social-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v7.6h2.79v-7.6H6.46M7.86 6.3a1.62 1.62 0 1 0 1.62 1.62A1.62 1.62 0 0 0 7.86 6.3z"/>
-              </svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://x.com/Tectomark" class="social-pill-link social-pill-x" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on X">
-              <svg class="social-icon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-              <span>X (Twitter)</span>
-            </a>
+
+          <div class="scene-meta">
+            <span class="scene-counter"><span class="scene-current">04</span> / 05</span>
+            <span class="scene-badge-phase">Growth Engine</span>
           </div>
         </div>
-        <div class="contact-right reveal-up" data-delay="0.1">
-          <div class="inquiry-system-wrap">
-            <!-- INQUIRY FORM -->
-            <form class="inquiry-form" id="inquiryForm" novalidate data-cursor="none">
-              <!-- Honeypot anti-spam trap field (invisible to users) -->
-              <div class="hp-wrap" aria-hidden="true" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;">
-                <label for="hp_field">Do not fill this field</label>
-                <input type="text" id="hp_field" name="honeypot" tabindex="-1" autocomplete="off" />
-              </div>
 
-              <!-- GROUP 1: WHO YOU ARE -->
-              <div class="inquiry-group">
-                <div class="inquiry-group-header">
-                  <span class="inquiry-group-num">01</span>
-                  <div class="inquiry-group-title-wrap">
-                    <h3 class="inquiry-group-title">WHO YOU ARE</h3>
-                    <p class="inquiry-group-hint">Tell us about you and the brand you represent.</p>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="name">Full Name <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" placeholder="Aarav Sharma" required autocomplete="name" />
-                    <span class="field-error"></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="company">Company / Brand Name <span class="required">*</span></label>
-                    <input type="text" id="company" name="company" placeholder="e.g. Acme Studio" required autocomplete="organization" />
-                    <span class="field-error"></span>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="companyType">Company Type <span class="required">*</span></label>
-                    <div class="select-wrap">
-                      <select id="companyType" name="companyType" required>
-                        <option value="" disabled selected>Select industry or business type</option>
-                        <option value="Restaurant & Hospitality">Restaurant & Hospitality</option>
-                        <option value="Fitness & Wellness">Fitness & Wellness</option>
-                        <option value="Real Estate & Architecture">Real Estate & Architecture</option>
-                        <option value="Fashion & Apparel">Fashion & Apparel</option>
-                        <option value="E-commerce & D2C">E-commerce & D2C</option>
-                        <option value="Tech & Startup">Tech & Startup</option>
-                        <option value="Education & EdTech">Education & EdTech</option>
-                        <option value="Local Business & Services">Local Business & Services</option>
-                        <option value="Other">Other</option>
-                      </select>
-                      <span class="select-arrow">↓</span>
-                    </div>
-                    <span class="field-error"></span>
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Work Email <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="aarav@company.com" required inputmode="email" autocomplete="email" />
-                    <span class="field-error"></span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="phone">Phone / WhatsApp Number <span class="required">*</span></label>
-                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required inputmode="tel" autocomplete="tel" />
-                  <span class="field-error"></span>
-                </div>
-              </div>
-
-              <!-- GROUP 2: WHAT DO YOU NEED -->
-              <div class="inquiry-group">
-                <div class="inquiry-group-header">
-                  <span class="inquiry-group-num">02</span>
-                  <div class="inquiry-group-title-wrap">
-                    <h3 class="inquiry-group-title">WHAT DO YOU NEED? <span class="required">*</span></h3>
-                    <p class="inquiry-group-hint">Select one or multiple services you want to partner on.</p>
-                  </div>
-                </div>
-
-                <div class="services-chips-grid" id="servicesChipsGrid">
-                  <button type="button" class="chip-item" data-value="Website Design & Development">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Website Design & Development</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Website Maintenance">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Website Maintenance</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Social Media Management">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Social Media Management</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Instagram Growth">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Instagram Growth</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Reels & Short-Form Content">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Reels & Short-Form Content</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Creative Content">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Creative Content</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Meta / Facebook Advertising">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Meta / Facebook Advertising</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Google Advertising">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Google Advertising</span>
-                  </button>
-                  <button type="button" class="chip-item" data-value="Digital Growth Strategy (Full Package)">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Digital Growth Strategy (Full Package)</span>
-                  </button>
-                  <button type="button" class="chip-item chip-other" data-value="Other">
-                    <span class="chip-check">✓</span>
-                    <span class="chip-label">Other</span>
-                  </button>
-                </div>
-
-                <!-- Inline input revealed when 'Other' is checked -->
-                <div class="other-service-wrap" id="otherServiceWrap" style="display: none;">
-                  <label for="otherService">Specify Custom Need</label>
-                  <input type="text" id="otherService" name="otherService" placeholder="Tell us what custom solution you're looking for..." />
-                </div>
-                <span class="field-error" id="servicesError"></span>
-              </div>
-
-              <!-- GROUP 3: PROJECT DETAILS & BUDGET -->
-              <div class="inquiry-group">
-                <div class="inquiry-group-header">
-                  <span class="inquiry-group-num">03</span>
-                  <div class="inquiry-group-title-wrap">
-                    <h3 class="inquiry-group-title">PROJECT SCOPE & BUDGET</h3>
-                    <p class="inquiry-group-hint">Helps us assemble the right team and triage without delay.</p>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="projectDetails">Tell us about your project, goals, or challenge <span class="required">*</span></label>
-                  <textarea id="projectDetails" name="projectDetails" rows="4" placeholder="What are you aiming to build, launch, or scale? Any current metrics, timeline requirements or reference links..." required></textarea>
-                  <span class="field-error"></span>
-                </div>
-
-                <div class="form-row pills-row">
-                  <div class="form-group">
-                    <label>Budget Range <span class="optional-tag">(Optional)</span></label>
-                    <div class="pill-group" id="budgetPills">
-                      <button type="button" class="pill-option" data-value="Under ₹25K">Under ₹25K</button>
-                      <button type="button" class="pill-option" data-value="₹25K–₹1L">₹25K–₹1L</button>
-                      <button type="button" class="pill-option" data-value="₹1L–₹5L">₹1L–₹5L</button>
-                      <button type="button" class="pill-option" data-value="₹5L+">₹5L+</button>
-                      <button type="button" class="pill-option" data-value="Not sure yet">Not sure yet</button>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Target Timeline <span class="optional-tag">(Optional)</span></label>
-                    <div class="pill-group" id="timelinePills">
-                      <button type="button" class="pill-option" data-value="ASAP">ASAP</button>
-                      <button type="button" class="pill-option" data-value="Within a month">Within a month</button>
-                      <button type="button" class="pill-option" data-value="1–3 months">1–3 months</button>
-                      <button type="button" class="pill-option" data-value="Just exploring">Just exploring</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SUBMIT & TRUST ANCHORS -->
-              <div class="form-footer-actions">
-                <button type="submit" class="btn-primary form-submit" id="formSubmit">
-                  <span class="btn-spinner"></span>
-                  <span class="btn-text">Send Inquiry →</span>
-                </button>
-                <div class="form-meta-row">
-                  <p class="form-note">We reply within 24 hours.</p>
-                  <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20prefer%20discussing%20my%20inquiry%20via%20WhatsApp" class="inquiry-wa-alt" target="_blank" rel="noopener">
-                    <span class="wa-status-mini"></span> Prefer WhatsApp? Message us directly →
-                  </a>
-                </div>
-                <div class="form-general-error" id="formGeneralError" style="display: none;"></div>
-              </div>
-            </form>
-
-            <!-- IN-SITE CONFIRMATION STATE (Replaces form on success) -->
-            <div class="inquiry-confirmation" id="inquiryConfirmation" style="display: none;">
-              <div class="confirm-pill-label">INQUIRY RECEIVED</div>
-              <h3 class="confirm-heading">THANKS, <span id="confirmName">THERE</span>.<br>WE'LL BE IN TOUCH.</h3>
-              <p class="confirm-body">
-                Your project inquiry has been securely sent to our core strategy team. Expect a response within <strong>24 hours</strong> at <span class="confirm-email-highlight" id="confirmEmail">your email</span>.
-              </p>
-              <div class="confirm-recap" id="confirmRecap"></div>
-              <div class="confirm-actions">
-                <button type="button" class="btn-secondary" id="resetInquiryBtn">Submit Another Inquiry</button>
-                <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20following%20up%20on%20my%20recent%20inquiry" class="whatsapp-btn" target="_blank" rel="noopener">
-                  Chat on WhatsApp →
-                </a>
-              </div>
-            </div>
-          </div>
+        <div class="scene-scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>Scroll</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- SCENE 5: CONTACT & INITIATION -->
+    <section class="hero-scene" id="hero-scene-5" data-scene="5">
+      <div class="scene-sticky">
+        <div class="scene-canvas-wrap">
+          <canvas class="scene-canvas" id="canvas-scene-5"></canvas>
+        </div>
+        <div class="scene-overlay"></div>
+        <div class="scene-grid-overlay"></div>
+
+
+        <div class="scene-inner container">
+          <div class="scene-content">
+            <div class="scene-eyebrow">
+              <span class="dot"></span> Initiate Collaboration
+            </div>
+            <h2 class="scene-headline">
+              <span class="scene-line-mask"><span class="scene-line-text">LET’S BUILD</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text">SOMETHING THAT</span></span>
+              <span class="scene-line-mask"><span class="scene-line-text accent-word">GROWS.</span></span>
+            </h2>
+            <p class="scene-sub">
+              Ready to accelerate your market trajectory? Connect directly with our strategy team and turn your vision into an unstoppable digital presence.
+            </p>
+            <div class="scene-actions">
+              <a href="#contact" class="btn-primary" data-open-modal="projectModal">Start a Project <span class="arrow">→</span></a>
+              <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20project." class="btn-secondary" id="btnChatWhatsApp" data-open-modal="whatsappModal">Chat on WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="scene-meta">
+            <span class="scene-counter"><span class="scene-current">05</span> / 05</span>
+            <span class="scene-badge-phase">Let's Connect</span>
+          </div>
+        </div>
+
+        <div class="scene-scroll-indicator">
+          <div class="scroll-line"></div>
+          <span>Scroll to Continue</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer" data-cursor="none">
@@ -1340,12 +463,11 @@
           </div>
         </div>
         <nav class="footer-nav">
-          <a href="#work">Work</a>
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#team">Team</a>
-          <a href="#insights">Insights</a>
-          <a href="#contact">Contact</a>
+          <a href="#hero-scene-1">Identity</a>
+          <a href="#hero-scene-2">Content</a>
+          <a href="#hero-scene-3">Websites</a>
+          <a href="#hero-scene-4">Growth</a>
+          <a href="#hero-scene-5">Contact</a>
         </nav>
         <div class="footer-social">
           <a href="https://www.instagram.com/tectomark?stkn=NW4zc3VpdmNlNmlm" class="footer-social-link footer-social-insta" target="_blank" rel="noopener noreferrer" aria-label="Tecto Mark on Instagram">
@@ -1381,15 +503,1441 @@
     </div>
   </footer>
 
+  <!-- ============ START A PROJECT — POPUP MODAL ============ -->
+  <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="startProjectHeading" aria-hidden="true">
+    <div class="project-modal-backdrop" id="projectModalBackdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="project-modal-dialog start-project-dialog">
+      <button type="button" class="project-modal-close" id="projectModalClose" data-close-modal aria-label="Close modal">✕</button>
+
+      <!-- Form View -->
+      <div class="sp-content-view" id="spContentView">
+        <div class="sp-header">
+          <div class="sp-eyebrow">
+            <span class="dot"></span> START A PROJECT
+          </div>
+          <h2 class="sp-title" id="startProjectHeading">
+            LET'S BUILD <span class="accent-word">TOGETHER.</span>
+          </h2>
+          <p class="sp-subtitle">
+            Tell us about your brand and vision. We'll analyze your requirements and map out a custom growth strategy within 24 hours.
+          </p>
+        </div>
+
+        <form id="startProjectForm" class="sp-form" novalidate>
+          <!-- Spam Honeypot -->
+          <input type="text" name="hp_field" id="sp_hp_field" style="display:none;" tabindex="-1" autocomplete="off">
+
+          <!-- Name -->
+          <div class="sp-form-group">
+            <label for="sp_name" class="sp-label">YOUR NAME <span class="sp-req">*</span></label>
+            <input type="text" id="sp_name" name="name" class="sp-input" placeholder="Aarav Sharma" required autocomplete="name">
+            <span class="sp-error-text" id="sp_name_error">Please enter your name.</span>
+          </div>
+
+          <!-- Email & Phone Row -->
+          <div class="sp-form-row">
+            <div class="sp-form-group">
+              <label for="sp_email" class="sp-label">EMAIL ADDRESS <span class="sp-req">*</span></label>
+              <input type="email" id="sp_email" name="email" class="sp-input" placeholder="aarav@company.com" required autocomplete="email">
+              <span class="sp-error-text" id="sp_email_error">Please enter a valid email address.</span>
+            </div>
+            <div class="sp-form-group">
+              <label for="sp_phone" class="sp-label">PHONE / WHATSAPP <span class="sp-req">*</span></label>
+              <input type="tel" id="sp_phone" name="phone" class="sp-input" placeholder="+91 98765 43210" required autocomplete="tel">
+              <span class="sp-error-text" id="sp_phone_error">Please enter a valid phone number.</span>
+            </div>
+          </div>
+
+          <!-- Company Name -->
+          <div class="sp-form-group">
+            <label for="sp_company" class="sp-label">COMPANY / BRAND NAME <span class="sp-opt">(Optional)</span></label>
+            <input type="text" id="sp_company" name="company" class="sp-input" placeholder="e.g. Acme Studio" autocomplete="organization">
+          </div>
+
+          <!-- Project Type & Budget Range Row -->
+          <div class="sp-form-row">
+            <div class="sp-form-group">
+              <label for="sp_projectType" class="sp-label">PROJECT TYPE <span class="sp-req">*</span></label>
+              <div class="sp-select-wrap">
+                <select id="sp_projectType" name="projectType" class="sp-select" required>
+                  <option value="" disabled selected>Select project type</option>
+                  <option value="Website">Website</option>
+                  <option value="Instagram Growth">Instagram Growth</option>
+                  <option value="Content & Reels">Content &amp; Reels</option>
+                  <option value="Meta/Google Ads">Meta/Google Ads</option>
+                  <option value="Full Growth Package">Full Growth Package</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span class="sp-select-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+              <span class="sp-error-text" id="sp_projectType_error">Please select a project type.</span>
+            </div>
+            <div class="sp-form-group">
+              <label for="sp_budget" class="sp-label">BUDGET RANGE <span class="sp-opt">(Optional)</span></label>
+              <div class="sp-select-wrap">
+                <select id="sp_budget" name="budget" class="sp-select">
+                  <option value="" disabled selected>Select budget range</option>
+                  <option value="<₹25k">&lt;₹25k</option>
+                  <option value="₹25k–₹1L">₹25k–₹1L</option>
+                  <option value="₹1L–₹5L">₹1L–₹5L</option>
+                  <option value="₹5L+">₹5L+</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+                <span class="sp-select-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Details / Message -->
+          <div class="sp-form-group">
+            <label for="sp_message" class="sp-label">PROJECT DETAILS / MESSAGE <span class="sp-req">*</span></label>
+            <textarea id="sp_message" name="message" class="sp-textarea" rows="3" required placeholder="Tell us about your project or goals"></textarea>
+            <span class="sp-error-text" id="sp_message_error">Please describe your project or goals.</span>
+          </div>
+
+          <!-- Inline Error Banner -->
+          <div class="sp-alert-error" id="spAlertError" style="display: none;" role="alert">
+            <span class="sp-alert-msg" id="spAlertMsg">Something went wrong. Please check your connection and try again.</span>
+            <button type="button" class="sp-alert-retry" id="spAlertRetry">Try again</button>
+          </div>
+
+          <!-- Submit CTA & Loading Spinner -->
+          <div class="sp-actions">
+            <button type="submit" class="sp-submit-btn btn-primary" id="spSubmitBtn">
+              <span class="sp-spinner" aria-hidden="true"></span>
+              <span class="sp-btn-text">START A PROJECT <span class="arrow">→</span></span>
+            </button>
+            <p class="sp-disclaimer">
+              ⚡ Guaranteed response within 24h • Prefer instant chat? 
+              <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20start%20a%20project." target="_blank" rel="noopener">Connect on WhatsApp →</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success View (Replaces form in same modal on submit) -->
+      <div class="sp-success-view" id="spSuccessView" style="display: none;" role="status" aria-live="polite">
+        <div class="sp-success-icon-wrap">
+          <svg class="sp-checkmark" viewBox="0 0 52 52">
+            <circle class="sp-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="sp-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
+        <div class="sp-eyebrow" style="margin-bottom: 8px;">
+          <span class="dot"></span> INQUIRY CONFIRMED
+        </div>
+        <h3 class="sp-title">
+          LET'S BUILD <span class="accent-word">TOGETHER.</span>
+        </h3>
+        <p class="sp-success-lead">
+          Thanks, we've got your details — we'll reach out within 24 hours.
+        </p>
+        <div class="sp-success-summary" id="spSuccessSummary"></div>
+        <div class="sp-success-actions">
+          <button type="button" class="btn-primary" id="spSuccessCloseBtn" data-close-modal>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============ 01. EXPLORE OUR WORK — POPUP MODAL ============ -->
+  <div class="popup-modal" id="workModal" role="dialog" aria-modal="true" aria-labelledby="workModalHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <div class="popup-header">
+        <div class="popup-eyebrow">
+          <span class="dot"></span> Case Studies &amp; Portfolio
+        </div>
+        <h2 class="popup-heading" id="workModalHeading">
+          PROVEN TRAJECTORIES.<br><span class="accent-word">MEASURABLE IMPACT.</span>
+        </h2>
+        <p class="popup-sub">
+          A curated selection of high-growth brands we've scaled through bespoke digital engineering, viral content production, and precision paid acquisition.
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="popup-filter-bar" id="workFilterBar">
+        <button type="button" class="popup-filter-btn active" data-filter="all">All Projects (4)</button>
+        <button type="button" class="popup-filter-btn" data-filter="web">Websites &amp; Platforms (2)</button>
+        <button type="button" class="popup-filter-btn" data-filter="video">Video &amp; Reels (2)</button>
+        <button type="button" class="popup-filter-btn" data-filter="growth">Performance Scale (2)</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="popup-card-grid" id="workGrid">
+        <!-- Project 1 -->
+        <div class="popup-card" data-category="web growth">
+          <div class="popup-card-header">
+            <span class="popup-badge">E-Commerce &amp; 3D Web</span>
+            <span class="popup-category">Luxury Fashion</span>
+          </div>
+          <h3 class="popup-card-title">Aura Luxury Atelier</h3>
+          <p class="popup-card-desc">
+            Complete headless architecture migration with an interactive 3D digital showroom and custom checkout flow engineered for international high-AOV orders.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">+340%</span>
+              <span class="popup-metric-label">ROAS Compound</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">₹82L+</span>
+              <span class="popup-metric-label">Quarterly Revenue</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">0.58s</span>
+              <span class="popup-metric-label">Edge Load Time</span>
+            </div>
+          </div>
+          <div class="popup-tag-list">
+            <span class="popup-tag">Next.js 14</span>
+            <span class="popup-tag">Three.js 3D</span>
+            <span class="popup-tag">Meta Ads CAPI</span>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="web">
+              Build Similar Experience →
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="popup-card" data-category="web">
+          <div class="popup-card-header">
+            <span class="popup-badge">B2B SaaS Platform</span>
+            <span class="popup-category">Enterprise AI</span>
+          </div>
+          <h3 class="popup-card-title">Nexus Intelligent Systems</h3>
+          <p class="popup-card-desc">
+            Interactive developer-first marketing site with real-time code sandboxes, WebGL fluid dynamics, and a frictionless self-serve onboarding funnel.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">+285%</span>
+              <span class="popup-metric-label">Demo Bookings</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">99.8%</span>
+              <span class="popup-metric-label">Lighthouse Score</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">#1</span>
+              <span class="popup-metric-label">Target SERP Rank</span>
+            </div>
+          </div>
+          <div class="popup-tag-list">
+            <span class="popup-tag">React / TypeScript</span>
+            <span class="popup-tag">GSAP ScrollTrigger</span>
+            <span class="popup-tag">Technical SEO</span>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="web">
+              Build Similar Experience →
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="popup-card" data-category="video growth">
+          <div class="popup-card-header">
+            <span class="popup-badge">Viral Content Engine</span>
+            <span class="popup-category">Consumer Beverage</span>
+          </div>
+          <h3 class="popup-card-title">Velocity Energy &amp; Performance</h3>
+          <p class="popup-card-desc">
+            A 60-day viral short-form blitz. Shot on 4K cinema gear with micro-hook sound design, turning organic social into the brand's primary acquisition channel.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">14.8M</span>
+              <span class="popup-metric-label">Organic Views</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">68%</span>
+              <span class="popup-metric-label">3-Sec Hook Rate</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">+180K</span>
+              <span class="popup-metric-label">Followers Gained</span>
+            </div>
+          </div>
+          <div class="popup-tag-list">
+            <span class="popup-tag">9:16 Viral Reels</span>
+            <span class="popup-tag">Cinema 4K</span>
+            <span class="popup-tag">Creator Spark Ads</span>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="reels">
+              Commission Similar Campaign →
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="popup-card" data-category="video growth">
+          <div class="popup-card-header">
+            <span class="popup-badge">Lead Engine &amp; Funnel</span>
+            <span class="popup-category">Luxury Real Estate</span>
+          </div>
+          <h3 class="popup-card-title">Metropolis Sky Residences</h3>
+          <p class="popup-card-desc">
+            Cinematic aerial walkthroughs coupled with high-intent Meta and Google Performance Max campaigns, capturing HNIs across Tier-1 metros.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">540+</span>
+              <span class="popup-metric-label">Verified HNI Leads</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">14.2x</span>
+              <span class="popup-metric-label">Pipeline Value</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">₹48</span>
+              <span class="popup-metric-label">Avg. Cost Per Lead</span>
+            </div>
+          </div>
+          <div class="popup-tag-list">
+            <span class="popup-tag">Drone Cinematography</span>
+            <span class="popup-tag">Meta Ads Scale</span>
+            <span class="popup-tag">CRM Automation</span>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="growth">
+              Scale Your Leads →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Banner -->
+      <div class="popup-bottom-action">
+        <div class="popup-bottom-info">
+          <h4>Ready to achieve category-defining results?</h4>
+          <p>We take on a limited number of partner brands per quarter to guarantee dedicated executive focus.</p>
+        </div>
+        <div class="popup-bottom-btns">
+          <button type="button" class="btn-primary" data-open-modal="projectModal">
+            Start Your Project Now <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 02. SEE VIDEO WORK — POPUP MODAL ============ -->
+  <div class="popup-modal" id="videoWorkModal" role="dialog" aria-modal="true" aria-labelledby="videoWorkModalHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <div class="popup-header">
+        <div class="popup-eyebrow">
+          <span class="dot"></span> Studio Production &amp; Viral Reels
+        </div>
+        <h2 class="popup-heading" id="videoWorkModalHeading">
+          CONTENT ENGINEERED TO<br><span class="accent-word">STOP THE SCROLL.</span>
+        </h2>
+        <p class="popup-sub">
+          High-retention 9:16 short-form reels, studio commercials, and viral storytelling calibrated for maximum algorithmic reach and audience conversion.
+        </p>
+      </div>
+
+      <!-- Video Formats Grid -->
+      <div class="popup-card-grid">
+        <!-- Video 1 -->
+        <div class="popup-card">
+          <div class="video-preview-box">
+            <div class="video-preview-glow"></div>
+            <span class="video-hook-badge">TOP 1% HOOK RETENTION</span>
+            <div class="video-play-icon">▶</div>
+            <span class="video-duration-badge">0:38</span>
+          </div>
+          <div class="popup-card-header">
+            <span class="popup-badge">Algorithmic Reel</span>
+            <div class="soundwave-box">
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+            </div>
+          </div>
+          <h3 class="popup-card-title">"The Architecture of Luxury"</h3>
+          <p class="popup-card-desc">
+            Engineered with a psychological 0-3 second visual pattern interrupt, dynamic sound design, and pacing calibrated to maximize algorithmic re-watches.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">2.8M</span>
+              <span class="popup-metric-label">Organic Views</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">71%</span>
+              <span class="popup-metric-label">Hook Rate</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">84K</span>
+              <span class="popup-metric-label">Direct Saves</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="reels">
+              Commission Video Sprint →
+            </button>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="popup-card">
+          <div class="video-preview-box">
+            <div class="video-preview-glow" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.35), transparent 70%);"></div>
+            <span class="video-hook-badge" style="background: rgba(147, 51, 234, 0.85);">CINEMA 4K GRADE</span>
+            <div class="video-play-icon" style="background: rgba(147, 51, 234, 0.9); box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);">▶</div>
+            <span class="video-duration-badge">1:15</span>
+          </div>
+          <div class="popup-card-header">
+            <span class="popup-badge">Brand Commercial</span>
+            <div class="soundwave-box">
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+            </div>
+          </div>
+          <h3 class="popup-card-title">"Defying the Ordinary" Brand Film</h3>
+          <p class="popup-card-desc">
+            Shot on Sony Cinema 4K 10-bit rigs with anamorphic glass, bespoke Foley soundscapes, and DaVinci Resolve color grading tailored for luxury authority.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">96%</span>
+              <span class="popup-metric-label">Brand Recall</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">5.4x</span>
+              <span class="popup-metric-label">Higher Share Rate</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">4K 60</span>
+              <span class="popup-metric-label">Master Spec</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="reels">
+              Commission Brand Film →
+            </button>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="popup-card">
+          <div class="video-preview-box">
+            <div class="video-preview-glow" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.35), transparent 70%);"></div>
+            <span class="video-hook-badge" style="background: rgba(5, 150, 105, 0.85);">3D MOTION &amp; VFX</span>
+            <div class="video-play-icon" style="background: rgba(5, 150, 105, 0.9); box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);">▶</div>
+            <span class="video-duration-badge">0:45</span>
+          </div>
+          <div class="popup-card-header">
+            <span class="popup-badge">Product Reveal</span>
+            <div class="soundwave-box">
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+            </div>
+          </div>
+          <h3 class="popup-card-title">Interactive Product Dissection</h3>
+          <p class="popup-card-desc">
+            Blends physical macro studio footage with 3D exploded views and kinetic typography to explain complex product value propositions in under 45 seconds.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">+410%</span>
+              <span class="popup-metric-label">Click-to-Cart</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">1.4M</span>
+              <span class="popup-metric-label">Paid Impressions</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">₹3.20</span>
+              <span class="popup-metric-label">Cost Per View</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="reels">
+              Commission Product Reel →
+            </button>
+          </div>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="popup-card">
+          <div class="video-preview-box">
+            <div class="video-preview-glow" style="background: radial-gradient(circle, rgba(245, 158, 11, 0.35), transparent 70%);"></div>
+            <span class="video-hook-badge" style="background: rgba(217, 119, 6, 0.85);">HIGH-TICKET AUTHORITY</span>
+            <div class="video-play-icon" style="background: rgba(217, 119, 6, 0.9); box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);">▶</div>
+            <span class="video-duration-badge">0:52</span>
+          </div>
+          <div class="popup-card-header">
+            <span class="popup-badge">Founder Series</span>
+            <div class="soundwave-box">
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+              <span class="soundwave-bar"></span>
+            </div>
+          </div>
+          <h3 class="popup-card-title">Executive Thought Leadership</h3>
+          <p class="popup-card-desc">
+            Conversational studio lighting, multi-cam angles, and high-retention b-roll cutaways positioning company leadership as undisputed industry authorities.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">8.6x</span>
+              <span class="popup-metric-label">Profile Visits</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">320+</span>
+              <span class="popup-metric-label">Inbound Inquiries</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">48h</span>
+              <span class="popup-metric-label">Sprint Delivery</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="reels">
+              Commission Founder Series →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Banner -->
+      <div class="popup-bottom-action">
+        <div class="popup-bottom-info">
+          <h4>Need high-retention video content for your brand?</h4>
+          <p>We handle scriptwriting, on-location shooting, editing, and algorithmic posting strategy.</p>
+        </div>
+        <div class="popup-bottom-btns">
+          <button type="button" class="btn-primary" data-open-modal="projectModal" data-service="reels">
+            Book a Video Sprint <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 03. CONTENT CAPABILITIES — POPUP MODAL ============ -->
+  <div class="popup-modal" id="contentCapabilitiesModal" role="dialog" aria-modal="true" aria-labelledby="contentCapabilitiesHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog cc-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <div class="popup-header cc-header">
+        <div class="popup-eyebrow">
+          <span class="dot"></span> Production Pipeline
+        </div>
+        <h2 class="popup-heading" id="contentCapabilitiesHeading">
+          CONTENT <span class="accent-word">CAPABILITIES</span>
+        </h2>
+        <p class="popup-sub">
+          A seamless 3-step cinematic production pipeline — turning raw brand vision into scroll-stopping video content, custom post-production, and targeted social growth.
+        </p>
+      </div>
+
+      <!-- Process Sequence Timeline Bar -->
+      <div class="cc-timeline-bar" aria-hidden="true">
+        <div class="cc-timeline-step active">
+          <span class="cc-timeline-num">01</span>
+          <span class="cc-timeline-label">Shoot</span>
+        </div>
+        <div class="cc-timeline-connector"></div>
+        <div class="cc-timeline-step">
+          <span class="cc-timeline-num">02</span>
+          <span class="cc-timeline-label">Edit &amp; Customize</span>
+        </div>
+        <div class="cc-timeline-connector"></div>
+        <div class="cc-timeline-step">
+          <span class="cc-timeline-num">03</span>
+          <span class="cc-timeline-label">Upload &amp; Promote</span>
+        </div>
+      </div>
+
+      <!-- 3-Step Sequence Cards -->
+      <div class="cc-steps-grid">
+        <!-- Step 1: Shoot -->
+        <div class="cc-step-card" data-step="1">
+          <div class="cc-card-top">
+            <div class="cc-step-badge">
+              <span class="cc-step-prefix">STEP</span>
+              <span class="cc-step-num">01</span>
+            </div>
+            <div class="cc-card-icon cc-icon-camera">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </div>
+          </div>
+          <div class="cc-step-meta">Camera &amp; Photo/Video Production</div>
+          <h3 class="cc-card-title">Shoot</h3>
+          <p class="cc-card-copy">
+            On-location or studio shoots capturing high-quality photo and video footage — the raw material for every reel and campaign.
+          </p>
+          <div class="cc-card-tagline">
+            <span class="cc-tag-pill">Cinema 4K Capture</span>
+          </div>
+        </div>
+
+        <!-- Step 2: Edit & Customize -->
+        <div class="cc-step-card" data-step="2">
+          <div class="cc-card-top">
+            <div class="cc-step-badge">
+              <span class="cc-step-prefix">STEP</span>
+              <span class="cc-step-num">02</span>
+            </div>
+            <div class="cc-card-icon cc-icon-film">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="2" y1="7" x2="7" y2="7"></line>
+                <line x1="2" y1="17" x2="7" y2="17"></line>
+                <line x1="17" y1="17" x2="22" y2="17"></line>
+                <line x1="17" y1="7" x2="22" y2="7"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="cc-step-meta">Personalized Post-Production</div>
+          <h3 class="cc-card-title">Edit &amp; Customize</h3>
+          <p class="cc-card-copy">
+            Footage is edited, color-graded, and tailored to your brand's tone — pacing, music, captions, and style customized for your audience.
+          </p>
+          <div class="cc-card-tagline">
+            <span class="cc-tag-pill">Color Grade &amp; Audio</span>
+          </div>
+        </div>
+
+        <!-- Step 3: Upload & Promote -->
+        <div class="cc-step-card" data-step="3">
+          <div class="cc-card-top">
+            <div class="cc-step-badge">
+              <span class="cc-step-prefix">STEP</span>
+              <span class="cc-step-num">03</span>
+            </div>
+            <div class="cc-card-icon cc-icon-promote">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 11l18-5v12L3 13v-2z"></path>
+                <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="cc-step-meta">Distribution &amp; Growth</div>
+          <h3 class="cc-card-title">Upload &amp; Promote</h3>
+          <p class="cc-card-copy">
+            Finished content is scheduled and published across Instagram and Facebook, then promoted to maximize reach and engagement.
+          </p>
+          <div class="cc-card-tagline">
+            <span class="cc-tag-pill">Scheduled Social Scale</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Banner -->
+      <div class="popup-bottom-action cc-bottom-action">
+        <div class="popup-bottom-info">
+          <h4>Ready to put our production pipeline to work?</h4>
+          <p>Explore our recent cinematic work or begin a customized reels project with us.</p>
+        </div>
+        <div class="popup-bottom-btns">
+          <button type="button" class="btn-secondary cc-video-work-btn" id="btnCcSeeVideoWork" data-open-modal="videoWorkModal">
+            See Video Work
+          </button>
+          <button type="button" class="btn-primary cc-start-project-btn" id="btnCcStartProject" data-open-modal="projectModal" data-preset-project-type="Content &amp; Reels" data-service="Content &amp; Reels">
+            Start a Project <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 04. BUILD YOUR WEBSITE — POPUP MODAL ============ -->
+  <div class="popup-modal" id="webDevModal" role="dialog" aria-modal="true" aria-labelledby="webDevModalHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <div class="popup-header">
+        <div class="popup-eyebrow">
+          <span class="dot"></span> Bespoke Web Architecture
+        </div>
+        <h2 class="popup-heading" id="webDevModalHeading">
+          ENGINEERED FOR PRESTIGE.<br><span class="accent-word">OPTIMIZED FOR CONVERSIONS.</span>
+        </h2>
+        <p class="popup-sub">
+          We reject sluggish templates and bloated themes. Every web platform we build is custom-coded for sub-second speeds, smooth interactions, and record-breaking conversion rates.
+        </p>
+      </div>
+
+      <!-- 3 Tier Cards -->
+      <div class="popup-card-grid cols-3">
+        <div class="popup-card">
+          <div class="popup-card-header">
+            <span class="popup-badge">TIER 01</span>
+            <span class="popup-category">Launch Sites</span>
+          </div>
+          <h3 class="popup-card-title">High-Converting Launch Page</h3>
+          <p class="popup-card-desc">Bespoke narrative landing page featuring interactive 3D elements, dynamic micro-interactions, and conversion-focused copy.</p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">&lt; 0.5s</span>
+              <span class="popup-metric-label">TTFB Load</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">100/100</span>
+              <span class="popup-metric-label">Mobile Score</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">10-14d</span>
+              <span class="popup-metric-label">Delivery</span>
+            </div>
+          </div>
+          <ul class="popup-checklist">
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Custom Three.js / Canvas FX</li>
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Instant Lead CRM Integration</li>
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Meta &amp; Google Pixel Tracking</li>
+          </ul>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="web">
+              Select Launch Site →
+            </button>
+          </div>
+        </div>
+
+        <div class="popup-card" style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.04);">
+          <div class="popup-card-header">
+            <span class="popup-badge" style="background: var(--accent); color: #fff;">MOST POPULAR</span>
+            <span class="popup-category">Platforms</span>
+          </div>
+          <h3 class="popup-card-title">Full Custom Web Platform</h3>
+          <p class="popup-card-desc">Complete multi-page web platform with Headless CMS, dynamic case studies, career portals, and lightning-fast edge rendering.</p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">Next.js 14</span>
+              <span class="popup-metric-label">Framework</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">Sanity</span>
+              <span class="popup-metric-label">Headless CMS</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">3-4 Wks</span>
+              <span class="popup-metric-label">Timeline</span>
+            </div>
+          </div>
+          <ul class="popup-checklist">
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Custom CMS for Easy Edits</li>
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Advanced SEO Schema Markups</li>
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Global Edge CDN Deployment</li>
+          </ul>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="web">
+              Select Custom Platform →
+            </button>
+          </div>
+        </div>
+
+        <div class="popup-card">
+          <div class="popup-card-header">
+            <span class="popup-badge">TIER 03</span>
+            <span class="popup-category">Commerce</span>
+          </div>
+          <h3 class="popup-card-title">High-Growth E-Commerce</h3>
+          <p class="popup-card-desc">Custom Shopify Plus or headless e-commerce store with high-AOV product bundles, 1-click checkout, and post-purchase upsells.</p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">+32%</span>
+              <span class="popup-metric-label">Avg. AOV Lift</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">0.6s</span>
+              <span class="popup-metric-label">Checkout Speed</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">4-5 Wks</span>
+              <span class="popup-metric-label">Timeline</span>
+            </div>
+          </div>
+          <ul class="popup-checklist">
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Shopify Plus Custom Liquid</li>
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> 1-Click Upsell Architecture</li>
+            <li class="popup-check-item"><span class="popup-check-icon">✓</span> Server-Side CAPI Tracking</li>
+          </ul>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="web">
+              Select E-Commerce →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Banner -->
+      <div class="popup-bottom-action">
+        <div class="popup-bottom-info">
+          <h4>Need a bespoke quote or technical consultation?</h4>
+          <p>Every website we ship comes with 90-day technical support and speed guarantees.</p>
+        </div>
+        <div class="popup-bottom-btns">
+          <button type="button" class="btn-primary" data-open-modal="projectModal" data-service="web">
+            Start Your Web Project <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 05. EXPLORE TECH STACK & PRICING — POPUP MODAL ============ -->
+  <div class="popup-modal" id="techStackModal" role="dialog" aria-modal="true" aria-labelledby="techStackModalHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog ts-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <!-- View 1: 4-Tier Pricing Overview -->
+      <div id="tsPricingOverviewView" class="ts-view ts-view-active">
+        <div class="popup-header">
+          <div class="popup-eyebrow">
+            <span class="dot"></span> Websites &amp; Digital Experience
+          </div>
+          <h2 class="popup-heading" id="techStackModalHeading">
+            TECH STACK &amp; <span class="accent-word">PRICING</span>
+          </h2>
+          <p class="popup-sub">
+            Transparent investment tiers engineered with developer-grade performance, WebGL motion, and high-converting visual architecture.
+          </p>
+        </div>
+
+        <!-- 4 Pricing Tier Cards Row -->
+        <div class="ts-pricing-grid" role="list">
+
+          <!-- Tier 1: Simple Website -->
+          <div class="ts-pricing-card" data-tier-id="simple" role="listitem" tabindex="0" aria-label="Simple Website Package — ₹6,999">
+            <div class="ts-card-top">
+              <div class="ts-card-header-row">
+                <span class="ts-tier-chip">Tier 01</span>
+              </div>
+              <h3 class="ts-tier-title">Simple Website</h3>
+              <div class="ts-price-wrap">
+                <span class="ts-price-val">₹6,999</span>
+                <span class="ts-price-period">one-time</span>
+              </div>
+              <p class="ts-tier-desc">
+                Clean, responsive multi-page site, ideal for small businesses, founders, and personal portfolios.
+              </p>
+            </div>
+
+            <ul class="ts-features-list">
+              <li><span class="ts-check">✓</span> 3–5 Custom Responsive Pages</li>
+              <li><span class="ts-check">✓</span> Sub-second Mobile Performance</li>
+              <li><span class="ts-check">✓</span> Contact Form &amp; WhatsApp Direct</li>
+              <li><span class="ts-check">✓</span> Modern SEO &amp; Meta Structure</li>
+            </ul>
+
+            <div class="ts-card-footer">
+              <button type="button" class="btn-primary ts-btn-select-tier" data-tier="Simple Website" data-price="₹6,999">
+                Select This Package <span class="arrow">→</span>
+              </button>
+              <button type="button" class="ts-btn-view-samples" data-tier-id="simple" aria-label="View samples for Simple Website">
+                <span>View Samples</span> <span class="arrow">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tier 2: 3D Animated Website (MOST POPULAR) -->
+          <div class="ts-pricing-card is-popular" data-tier-id="animated-3d" role="listitem" tabindex="0" aria-label="3D Animated Website Package — ₹12,999 (Most Popular)">
+            <div class="ts-popular-badge">
+              <span class="ts-badge-glow"></span>
+              <span class="ts-badge-text">✦ MOST POPULAR</span>
+            </div>
+            <div class="ts-card-top">
+              <div class="ts-card-header-row">
+                <span class="ts-tier-chip popular-chip">Tier 02</span>
+              </div>
+              <h3 class="ts-tier-title">3D Animated Website</h3>
+              <div class="ts-price-wrap">
+                <span class="ts-price-val">₹12,999</span>
+                <span class="ts-price-period">one-time</span>
+              </div>
+              <p class="ts-tier-desc">
+                Immersive scroll-driven 3D visuals and animations designed to captivate visitors and elevate brand status.
+              </p>
+            </div>
+
+            <ul class="ts-features-list">
+              <li><span class="ts-check">✓</span> Interactive Three.js 3D Hero</li>
+              <li><span class="ts-check">✓</span> GSAP Scroll-Triggered Sequences</li>
+              <li><span class="ts-check">✓</span> Physics-Driven Micro-Interactions</li>
+              <li><span class="ts-check">✓</span> 60fps Hardware-Accelerated Canvas</li>
+            </ul>
+
+            <div class="ts-card-footer">
+              <button type="button" class="btn-primary ts-btn-select-tier" data-tier="3D Animated Website" data-price="₹12,999">
+                Select This Package <span class="arrow">→</span>
+              </button>
+              <button type="button" class="ts-btn-view-samples" data-tier-id="animated-3d" aria-label="View samples for 3D Animated Website">
+                <span>View Samples</span> <span class="arrow">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tier 3: 3D Animated Website + Extra Features -->
+          <div class="ts-pricing-card" data-tier-id="extra-features" role="listitem" tabindex="0" aria-label="3D Animated Website with Extra Features Package — ₹16,999">
+            <div class="ts-card-top">
+              <div class="ts-card-header-row">
+                <span class="ts-tier-chip">Tier 03</span>
+              </div>
+              <h3 class="ts-tier-title">3D + Extra Features</h3>
+              <div class="ts-price-wrap">
+                <span class="ts-price-val">₹16,999</span>
+                <span class="ts-price-period">one-time</span>
+              </div>
+              <p class="ts-tier-desc">
+                Everything above plus ambient audio soundscapes, custom interactive cursor, and interactive touches.
+              </p>
+            </div>
+
+            <ul class="ts-features-list">
+              <li><span class="ts-check">✓</span> Everything in 3D Animated Tier</li>
+              <li><span class="ts-check">✓</span> Ambient Audio &amp; Sound FX Toggle</li>
+              <li><span class="ts-check">✓</span> Custom Interactive Cursor Physics</li>
+              <li><span class="ts-check">✓</span> Dynamic Particle Systems &amp; FX</li>
+            </ul>
+
+            <div class="ts-card-footer">
+              <button type="button" class="btn-primary ts-btn-select-tier" data-tier="3D Animated Website + Extra Features" data-price="₹16,999">
+                Select This Package <span class="arrow">→</span>
+              </button>
+              <button type="button" class="ts-btn-view-samples" data-tier-id="extra-features" aria-label="View samples for 3D Animated Website with Extra Features">
+                <span>View Samples</span> <span class="arrow">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tier 4: Fully Customised & Personalised Website -->
+          <div class="ts-pricing-card" data-tier-id="customised" role="listitem" tabindex="0" aria-label="Fully Customised and Personalised Website Package — ₹21,999">
+            <div class="ts-card-top">
+              <div class="ts-card-header-row">
+                <span class="ts-tier-chip">Tier 04</span>
+                <span class="ts-bespoke-badge">Bespoke</span>
+              </div>
+              <h3 class="ts-tier-title">Fully Customised</h3>
+              <div class="ts-price-wrap">
+                <span class="ts-price-val">₹21,999</span>
+                <span class="ts-price-period">one-time</span>
+              </div>
+              <p class="ts-tier-desc">
+                Bespoke design and development tailored entirely to your brand, unlimited revisions and headless CMS.
+              </p>
+            </div>
+
+            <ul class="ts-features-list">
+              <li><span class="ts-check">✓</span> Custom Design System &amp; Brand Identity</li>
+              <li><span class="ts-check">✓</span> Headless CMS for Instant Edits</li>
+              <li><span class="ts-check">✓</span> High-Converting Sales Funnel Logic</li>
+              <li><span class="ts-check">✓</span> Unlimited Revisions &amp; VIP SLA</li>
+            </ul>
+
+            <div class="ts-card-footer">
+              <button type="button" class="btn-primary ts-btn-select-tier" data-tier="Fully Customised &amp; Personalised Website" data-price="₹21,999">
+                Select This Package <span class="arrow">→</span>
+              </button>
+              <button type="button" class="ts-btn-view-samples" data-tier-id="customised" aria-label="View samples for Fully Customised and Personalised Website">
+                <span>View Samples</span> <span class="arrow">↗</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Advisory Banner -->
+        <div class="popup-bottom-action ts-bottom-banner">
+          <div class="popup-bottom-info">
+            <h4>Need a tailored enterprise architecture or custom scope?</h4>
+            <p>We architect bespoke full-stack solutions, custom web apps, and high-performance digital systems for specific business needs.</p>
+          </div>
+          <div class="popup-bottom-btns">
+            <button type="button" class="btn-primary" data-open-modal="projectModal" data-service="web">
+              Talk to Our Architects <span class="arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- View 2: Sample Gallery View (Expanded per tier) -->
+      <div id="tsSamplesDetailView" class="ts-view" style="display: none;">
+        <div class="ts-samples-header">
+          <button type="button" class="ts-back-btn" id="tsBtnBackToOverview" aria-label="Back to tech stack pricing tiers">
+            <span class="arrow">←</span> <span>Back to All Packages</span>
+          </button>
+          <div class="ts-samples-tier-badge" id="tsSamplesTierBadge">
+            <span class="ts-tier-name" id="tsActiveTierName">3D Animated Website</span>
+            <span class="ts-tier-price" id="tsActiveTierPrice">₹12,999</span>
+          </div>
+        </div>
+
+        <div class="ts-samples-intro">
+          <h3 class="ts-samples-heading" id="tsActiveTierHeading">Sample Websites &amp; Live Demos</h3>
+          <p class="ts-samples-sub" id="tsActiveTierDesc">Explore interactive showcases built with this architecture tier.</p>
+        </div>
+
+        <!-- Dynamic Grid of Samples -->
+        <div class="ts-samples-grid" id="tsSamplesGrid" role="list">
+          <!-- Populated dynamically via JS from TECH_STACK_PRICING -->
+        </div>
+
+        <!-- Action Banner inside Sample View -->
+        <div class="popup-bottom-action ts-sample-cta-banner">
+          <div class="popup-bottom-info">
+            <h4 id="tsSampleCtaTitle">Ready to launch with this package?</h4>
+            <p>Lock in your development slot with our core engineering team.</p>
+          </div>
+          <div class="popup-bottom-btns">
+            <button type="button" class="btn-primary" id="tsBtnSelectActiveTier">
+              Select This Package <span class="arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 06. SCALE YOUR BRAND — POPUP MODAL ============ -->
+  <div class="popup-modal" id="scaleBrandModal" role="dialog" aria-modal="true" aria-labelledby="scaleBrandHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <div class="popup-header">
+        <div class="popup-eyebrow">
+          <span class="dot"></span> Performance Marketing &amp; Paid Acquisition
+        </div>
+        <h2 class="popup-heading" id="scaleBrandHeading">
+          COMPOUND AUDIENCE.<br><span class="accent-word">MAXIMIZE REVENUE.</span>
+        </h2>
+        <p class="popup-sub">
+          We combine algorithmic paid media buying, rapid creative testing, and post-click conversion rate optimization to turn advertising into a predictable profit center.
+        </p>
+      </div>
+
+      <!-- 4 Pillars Grid -->
+      <div class="popup-card-grid">
+        <div class="popup-card">
+          <div class="popup-card-header">
+            <span class="popup-badge">CHANNEL 01</span>
+            <span class="popup-category">Social Acquisition</span>
+          </div>
+          <h3 class="popup-card-title">Meta Ads Engine (IG &amp; FB)</h3>
+          <p class="popup-card-desc">
+            Granular account structures combining broad targeting, demographic clustering, dynamic catalog ads, and retargeting funnels that outsmart the algorithm.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">4.2x</span>
+              <span class="popup-metric-label">Average ROAS</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">-35%</span>
+              <span class="popup-metric-label">CPA Reduction</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">₹2Cr+</span>
+              <span class="popup-metric-label">Ad Spend Scaled</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="growth">
+              Scale Meta Ads →
+            </button>
+          </div>
+        </div>
+
+        <div class="popup-card">
+          <div class="popup-card-header">
+            <span class="popup-badge">CHANNEL 02</span>
+            <span class="popup-category">High-Intent Search</span>
+          </div>
+          <h3 class="popup-card-title">Google &amp; Performance Max</h3>
+          <p class="popup-card-desc">
+            Capturing active buyer intent across Google Search, Shopping, YouTube Video Action, and Discovery, converting warm prospects into immediate customers.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">Top 10%</span>
+              <span class="popup-metric-label">Impression Share</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">12.4%</span>
+              <span class="popup-metric-label">Search CTR</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">5.8x</span>
+              <span class="popup-metric-label">Shopping ROAS</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="growth">
+              Scale Google Ads →
+            </button>
+          </div>
+        </div>
+
+        <div class="popup-card">
+          <div class="popup-card-header">
+            <span class="popup-badge">PROCESS 03</span>
+            <span class="popup-category">Creative Velocity</span>
+          </div>
+          <h3 class="popup-card-title">High-Velocity Creative Testing</h3>
+          <p class="popup-card-desc">
+            Ad fatigue kills scaling. We produce and deploy 10-15 new video and static creative variations weekly, identifying winning hooks and cutting underperformers fast.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">15+</span>
+              <span class="popup-metric-label">Creatives / Wk</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">84%</span>
+              <span class="popup-metric-label">Scale Success</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">0</span>
+              <span class="popup-metric-label">Creative Fatigue</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="growth">
+              Explore Creative Sprints →
+            </button>
+          </div>
+        </div>
+
+        <div class="popup-card">
+          <div class="popup-card-header">
+            <span class="popup-badge">CONVERSION 04</span>
+            <span class="popup-category">Post-Click Funnel</span>
+          </div>
+          <h3 class="popup-card-title">CRO &amp; Retention Flywheels</h3>
+          <p class="popup-card-desc">
+            Traffic without conversion is wasted capital. We build dedicated split-tested landing pages and automated WhatsApp / email flows that double customer lifetime value.
+          </p>
+          <div class="popup-metrics-row">
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">+28%</span>
+              <span class="popup-metric-label">Conversion Rate</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">42%</span>
+              <span class="popup-metric-label">WhatsApp Open</span>
+            </div>
+            <div class="popup-metric-item">
+              <span class="popup-metric-val">2.2x</span>
+              <span class="popup-metric-label">Repeat LTV</span>
+            </div>
+          </div>
+          <div class="popup-card-action">
+            <button type="button" class="popup-card-btn" data-open-modal="projectModal" data-service="growth">
+              Optimize Conversion Rate →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Banner -->
+      <div class="popup-bottom-action">
+        <div class="popup-bottom-info">
+          <h4>Ready to scale your brand profitably?</h4>
+          <p>Request a complimentary growth audit of your current ad account and conversion funnels.</p>
+        </div>
+        <div class="popup-bottom-btns">
+          <button type="button" class="btn-primary" data-open-modal="projectModal" data-service="growth">
+            Claim Your Growth Audit <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 07. OUR GROWTH PROCESS — POPUP MODAL ============ -->
+  <div class="popup-modal" id="growthProcessModal" role="dialog" aria-modal="true" aria-labelledby="growthProcessHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog gp-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <div class="popup-header gp-header">
+        <div class="popup-eyebrow">
+          <span class="dot"></span> Full-Funnel Methodology
+        </div>
+        <h2 class="popup-heading" id="growthProcessHeading">
+          OUR GROWTH <span class="accent-word">PROCESS</span>
+        </h2>
+        <p class="popup-sub">
+          A synchronized four-part growth engine turning cold audience attention into qualified leads, customer acquisition, and measurable brand scale.
+        </p>
+      </div>
+
+      <!-- Process Sequence Timeline Bar -->
+      <div class="gp-timeline-bar" aria-hidden="true">
+        <div class="gp-timeline-step active">
+          <span class="gp-timeline-num">01</span>
+          <span class="gp-timeline-label">Website</span>
+        </div>
+        <div class="gp-timeline-connector"></div>
+        <div class="gp-timeline-step">
+          <span class="gp-timeline-num">02</span>
+          <span class="gp-timeline-label">Instagram</span>
+        </div>
+        <div class="gp-timeline-connector"></div>
+        <div class="gp-timeline-step">
+          <span class="gp-timeline-num">03</span>
+          <span class="gp-timeline-label">Facebook</span>
+        </div>
+        <div class="gp-timeline-connector"></div>
+        <div class="gp-timeline-step">
+          <span class="gp-timeline-num">04</span>
+          <span class="gp-timeline-label">Review</span>
+        </div>
+      </div>
+
+      <!-- 4 Process / Benefit Cards -->
+      <div class="gp-cards-grid">
+        <!-- 1. Website Foundation -->
+        <div class="gp-process-card" data-step="1">
+          <div class="gp-card-top">
+            <div class="gp-step-pill">
+              <span class="gp-step-prefix">STEP</span>
+              <span class="gp-step-num">01</span>
+            </div>
+            <div class="gp-card-icon gp-icon-web">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+          </div>
+          <h3 class="gp-card-title">Website Foundation</h3>
+          <p class="gp-card-copy">
+            A high-converting website anchors every campaign, turning traffic from ads and social into real leads and sales.
+          </p>
+          <div class="gp-card-tagline">
+            <span class="gp-tag-pill">Conversion Anchor</span>
+          </div>
+        </div>
+
+        <!-- 2. Instagram Content Engine -->
+        <div class="gp-process-card" data-step="2">
+          <div class="gp-card-top">
+            <div class="gp-step-pill">
+              <span class="gp-step-prefix">STEP</span>
+              <span class="gp-step-num">02</span>
+            </div>
+            <div class="gp-card-icon gp-icon-instagram">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </div>
+          </div>
+          <h3 class="gp-card-title">Instagram Content Engine</h3>
+          <p class="gp-card-copy">
+            Monthly content shoots produce reels and posts, strategically scheduled and uploaded to build consistent reach and engagement on Instagram.
+          </p>
+          <div class="gp-card-tagline">
+            <span class="gp-tag-pill">Reels &amp; Scheduled Uploads</span>
+          </div>
+        </div>
+
+        <!-- 3. Facebook Distribution -->
+        <div class="gp-process-card" data-step="3">
+          <div class="gp-card-top">
+            <div class="gp-step-pill">
+              <span class="gp-step-prefix">STEP</span>
+              <span class="gp-step-num">03</span>
+            </div>
+            <div class="gp-card-icon gp-icon-facebook">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="gp-card-title">Facebook Distribution</h3>
+          <p class="gp-card-copy">
+            Cross-posting and targeted distribution on Facebook extends reach to a broader, often higher-intent audience segment.
+          </p>
+          <div class="gp-card-tagline">
+            <span class="gp-tag-pill">Cross-Posting &amp; Targeted Ads</span>
+          </div>
+        </div>
+
+        <!-- 4. Monthly Performance Review -->
+        <div class="gp-process-card" data-step="4">
+          <div class="gp-card-top">
+            <div class="gp-step-pill">
+              <span class="gp-step-prefix">STEP</span>
+              <span class="gp-step-num">04</span>
+            </div>
+            <div class="gp-card-icon gp-icon-review">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <line x1="10" y1="9" x2="8" y2="9"></line>
+              </svg>
+            </div>
+          </div>
+          <h3 class="gp-card-title">Monthly Performance Review</h3>
+          <p class="gp-card-copy">
+            Every month, a detailed PDF growth report is delivered — covering reach, engagement, follower growth, and ad performance — so progress is always transparent and measurable.
+          </p>
+          <div class="gp-card-tagline">
+            <span class="gp-tag-pill">Transparent PDF Growth Reports</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Banner -->
+      <div class="popup-bottom-action gp-bottom-action">
+        <div class="popup-bottom-info">
+          <h4>Ready to put our growth process to work?</h4>
+          <p>Let's map out your custom growth blueprint across web, content, and paid channels.</p>
+        </div>
+        <div class="popup-bottom-btns">
+          <button type="button" class="btn-primary gp-start-growing-btn" id="btnGrowthProcessStartGrowing" data-open-modal="projectModal" data-preset-project-type="Full Growth Package" data-service="Full Growth Package">
+            Start Growing <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 08. CHAT ON WHATSAPP — POPUP MODAL ============ -->
+  <div class="popup-modal" id="whatsappModal" role="dialog" aria-modal="true" aria-labelledby="waModalHeading" aria-hidden="true">
+    <div class="popup-modal-backdrop" data-close-modal aria-label="Close modal"></div>
+    <div class="popup-modal-dialog">
+      <button type="button" class="popup-modal-close" data-close-modal aria-label="Close modal">✕</button>
+
+      <div class="popup-header">
+        <div class="popup-eyebrow" style="color: #25D366; background: rgba(37, 211, 102, 0.12); border-color: rgba(37, 211, 102, 0.3);">
+          <span class="dot" style="background: #25D366; box-shadow: 0 0 10px #25D366;"></span> Instant Executive Access
+        </div>
+        <h2 class="popup-heading" id="waModalHeading">
+          CONNECT DIRECTLY ON<br><span class="accent-word" style="color: #25D366; background: linear-gradient(135deg, #25D366 0%, #60A5FA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">WHATSAPP.</span>
+        </h2>
+        <p class="popup-sub">
+          Have an urgent project or want to talk strategy directly? Connect immediately with our founding leadership and senior growth team.
+        </p>
+      </div>
+
+      <!-- Direct Team Channels -->
+      <div class="whatsapp-channels-grid">
+        <div class="wa-channel-card">
+          <div class="wa-card-header">
+            <div class="wa-avatar">TM</div>
+            <div class="wa-title-wrap">
+              <span class="wa-desk-title">Primary Strategy &amp; Client Desk</span>
+              <span class="wa-status-text"><span class="wa-pulse-dot"></span> Online &amp; Responding (Avg &lt; 15 mins)</span>
+            </div>
+          </div>
+          <div class="wa-desk-num">+91 95550 13580</div>
+          <p class="wa-desk-desc">
+            Direct desk for new project inquiries, website architecture scoping, viral content production, and paid marketing scaling.
+          </p>
+          <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20a%20new%20project%20with%20your%20strategy%20team." class="wa-btn-chat" target="_blank" rel="noopener">
+            Chat with Strategy Lead →
+          </a>
+        </div>
+
+        <div class="wa-channel-card">
+          <div class="wa-card-header">
+            <div class="wa-avatar" style="background: #3B82F6; color: #fff;">TM</div>
+            <div class="wa-title-wrap">
+              <span class="wa-desk-title">Enterprise &amp; Sales Desk</span>
+              <span class="wa-status-text"><span class="wa-pulse-dot"></span> Online &amp; Responding</span>
+            </div>
+          </div>
+          <div class="wa-desk-num">+91 91207 00838</div>
+          <p class="wa-desk-desc">
+            Dedicated line for enterprise retainers, corporate brand overhauls, high-volume production sprints, and agency partnerships.
+          </p>
+          <a href="https://wa.me/919120700838?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20discuss%20an%20enterprise%20partnership." class="wa-btn-chat" target="_blank" rel="noopener">
+            Chat with Enterprise Lead →
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Topics -->
+      <div class="wa-quick-prompts-title">Select a Quick Topic to Start Conversation:</div>
+      <div class="wa-prompts-flex">
+        <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20want%20to%20build%20a%20high-performance%20custom%20website." class="wa-prompt-pill" target="_blank" rel="noopener">
+          <span>🌐</span> Build a Custom Website →
+        </a>
+        <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20need%20viral%20reels%20and%20video%20production%20for%20my%20brand." class="wa-prompt-pill" target="_blank" rel="noopener">
+          <span>🎬</span> Viral Reels &amp; Video Production →
+        </a>
+        <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20want%20to%20scale%20my%20business%20with%20Meta%20and%20Google%20Ads." class="wa-prompt-pill" target="_blank" rel="noopener">
+          <span>📈</span> Scale Meta &amp; Google Ads →
+        </a>
+        <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20want%20to%20discuss%20a%20full-scale%20digital%20growth%20package." class="wa-prompt-pill" target="_blank" rel="noopener">
+          <span>🚀</span> Full-Scale Growth Package →
+        </a>
+      </div>
+
+      <!-- Bottom Alternative -->
+      <div class="popup-bottom-action">
+        <div class="popup-bottom-info">
+          <h4>Prefer submitting a formal project brief?</h4>
+          <p>Fill out our interactive inquiry form to receive a detailed strategic proposal.</p>
+        </div>
+        <div class="popup-bottom-btns">
+          <button type="button" class="btn-primary" data-open-modal="projectModal">
+            Open Project Inquiry Form <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification -->
   <div class="toast" id="toast">
     <span class="toast-icon">✓</span>
     <span class="toast-msg">Message sent! We'll be in touch soon.</span>
   </div>
 
+  <!-- GSAP & ScrollTrigger with Local & CDN Fallback -->
+  <script src="gsap.min.js"></script>
+  <script>window.gsap || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>')</script>
+  <script src="ScrollTrigger.min.js"></script>
+  <script>window.ScrollTrigger || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"><\/script>')</script>
+  <script src="hero-sequence.js" defer></script>
   <script src="three.min.js" defer></script>
-  <script src="camera-tech-fusion.js" defer></script>
   <script src="about-growth-network.js" defer></script>
-  <script src="main.js" defer></script>
+  <script src="main.js?v=6.2" defer></script>
 </body>
 </html>

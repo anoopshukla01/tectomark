@@ -11,11 +11,28 @@ const isMobile = () => window.innerWidth <= 768;
   const preloader = $('#preloader');
   const progress = $('#preloaderProgress');
   const count = $('#preloaderCount');
-  if (!preloader) return;
+  if (!preloader) {
+    document.body.classList.add('loaded');
+    return;
+  }
+
+  // Safety timer: Never leave screen dark or blocked for more than 900ms
+  const safetyTimer = setTimeout(() => {
+    preloader.classList.add('hidden');
+    document.body.classList.add('loaded');
+  }, 900);
+
+  // If user arrives with #contact, immediately dismiss preloader
+  if (window.location.hash.includes('contact')) {
+    clearTimeout(safetyTimer);
+    preloader.classList.add('hidden');
+    document.body.classList.add('loaded');
+    return;
+  }
 
   let current = 0;
   const target = 100;
-  const duration = 1600;
+  const duration = 1200;
   const startTime = performance.now();
 
   function updateProgress(now) {
@@ -30,6 +47,7 @@ const isMobile = () => window.innerWidth <= 768;
     if (t < 1) {
       requestAnimationFrame(updateProgress);
     } else {
+      clearTimeout(safetyTimer);
       // Minimum visible time then hide
       setTimeout(() => {
         preloader.classList.add('hidden');
@@ -38,8 +56,8 @@ const isMobile = () => window.innerWidth <= 768;
         setTimeout(() => {
           const fab = $('#fabGroup');
           if (fab) fab.classList.add('visible');
-        }, 600);
-      }, 200);
+        }, 300);
+      }, 100);
     }
   }
 
@@ -106,6 +124,14 @@ const isMobile = () => window.innerWidth <= 768;
   function updateCursorState(e) {
     const target = e.target;
     if (!target) return;
+
+    // Inside modals or when any modal is open, completely suppress custom cursor so native OS cursor works flawlessly
+    if (document.body.classList.contains('modal-open') || target.closest('.popup-modal, .project-modal, [role="dialog"]')) {
+      cursor.className = 'cursor cursor--hidden';
+      follower.className = 'cursor-follower cursor--hidden';
+      if (cursorText) cursorText.textContent = '';
+      return;
+    }
 
     // Check for explicit data-cursor on element or ancestor
     const cursorElem = target.closest('[data-cursor]');
@@ -187,7 +213,7 @@ const isMobile = () => window.innerWidth <= 768;
   }, { passive: true });
 
   // Active nav link based on section
-  const sections = $$('section[id], div[id]');
+  const sections = $$('.hero-scene[id], footer[id]');
   const navLinks = $$('.nav-link');
 
   function updateActiveLink() {
@@ -215,12 +241,61 @@ const isMobile = () => window.innerWidth <= 768;
     if (!rawHref || rawHref === '#') return;
     const targetId = rawHref.split('?')[0].replace(/^#/, '');
     if (!targetId) return;
+
+    // Direct Start-A-Project & modal action mappings
+    if (targetId === 'contact' || link.classList.contains('nav-cta') || link.classList.contains('mobile-menu-cta') || link.classList.contains('fab-cta') || link.id === 'ctaMagnetic' || link.id === 'btnBuildWebsite' || link.id === 'btnScaleBrand') {
+      e.preventDefault();
+      let serviceKeyword = link.getAttribute('data-preset-project-type') || link.getAttribute('data-service') || '';
+      if (!serviceKeyword && rawHref.includes('service=')) {
+        serviceKeyword = rawHref.split('service=')[1].split('&')[0];
+      }
+      if (typeof window.openProjectModal === 'function') {
+        window.openProjectModal({ presetProjectType: serviceKeyword });
+      }
+      return;
+    }
+
+    if (targetId === 'work') {
+      e.preventDefault();
+      const inScene2 = link.closest('#hero-scene-2') || link.textContent.toLowerCase().includes('video');
+      if (typeof window.openModal === 'function') {
+        window.openModal(inScene2 ? 'videoWorkModal' : 'workModal');
+      }
+      return;
+    }
+
+    if (targetId === 'services') {
+      e.preventDefault();
+      const inScene3 = link.closest('#hero-scene-3') || link.textContent.toLowerCase().includes('tech');
+      if (typeof window.openModal === 'function') {
+        window.openModal(inScene3 ? 'techStackModal' : 'contentCapabilitiesModal');
+      }
+      return;
+    }
+
+    if (targetId === 'approach') {
+      e.preventDefault();
+      if (typeof window.openModal === 'function') {
+        window.openModal('growthProcessModal');
+      }
+      return;
+    }
+
+    if (targetId === 'whatsapp') {
+      e.preventDefault();
+      if (typeof window.openModal === 'function') {
+        window.openModal('whatsappModal');
+      }
+      return;
+    }
+
     const target = document.getElementById(targetId);
     if (!target) return;
 
     e.preventDefault();
     const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 72;
-    const top = target.getBoundingClientRect().top + window.scrollY - navH;
+    const isHeroScene = target.classList.contains('hero-scene') || target.id.startsWith('hero-scene');
+    const top = isHeroScene ? target.offsetTop : (target.getBoundingClientRect().top + window.scrollY - navH);
     window.scrollTo({ top, behavior: 'smooth' });
 
     if (rawHref.includes('service=')) {
@@ -370,340 +445,679 @@ const isMobile = () => window.innerWidth <= 768;
 
 
 
-// ── Service Inquiry System (Agency Tier) ───────────────────────
-(function initServiceInquirySystem() {
-  const form = $('#inquiryForm');
-  const confirmationView = $('#inquiryConfirmation');
-  const confirmName = $('#confirmName');
-  const confirmEmail = $('#confirmEmail');
-  const confirmRecap = $('#confirmRecap');
-  const resetBtn = $('#resetInquiryBtn');
-  const submitBtn = $('#formSubmit');
-  const generalError = $('#formGeneralError');
+// ── Start A Project Modal System ───────────────────────────────
+(function initStartProjectModal() {
+  const modal = $('#projectModal');
+  const form = $('#startProjectForm');
+  const contentView = $('#spContentView');
+  const successView = $('#spSuccessView');
+  const successSummary = $('#spSuccessSummary');
+  const submitBtn = $('#spSubmitBtn');
+  const alertError = $('#spAlertError');
+  const alertMsg = $('#spAlertMsg');
+  const alertRetry = $('#spAlertRetry');
+  const successCloseBtn = $('#spSuccessCloseBtn');
 
-  if (!form) return;
+  if (!modal || !form) return;
 
-  // Selected State Collections
-  const selectedServices = new Set();
-  let selectedBudget = '';
-  let selectedTimeline = '';
+  const nameInput = $('#sp_name');
+  const emailInput = $('#sp_email');
+  const phoneInput = $('#sp_phone');
+  const companyInput = $('#sp_company');
+  const projectTypeSelect = $('#sp_projectType');
+  const budgetSelect = $('#sp_budget');
+  const messageInput = $('#sp_message');
+  const honeypotInput = $('#sp_hp_field');
 
-  // 1. Multi-Select Services Chips
-  const chipItems = $$('.chip-item', form);
-  const otherServiceWrap = $('#otherServiceWrap');
-  const otherServiceInput = $('#otherService');
-  const servicesError = $('#servicesError');
+  const DEFAULT_MESSAGE_PLACEHOLDER = "Tell us about your project or goals";
+  const contextualPlaceholders = {
+    'Website': 'Tell us about the website you want to build (e.g. goals, design preferences, reference sites, key features)...',
+    'Instagram Growth': 'Tell us about your brand and Instagram growth objectives (e.g. current handle, target audience)...',
+    'Content & Reels': 'Tell us about your content vision (e.g. monthly reels, script writing, video formats)...',
+    'Meta/Google Ads': 'Tell us about your advertising goals, monthly ad spend, and current ROAS...',
+    'Full Growth Package': 'Tell us about your brand and growth goals (social, paid ads, content, etc.)...',
+    'Other': 'Tell us about your project or goals'
+  };
 
-  chipItems.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const val = chip.dataset.value;
-      if (chip.classList.contains('active')) {
-        chip.classList.remove('active');
-        selectedServices.delete(val);
-        if (chip.classList.contains('chip-other') && otherServiceWrap) {
-          otherServiceWrap.style.display = 'none';
-        }
-      } else {
-        chip.classList.add('active');
-        selectedServices.add(val);
-        if (chip.classList.contains('chip-other') && otherServiceWrap) {
-          otherServiceWrap.style.display = 'flex';
-          if (otherServiceInput) otherServiceInput.focus();
-        }
-      }
-
-      if (selectedServices.size > 0 && servicesError) {
-        servicesError.textContent = '';
-      }
-    });
-  });
-
-  // 2. Single-Select Pills (Budget & Timeline)
-  function setupPillGroup(containerId, onSelect) {
-    const group = $(containerId);
-    if (!group) return;
-    const pills = $$('.pill-option', group);
-    pills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        const isAlreadyActive = pill.classList.contains('active');
-        pills.forEach(p => p.classList.remove('active'));
-        if (!isAlreadyActive) {
-          pill.classList.add('active');
-          onSelect(pill.dataset.value);
-        } else {
-          onSelect('');
-        }
+  // Pre-select helper for Project Type
+  function preselectProjectType(keyword) {
+    if (!projectTypeSelect) return;
+    if (!keyword) {
+      projectTypeSelect.value = '';
+      Array.from(projectTypeSelect.options).forEach((opt, idx) => {
+        opt.selected = (idx === 0);
       });
+      projectTypeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      if (messageInput) messageInput.placeholder = DEFAULT_MESSAGE_PLACEHOLDER;
+      validateField(projectTypeSelect, false);
+      checkOverallValidity();
+      return;
+    }
+    const k = String(keyword).toLowerCase();
+    let matchedOption = '';
+    if (k.includes('web') || k.includes('site') || k.includes('dev')) {
+      matchedOption = 'Website';
+    } else if (k.includes('insta') || k.includes('social') || k.includes('ig')) {
+      matchedOption = 'Instagram Growth';
+    } else if (k.includes('reel') || k.includes('video') || k.includes('content')) {
+      matchedOption = 'Content & Reels';
+    } else if (k.includes('ad') || k.includes('meta') || k.includes('google') || k.includes('paid')) {
+      matchedOption = 'Meta/Google Ads';
+    } else if (k.includes('growth') || k.includes('scale') || k.includes('full') || k.includes('package')) {
+      matchedOption = 'Full Growth Package';
+    } else if (k.includes('other')) {
+      matchedOption = 'Other';
+    }
+
+    if (matchedOption) {
+      projectTypeSelect.value = matchedOption;
+      Array.from(projectTypeSelect.options).forEach(opt => {
+        opt.selected = (opt.value === matchedOption);
+      });
+      projectTypeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      if (messageInput && contextualPlaceholders[matchedOption]) {
+        messageInput.placeholder = contextualPlaceholders[matchedOption];
+      }
+      validateField(projectTypeSelect, false);
+      checkOverallValidity();
+    }
+  }
+  window.preselectServiceByKeyword = preselectProjectType;
+  window.preselectProjectType = preselectProjectType;
+  window.setProjectMessagePreset = function(msg) {
+    if (messageInput) {
+      messageInput.value = msg || '';
+      validateField(messageInput, false);
+      checkOverallValidity();
+    }
+  };
+
+  // Validation helpers
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim());
+  }
+
+  function isValidPhone(phone) {
+    const digits = String(phone).replace(/\D/g, '');
+    return digits.length >= 7 && digits.length <= 15;
+  }
+
+  function validateField(field, showInline = true) {
+    if (!field) return true;
+    let valid = true;
+    const val = field.value.trim();
+
+    if (field === nameInput) {
+      valid = val.length >= 2;
+    } else if (field === emailInput) {
+      valid = isValidEmail(val);
+    } else if (field === phoneInput) {
+      valid = isValidPhone(val);
+    } else if (field === projectTypeSelect) {
+      valid = Boolean(val && val !== '');
+    } else if (field === messageInput) {
+      valid = val.length >= 5;
+    }
+
+    if (showInline) {
+      if (!valid) {
+        field.classList.add('is-invalid');
+      } else {
+        field.classList.remove('is-invalid');
+      }
+    }
+    return valid;
+  }
+
+  function checkOverallValidity() {
+    const isNameOk = validateField(nameInput, false);
+    const isEmailOk = validateField(emailInput, false);
+    const isPhoneOk = validateField(phoneInput, false);
+    const isTypeOk = validateField(projectTypeSelect, false);
+    const isMsgOk = validateField(messageInput, false);
+
+    const isFormValid = isNameOk && isEmailOk && isPhoneOk && isTypeOk && isMsgOk;
+    // Keep button active and clickable so user can submit or trigger instant inline guidance
+    if (submitBtn) {
+      submitBtn.disabled = false;
+    }
+    return isFormValid;
+  }
+
+  // Real-time & on-blur event validation
+  [nameInput, emailInput, phoneInput, messageInput].forEach(input => {
+    if (!input) return;
+    input.addEventListener('input', () => {
+      if (input.classList.contains('is-invalid')) {
+        validateField(input, true);
+      }
+      checkOverallValidity();
     });
-  }
-
-  setupPillGroup('#budgetPills', val => { selectedBudget = val; });
-  setupPillGroup('#timelinePills', val => { selectedTimeline = val; });
-
-  // 3. Deep-Linking: Pre-select Service via Query Param or Click
-  function preselectServiceByKeyword(keyword, shouldScroll = false) {
-    if (!keyword) return;
-    const key = keyword.toLowerCase();
-    
-    // Clear previously selected chips so the chosen one is cleanly highlighted
-    chipItems.forEach(c => c.classList.remove('active'));
-    selectedServices.clear();
-
-    chipItems.forEach(chip => {
-      const val = chip.dataset.value.toLowerCase();
-      if (
-        (key.includes('web') && val.includes('website design')) ||
-        (key.includes('social') && val.includes('social media')) ||
-        (key.includes('growth') && val.includes('growth strategy')) ||
-        (key.includes('insta') && val.includes('instagram')) ||
-        (key.includes('content') && val.includes('creative content')) ||
-        (key.includes('video') && val.includes('reels')) ||
-        (key.includes('ad') && val.includes('advertising')) ||
-        (key.includes('meta') && val.includes('meta'))
-      ) {
-        chip.classList.add('active');
-        selectedServices.add(chip.dataset.value);
-
-        // Flash pulse glow animation on the selected chip
-        chip.style.animation = 'none';
-        void chip.offsetWidth;
-        chip.style.animation = 'pulseGlow 1.2s ease-out';
+    input.addEventListener('blur', () => {
+      if (input.value.trim() !== '') {
+        validateField(input, true);
       }
-    });
-
-    if (shouldScroll) {
-      const contactTarget = document.getElementById('contact');
-      if (contactTarget) {
-        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 72;
-        const top = contactTarget.getBoundingClientRect().top + window.scrollY - navH;
-        window.scrollTo({ top, behavior: 'smooth' });
-
-        setTimeout(() => {
-          const fullName = document.getElementById('fullName');
-          if (fullName) fullName.focus({ preventScroll: true });
-        }, 650);
-      }
-    }
-  }
-  window.preselectServiceByKeyword = preselectServiceByKeyword;
-
-  // Check URL params on load
-  try {
-    const urlParams = new URLSearchParams(window.location.search);
-    const serviceParam = urlParams.get('service');
-    if (serviceParam) {
-      preselectServiceByKeyword(serviceParam, false);
-    }
-    // Also check hash like #contact?service=social
-    if (window.location.hash.includes('service=')) {
-      const hashParam = window.location.hash.split('service=')[1];
-      if (hashParam) preselectServiceByKeyword(hashParam.split('&')[0], false);
-    }
-  } catch (e) {
-    // Ignore URL parse errors
-  }
-
-  // Intercept service buttons and direct scroll to inquiry form
-  $$('.service-inquire-btn, a[href*="service="]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      e.stopPropagation();
-      const href = link.getAttribute('href') || '';
-      let serviceVal = '';
-      if (href.includes('service=')) {
-        serviceVal = href.split('service=')[1].split('&')[0];
-      }
-      preselectServiceByKeyword(serviceVal, true);
-      try {
-        history.pushState(null, '', href);
-      } catch (_) {}
-    });
-  });
-
-  // 4. Validation Helpers
-  function setFieldError(field, message) {
-    const group = field.closest('.form-group');
-    if (!group) return;
-    group.classList.add('has-error');
-    const errSpan = group.querySelector('.field-error');
-    if (errSpan) errSpan.textContent = message;
-  }
-
-  function clearFieldError(field) {
-    const group = field.closest('.form-group');
-    if (!group) return;
-    group.classList.remove('has-error');
-    const errSpan = group.querySelector('.field-error');
-    if (errSpan) errSpan.textContent = '';
-  }
-
-  function validateField(field) {
-    if (field.required && !field.value.trim()) {
-      const label = form.querySelector(`label[for="${field.id}"]`);
-      const name = label ? label.textContent.replace('*', '').trim() : 'This field';
-      setFieldError(field, `${name} is required`);
-      return false;
-    }
-    if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())) {
-      setFieldError(field, 'Please enter a valid work email');
-      return false;
-    }
-    if (field.id === 'phone' && field.value) {
-      const digits = field.value.replace(/\D/g, '');
-      if (digits.length < 7 || digits.length > 15) {
-        setFieldError(field, 'Please enter a valid phone number with country code');
-        return false;
-      }
-    }
-    clearFieldError(field);
-    return true;
-  }
-
-  // Real-time blur validation
-  $$('input[required], textarea[required], select[required]', form).forEach(field => {
-    field.addEventListener('blur', () => {
-      if (field.value.trim() || field.required) validateField(field);
-    });
-    field.addEventListener('input', () => {
-      if (field.closest('.form-group').classList.contains('has-error')) {
-        validateField(field);
-      }
+      checkOverallValidity();
     });
   });
 
-  // 5. Submit Handler & API Dispatch
+  if (projectTypeSelect) {
+    projectTypeSelect.addEventListener('change', () => {
+      validateField(projectTypeSelect, true);
+      checkOverallValidity();
+    });
+  }
+
+  if (budgetSelect) {
+    budgetSelect.addEventListener('change', checkOverallValidity);
+  }
+
+  // Retry action on error banner
+  if (alertRetry) {
+    alertRetry.addEventListener('click', () => {
+      if (alertError) alertError.style.display = 'none';
+      if (submitBtn) submitBtn.focus();
+    });
+  }
+
+  // Form submission handler
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    if (generalError) {
-      generalError.style.display = 'none';
-      generalError.textContent = '';
-    }
+    if (alertError) alertError.style.display = 'none';
 
-    // Validate fields
-    const requiredFields = $$('input[required], select[required], textarea[required]', form);
-    let isValid = true;
-    requiredFields.forEach(f => {
-      if (!validateField(f)) isValid = false;
-    });
+    // Validate all required fields
+    const isNameOk = validateField(nameInput, true);
+    const isEmailOk = validateField(emailInput, true);
+    const isPhoneOk = validateField(phoneInput, true);
+    const isTypeOk = validateField(projectTypeSelect, true);
+    const isMsgOk = validateField(messageInput, true);
 
-    // Validate services selection
-    if (selectedServices.size === 0) {
-      if (servicesError) servicesError.textContent = 'Please select at least one service you need.';
-      isValid = false;
-    } else {
-      if (servicesError) servicesError.textContent = '';
-    }
-
-    if (!isValid) {
-      const firstInvalid = form.querySelector('.form-group.has-error input, .form-group.has-error select, .form-group.has-error textarea');
+    if (!isNameOk || !isEmailOk || !isPhoneOk || !isTypeOk || !isMsgOk) {
+      const firstInvalid = form.querySelector('.is-invalid');
       if (firstInvalid) firstInvalid.focus();
       return;
     }
 
-    // Extract values
-    const nameVal = ($('#name') || {}).value || '';
-    const companyVal = ($('#company') || {}).value || '';
-    const companyTypeVal = ($('#companyType') || {}).value || '';
-    const emailVal = ($('#email') || {}).value || '';
-    const phoneVal = ($('#phone') || {}).value || '';
-    const detailsVal = ($('#projectDetails') || {}).value || '';
-    const otherServiceVal = ($('#otherService') || {}).value || '';
-    const honeypotVal = ($('#hp_field') || {}).value || '';
-
     const payload = {
-      name: nameVal.trim(),
-      company: companyVal.trim(),
-      companyType: companyTypeVal,
-      email: emailVal.trim(),
-      phone: phoneVal.trim(),
-      services: Array.from(selectedServices),
-      otherService: otherServiceVal.trim() || null,
-      projectDetails: detailsVal.trim(),
-      budgetRange: selectedBudget || null,
-      timeline: selectedTimeline || null,
-      source: 'Website Contact Page',
-      honeypot: honeypotVal
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      company: companyInput ? companyInput.value.trim() : '',
+      projectType: projectTypeSelect.value,
+      budget: budgetSelect ? budgetSelect.value : '',
+      message: messageInput.value.trim(),
+      hp_field: honeypotInput ? honeypotInput.value : ''
     };
 
-    // UI Loading State
+    // UI Loading state
+    submitBtn.classList.add('is-loading');
     submitBtn.disabled = true;
-    submitBtn.classList.add('loading');
-    const btnText = submitBtn.querySelector('.btn-text');
-    if (btnText) btnText.textContent = 'Sending Inquiry…';
 
     try {
-      const response = await fetch('/api/inquiries', {
+      const response = await fetch('/api/start-project', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
-      const data = await response.json();
+      const result = await response.json();
 
-      if (response.ok && data.success) {
-        // Success: Show In-Site Confirmation State
-        const firstName = payload.name.split(' ')[0] || payload.name;
-        if (confirmName) confirmName.textContent = firstName.toUpperCase();
-        if (confirmEmail) confirmEmail.textContent = payload.email;
-
-        if (confirmRecap) {
-          const servicesListStr = payload.services.join(', ');
-          confirmRecap.innerHTML = `
-            <div style="margin-bottom: 6px;"><strong>Company:</strong> ${payload.company} (${payload.companyType || 'General'})</div>
-            <div style="margin-bottom: 6px;"><strong>Selected Services:</strong> ${servicesListStr}</div>
-            <div><strong>Inquiry Reference:</strong> <span style="font-family:monospace; color:var(--accent); font-weight:700;">${data.inquiryId}</span></div>
+      if (response.ok && result.success) {
+        // Success: Transition to Success View inside modal
+        if (successSummary) {
+          successSummary.innerHTML = `
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:6px;">
+              <span><strong>Prospect:</strong></span>
+              <span style="color:#FFFFFF;">${payload.name}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:6px;">
+              <span><strong>Project Type:</strong></span>
+              <span style="color:#2D5BFF; font-weight:700;">${payload.projectType}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:6px;">
+              <span><strong>Email:</strong></span>
+              <span style="color:#FFFFFF;">${payload.email}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:6px;">
+              <span><strong>Phone:</strong></span>
+              <span style="color:#FFFFFF;">${payload.phone}</span>
+            </div>
+            ${payload.budget ? `
+            <div style="display:flex; justify-content:space-between;">
+              <span><strong>Budget:</strong></span>
+              <span style="color:#FFFFFF;">${payload.budget}</span>
+            </div>` : ''}
           `;
         }
 
-        form.style.display = 'none';
-        if (confirmationView) {
-          confirmationView.style.display = 'block';
-          confirmationView.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        contentView.style.display = 'none';
+        successView.style.display = 'block';
 
-        // GA4 / Pixel custom event support
         if (typeof window.dataLayer !== 'undefined') {
           window.dataLayer.push({
-            event: 'generate_lead',
-            lead_company: payload.company,
-            lead_services: payload.services
+            event: 'start_project_submission',
+            project_type: payload.projectType,
+            budget: payload.budget
           });
         }
       } else {
-        throw new Error(data.error || 'Server rejected the inquiry.');
+        throw new Error(result.error || 'Server could not process your submission.');
       }
     } catch (err) {
-      console.warn('Backend endpoint unavailable or returned error, providing user fallback:', err);
-      if (generalError) {
-        generalError.innerHTML = `
-          <strong>Notice:</strong> We could not connect to the automated pipeline right now.
-          Please <a href="https://wa.me/919555013580?text=Hi%20Tecto%20Mark%2C%20I%20would%20like%20to%20inquire%20about%20${encodeURIComponent(Array.from(selectedServices).join(', '))}" target="_blank" rel="noopener" style="color:#25D366; text-decoration:underline; font-weight:700;">click here to chat directly on WhatsApp</a>
-          or email us at <a href="mailto:tectomarksupport@gmail.com?subject=Project%20Inquiry%20from%20${encodeURIComponent(payload.company)}" style="color:#FFFFFF; text-decoration:underline;">tectomarksupport@gmail.com</a>.
-        `;
-        generalError.style.display = 'block';
+      console.warn('Submission error, retaining form data:', err);
+      if (alertError && alertMsg) {
+        alertMsg.textContent = err.message || 'Something went wrong. Please check your details and try again.';
+        alertError.style.display = 'flex';
       }
-    } finally {
       submitBtn.disabled = false;
-      submitBtn.classList.remove('loading');
-      if (btnText) btnText.textContent = 'Send Inquiry →';
+    } finally {
+      submitBtn.classList.remove('is-loading');
     }
   });
 
-  // 6. Reset Form Button inside Confirmation State
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      form.reset();
-      selectedServices.clear();
-      chipItems.forEach(c => c.classList.remove('active'));
-      $$('.pill-option').forEach(p => p.classList.remove('active'));
-      selectedBudget = '';
-      selectedTimeline = '';
-      if (otherServiceWrap) otherServiceWrap.style.display = 'none';
-      if (confirmationView) confirmationView.style.display = 'none';
-      form.style.display = 'flex';
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Reset modal state helper
+  window.resetStartProjectModal = function() {
+    form.reset();
+    if (projectTypeSelect) projectTypeSelect.value = '';
+    if (messageInput) messageInput.placeholder = DEFAULT_MESSAGE_PLACEHOLDER;
+    $$('.is-invalid', form).forEach(el => el.classList.remove('is-invalid'));
+    if (alertError) alertError.style.display = 'none';
+    if (contentView) contentView.style.display = 'block';
+    if (successView) successView.style.display = 'none';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.remove('is-loading');
+    }
+  };
+
+  if (successCloseBtn) {
+    successCloseBtn.addEventListener('click', () => {
+      if (typeof window.closeModal === 'function') {
+        window.closeModal('projectModal');
+      }
     });
   }
+})();
+
+// ── Universal Modal Controller System ───────────────────────────
+(function initUniversalModals() {
+  let lastFocusedTrigger = null;
+  let projectResetTimer = null;
+
+  function getFocusableElements(container) {
+    return Array.from(container.querySelectorAll(
+      'button:not([disabled]), [href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )).filter(el => el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement);
+  }
+
+  function handleFocusTrap(e) {
+    const activeModal = document.querySelector('.popup-modal.is-open, .project-modal.is-open');
+    if (!activeModal || e.key !== 'Tab') return;
+
+    const focusables = getFocusableElements(activeModal);
+    if (focusables.length === 0) return;
+
+    const firstFocusable = focusables[0];
+    const lastFocusable = focusables[focusables.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusable || !activeModal.contains(document.activeElement)) {
+        e.preventDefault();
+        lastFocusable.focus();
+      }
+    } else {
+      if (document.activeElement === lastFocusable || !activeModal.contains(document.activeElement)) {
+        e.preventDefault();
+        firstFocusable.focus();
+      }
+    }
+  }
+
+  window.addEventListener('keydown', handleFocusTrap);
+
+  function openModal(modalId, options = {}) {
+    if (!modalId) return;
+    const targetModal = typeof modalId === 'string' ? document.getElementById(modalId) : modalId;
+    if (!targetModal) return;
+
+    // Cancel any pending reset from a previous modal close
+    if (projectResetTimer) {
+      clearTimeout(projectResetTimer);
+      projectResetTimer = null;
+    }
+
+    // Force preloader hidden & ensure page is 100% visible
+    const preloader = document.getElementById('preloader');
+    if (preloader) preloader.classList.add('hidden');
+    document.body.classList.add('loaded');
+
+    // Save triggering element for returning focus on close
+    lastFocusedTrigger = document.activeElement;
+
+    // Close any currently open modal smoothly
+    document.querySelectorAll('.popup-modal.is-open, .project-modal.is-open').forEach(m => {
+      if (m !== targetModal) {
+        m.classList.remove('is-open');
+        m.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    targetModal.classList.add('is-open');
+    targetModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    // Immediately hide custom cursor so it does not linger or get caught on modal contents
+    const curEl = $('#cursor');
+    const folEl = $('#cursorFollower');
+    if (curEl) curEl.className = 'cursor cursor--hidden';
+    if (folEl) folEl.className = 'cursor-follower cursor--hidden';
+
+    // Pre-select project type & preset message if opening projectModal (handles preset or resets to default)
+    if (modalId === 'projectModal' || (targetModal && targetModal.id === 'projectModal')) {
+      const preset = options.presetProjectType || options.service || '';
+      if (typeof window.preselectProjectType === 'function') {
+        window.preselectProjectType(preset);
+      }
+      if (typeof options.presetMessage === 'string' && typeof window.setProjectMessagePreset === 'function') {
+        window.setProjectMessagePreset(options.presetMessage);
+      }
+    }
+
+    // Reset Tech Stack modal view state to 4-tier overview on open
+    if (modalId === 'techStackModal' || (targetModal && targetModal.id === 'techStackModal')) {
+      if (typeof window.resetTechStackModalView === 'function') {
+        window.resetTechStackModalView();
+      }
+    }
+
+    // Auto-focus accessibility into the modal
+    setTimeout(() => {
+      const focusables = getFocusableElements(targetModal);
+      if (focusables.length > 0) {
+        // Prefer first text input or first actionable button
+        const firstInput = targetModal.querySelector('input:not([type="hidden"]), select, textarea');
+        if (firstInput) {
+          firstInput.focus({ preventScroll: true });
+        } else {
+          focusables[0].focus({ preventScroll: true });
+        }
+      }
+    }, 200);
+  }
+  window.openModal = openModal;
+
+  function closeModal(modalId) {
+    let closedAny = false;
+    if (modalId) {
+      const targetModal = typeof modalId === 'string' ? document.getElementById(modalId) : modalId;
+      if (targetModal) {
+        targetModal.classList.remove('is-open');
+        targetModal.setAttribute('aria-hidden', 'true');
+        closedAny = true;
+      }
+    } else {
+      document.querySelectorAll('.popup-modal.is-open, .project-modal.is-open').forEach(m => {
+        m.classList.remove('is-open');
+        m.setAttribute('aria-hidden', 'true');
+        closedAny = true;
+      });
+    }
+
+    // Reset Tech Stack view to overview on close
+    const tsModal = $('#techStackModal');
+    if (tsModal && !tsModal.classList.contains('is-open')) {
+      if (typeof window.resetTechStackModalView === 'function') {
+        window.resetTechStackModalView();
+      }
+    }
+
+    // Check if any modal remains open
+    const anyStillOpen = document.querySelector('.popup-modal.is-open, .project-modal.is-open');
+    if (!anyStillOpen) {
+      document.body.classList.remove('modal-open');
+    }
+
+    // Return focus to triggering button for accessibility
+    if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+      try {
+        lastFocusedTrigger.focus({ preventScroll: true });
+      } catch (_) {}
+    }
+
+    // If projectModal was closed, reset form state after transition completes
+    const projectModal = $('#projectModal');
+    if (projectModal && !projectModal.classList.contains('is-open')) {
+      if (projectResetTimer) clearTimeout(projectResetTimer);
+      projectResetTimer = setTimeout(() => {
+        if (projectModal && !projectModal.classList.contains('is-open')) {
+          if (typeof window.resetStartProjectModal === 'function') {
+            window.resetStartProjectModal();
+          }
+        }
+        projectResetTimer = null;
+      }, 250);
+    }
+  }
+  window.closeModal = closeModal;
+
+  // Open inquiry / project modal supporting string or object props: openInquiryModal({ presetProjectType: 'Website', presetMessage: '...' })
+  function openProjectModal(arg = '') {
+    let preset = '';
+    let presetMessage = '';
+    if (typeof arg === 'string') {
+      preset = arg;
+    } else if (arg && typeof arg === 'object') {
+      preset = arg.presetProjectType || arg.service || '';
+      presetMessage = arg.presetMessage || '';
+    }
+    openModal('projectModal', { presetProjectType: preset, service: preset, presetMessage });
+  }
+  window.openProjectModal = openProjectModal;
+  window.openInquiryModal = openProjectModal;
+  window.closeProjectModal = () => closeModal('projectModal');
+  window.closeInquiryModal = () => closeModal('projectModal');
+
+  // Close buttons and backdrops for projectModal
+  const projectCloseBtn = $('#projectModalClose');
+  const projectBackdrop = $('#projectModalBackdrop');
+  if (projectCloseBtn) projectCloseBtn.addEventListener('click', () => closeModal('projectModal'));
+  if (projectBackdrop) projectBackdrop.addEventListener('click', () => closeModal('projectModal'));
+
+  // Dedicated CTAs for Section-specific Inquiry Presets
+  const btnBuildWebsite = $('#btnBuildWebsite');
+  if (btnBuildWebsite) {
+    btnBuildWebsite.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      openProjectModal({ presetProjectType: 'Website' });
+    });
+  }
+
+    const btnScaleBrand = $('#btnScaleBrand');
+  if (btnScaleBrand) {
+    btnScaleBrand.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      openProjectModal({ presetProjectType: 'Full Growth Package' });
+    });
+  }
+
+  const btnGrowthProcess = $('#btnGrowthProcess');
+  if (btnGrowthProcess) {
+    btnGrowthProcess.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal('growthProcessModal');
+    });
+  }
+
+  const btnGrowthProcessStartGrowing = $('#btnGrowthProcessStartGrowing');
+  if (btnGrowthProcessStartGrowing) {
+    btnGrowthProcessStartGrowing.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      openProjectModal({ presetProjectType: 'Full Growth Package' });
+    });
+  }
+
+  const btnContentCapabilities = $('#btnContentCapabilities');
+  if (btnContentCapabilities) {
+    btnContentCapabilities.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal('contentCapabilitiesModal');
+    });
+  }
+
+  const btnCcSeeVideoWork = $('#btnCcSeeVideoWork');
+  if (btnCcSeeVideoWork) {
+    btnCcSeeVideoWork.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal('videoWorkModal');
+    });
+  }
+
+  const btnCcStartProject = $('#btnCcStartProject');
+  if (btnCcStartProject) {
+    btnCcStartProject.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      openProjectModal({ presetProjectType: 'Content & Reels' });
+    });
+  }
+
+  // Global delegated listener for modal triggers and closers (Capture Phase)
+  document.addEventListener('click', e => {
+    // 1. Close triggers
+    const closeTrigger = e.target.closest('[data-close-modal], .popup-modal-close, .project-modal-close, .popup-modal-backdrop, .project-modal-backdrop');
+    if (closeTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      const parentModal = closeTrigger.closest('.popup-modal, .project-modal');
+      closeModal(parentModal);
+      return;
+    }
+
+    // 2. Open triggers with data-open-modal
+    const openTrigger = e.target.closest('[data-open-modal]');
+    if (openTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const modalId = openTrigger.dataset.openModal;
+      const presetProjectType = openTrigger.getAttribute('data-preset-project-type') || openTrigger.dataset.presetProjectType || openTrigger.getAttribute('data-service') || openTrigger.dataset.service || '';
+
+      // If mobile menu is open, close it first
+      const navMenu = $('#mobileMenu');
+      const navToggle = $('#navToggle');
+      if (navMenu && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        if (navToggle) navToggle.classList.remove('open');
+      }
+
+      openModal(modalId, { presetProjectType, service: presetProjectType });
+      return;
+    }
+
+    // 3. Fallback for every "Start a Project" CTA across the site
+    const genericTrigger = e.target.closest('a[href^="#contact"], .nav-cta, .mobile-menu-cta, .fab-cta, #ctaMagnetic');
+    if (genericTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const href = genericTrigger.getAttribute('href') || '';
+      let serviceKeyword = '';
+      if (href.includes('service=')) {
+        serviceKeyword = href.split('service=')[1].split('&')[0];
+      } else if (genericTrigger.textContent.toLowerCase().includes('website')) {
+        serviceKeyword = 'web';
+      } else if (genericTrigger.textContent.toLowerCase().includes('scale') || genericTrigger.textContent.toLowerCase().includes('growth')) {
+        serviceKeyword = 'growth';
+      } else if (genericTrigger.textContent.toLowerCase().includes('video') || genericTrigger.textContent.toLowerCase().includes('reel')) {
+        serviceKeyword = 'reels';
+      }
+
+      openModal('projectModal', { service: serviceKeyword });
+    }
+  }, true);
+
+  // Close modals on Escape key
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      const activeModal = document.querySelector('.popup-modal.is-open, .project-modal.is-open');
+      if (activeModal) {
+        closeModal(activeModal);
+      }
+    }
+  });
+
+  // Filter Bar Controller for Portfolio Modal (#workModal)
+  const workFilterBar = $('#workFilterBar');
+  const workGrid = $('#workGrid');
+  if (workFilterBar && workGrid) {
+    const filterBtns = $$('.popup-filter-btn', workFilterBar);
+    const workCards = $$('.popup-card', workGrid);
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter || 'all';
+        workCards.forEach(card => {
+          const category = card.dataset.category || '';
+          if (filter === 'all' || category.includes(filter)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Check URL on load & hashchange: open modal immediately if #contact or #work etc. is present
+  function handleUrlHash() {
+    if (!window.location.hash) return;
+    const rawHash = window.location.hash.replace(/^#/, '');
+    const cleanHash = rawHash.split('?')[0];
+
+    let serviceKeyword = '';
+    if (window.location.hash.includes('service=')) {
+      serviceKeyword = window.location.hash.split('service=')[1].split('&')[0];
+    }
+
+    if (cleanHash === 'contact') {
+      const currentModal = document.getElementById('projectModal');
+      if (currentModal && currentModal.classList.contains('is-open')) {
+        return;
+      }
+      openModal('projectModal', { service: serviceKeyword });
+      try {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } catch (_) {}
+    } else if (cleanHash === 'work') {
+      openModal('workModal');
+    } else if (cleanHash === 'video' || cleanHash === 'videos') {
+      openModal('videoWorkModal');
+    } else if (cleanHash === 'capabilities' || cleanHash === 'services') {
+      openModal('contentCapabilitiesModal');
+    } else if (cleanHash === 'tech') {
+      openModal('techStackModal');
+    } else if (cleanHash === 'growth' || cleanHash === 'approach') {
+      openModal('growthProcessModal');
+    } else if (cleanHash === 'whatsapp') {
+      openModal('whatsappModal');
+    }
+  }
+
+  // Trigger on script run and after brief DOM settle
+  handleUrlHash();
+  setTimeout(handleUrlHash, 250);
+
+  // Listen to hash changes (browser back/forward or external triggers)
+  window.addEventListener('hashchange', handleUrlHash);
 })();
 
 // ── Parallax: Hero subtle movement ────────────────────────────
@@ -965,10 +1379,343 @@ const isMobile = () => window.innerWidth <= 768;
       },
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
-    newCards.forEach(c => observer.observe(c));
   } else {
     newCards.forEach(c => c.classList.add('visible'));
   }
+})();
+
+// ── Tech Stack & Pricing Modal Controller ────────────────────────
+(function initTechStackPricingModal() {
+  const modal = $('#techStackModal');
+  if (!modal) return;
+
+  const overviewView = $('#tsPricingOverviewView');
+  const samplesView = $('#tsSamplesDetailView');
+  const samplesGrid = $('#tsSamplesGrid');
+  const backBtn = $('#tsBtnBackToOverview');
+  const activeTierName = $('#tsActiveTierName');
+  const activeTierPrice = $('#tsActiveTierPrice');
+  const activeTierHeading = $('#tsActiveTierHeading');
+  const activeTierDesc = $('#tsActiveTierDesc');
+  const sampleCtaTitle = $('#tsSampleCtaTitle');
+
+  // Data-driven pricing tiers and sample website collections
+  // NOTE: Anoop can easily add or swap real sample links, screenshots, and descriptions here.
+  const TECH_STACK_PRICING = [
+    {
+      id: 'simple',
+      name: 'Simple Website',
+      price: '₹6,999',
+      badge: 'Tier 01',
+      desc: 'Clean, responsive multi-page site, ideal for small businesses, founders, and personal portfolios.',
+      samples: [
+        {
+          name: 'Aura Studio Portfolio',
+          category: 'Creative Portfolio',
+          desc: 'Minimalist typography-forward showcase with sub-second page transitions and WhatsApp direct contact hook.',
+          tags: ['Responsive', 'Fast Paint', 'SEO Ready'],
+          liveUrl: 'https://example.com/aura-studio',
+          gradient: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+          accent: '#38BDF8',
+          mockupBadge: 'Portfolio Template'
+        },
+        {
+          name: 'Kavya Law Chambers',
+          category: 'Professional Services',
+          desc: 'Multi-page firm presence with consultation scheduling, client trust validation, and local search structure.',
+          tags: ['Multi-page', 'WhatsApp Direct', 'Lead Capture'],
+          liveUrl: 'https://example.com/kavya-law',
+          gradient: 'linear-gradient(135deg, #131c2e 0%, #0a0e17 100%)',
+          accent: '#60A5FA',
+          mockupBadge: 'Law & Advisory'
+        },
+        {
+          name: 'Zenith Architecture Studio',
+          category: 'Architecture & Design',
+          desc: 'High-contrast spatial gallery displaying blueprints, architectural project logs, and firm milestones.',
+          tags: ['Gallery Grid', 'Mobile First', 'Inquiry Hook'],
+          liveUrl: 'https://example.com/zenith-arch',
+          gradient: 'linear-gradient(135deg, #1a1e28 0%, #0d1017 100%)',
+          accent: '#818CF8',
+          mockupBadge: 'Design Studio'
+        }
+      ]
+    },
+    {
+      id: 'animated-3d',
+      name: '3D Animated Website',
+      price: '₹12,999',
+      badge: 'Most Popular',
+      desc: 'Immersive scroll-driven 3D visuals and animations designed to captivate visitors and elevate brand status.',
+      samples: [
+        {
+          name: 'Nova Spatial OS',
+          category: 'Tech Hardware & Vision',
+          desc: 'Scroll-driven 3D device breakdown with dynamic camera paths, exploded view sequences, and WebGL glow.',
+          tags: ['Three.js', 'ScrollTrigger', 'WebGL Shaders'],
+          liveUrl: 'https://example.com/nova-spatial',
+          gradient: 'linear-gradient(135deg, #111a33 0%, #090e1d 100%)',
+          accent: '#2D5BFF',
+          mockupBadge: '3D Hardware Demo'
+        },
+        {
+          name: 'Lumina Luxury Timepieces',
+          category: 'Luxury Consumer',
+          desc: '360° interactive watch renderer with micro-physics, metallic reflections, and precision craftsmanship details.',
+          tags: ['3D Canvas', 'GSAP Motion', '60fps Physics'],
+          liveUrl: 'https://example.com/lumina-watch',
+          gradient: 'linear-gradient(135deg, #1f1a2e 0%, #0e0b17 100%)',
+          accent: '#C084FC',
+          mockupBadge: 'Interactive 3D'
+        },
+        {
+          name: 'Solaria Planetary Energy',
+          category: 'Clean Energy & SaaS',
+          desc: 'Interactive 3D particle globe visualizing renewable power generation and distribution nodes in real-time.',
+          tags: ['Interactive Globe', 'GPU Optimized', 'Data Mesh'],
+          liveUrl: 'https://example.com/solaria-energy',
+          gradient: 'linear-gradient(135deg, #0e2229 0%, #071217 100%)',
+          accent: '#34D399',
+          mockupBadge: 'WebGL Visualization'
+        }
+      ]
+    },
+    {
+      id: 'extra-features',
+      name: '3D Animated Website + Extra Features',
+      price: '₹16,999',
+      badge: 'Tier 03',
+      desc: 'Everything above plus ambient audio soundscapes, custom interactive cursor, and interactive touches.',
+      samples: [
+        {
+          name: 'Vortex Sonic Audio Labs',
+          category: 'Creative Audio Agency',
+          desc: 'Ambient soundscape toggles with procedural audio reactivity, magnetic physics cursor, and dark neon aesthetics.',
+          tags: ['Spatial Audio', 'Magnetic Cursor', 'Audio Reactive'],
+          liveUrl: 'https://example.com/vortex-audio',
+          gradient: 'linear-gradient(135deg, #1e1333 0%, #0e071c 100%)',
+          accent: '#F43F5E',
+          mockupBadge: 'Audio Experience'
+        },
+        {
+          name: 'Nebula Gaming Metaverse',
+          category: 'Gaming & Interactive Studio',
+          desc: 'Dynamic particle physics engine responding to mouse momentum with subtle SFX cues on key interactions.',
+          tags: ['Particle Physics', 'Sound Effects', 'Interactive Canvas'],
+          liveUrl: 'https://example.com/nebula-gaming',
+          gradient: 'linear-gradient(135deg, #171b38 0%, #0a0d20 100%)',
+          accent: '#38BDF8',
+          mockupBadge: 'Particle Physics'
+        },
+        {
+          name: 'Hyperion Hypercar Flagship',
+          category: 'Automotive Innovation',
+          desc: 'Acoustic throttle simulation, interactive light trails, and contextual cursor physics on aerodynamic contours.',
+          tags: ['Engine Acoustics', 'Fluid Shaders', 'Bespoke Motion'],
+          liveUrl: 'https://example.com/hyperion-car',
+          gradient: 'linear-gradient(135deg, #24141e 0%, #12090e 100%)',
+          accent: '#FB923C',
+          mockupBadge: 'Automotive 3D + Audio'
+        }
+      ]
+    },
+    {
+      id: 'customised',
+      name: 'Fully Customised & Personalised Website',
+      price: '₹21,999',
+      badge: 'Full Bespoke',
+      desc: 'Bespoke design and development tailored entirely to your brand, unlimited revisions and headless CMS.',
+      samples: [
+        {
+          name: 'Apex Capital Partners',
+          category: 'Fintech Enterprise',
+          desc: 'High-security headless web platform with dynamic deal flow showcase, client portal preview, and custom CMS.',
+          tags: ['Headless CMS', 'Next.js 14', 'Custom Analytics'],
+          liveUrl: 'https://example.com/apex-capital',
+          gradient: 'linear-gradient(135deg, #0e2038 0%, #07111e 100%)',
+          accent: '#60A5FA',
+          mockupBadge: 'Enterprise Platform'
+        },
+        {
+          name: 'Velox Global Logistics',
+          category: 'Enterprise Infrastructure',
+          desc: 'Complete bespoke design system featuring interactive supply network maps, live quote API, and VIP routing.',
+          tags: ['Custom Backend', 'API Integrations', 'Bespoke UI'],
+          liveUrl: 'https://example.com/velox-global',
+          gradient: 'linear-gradient(135deg, #142220 0%, #081210 100%)',
+          accent: '#2DD4BF',
+          mockupBadge: 'Logistics SaaS'
+        },
+        {
+          name: 'Elysium Haute Horlogerie',
+          category: 'Bespoke Luxury Commerce',
+          desc: 'VIP private client digital salon with concierge booking, encrypted inquiries, and custom visual storytelling.',
+          tags: ['VIP Experience', 'Bespoke Checkout', 'Unlimited Polish'],
+          liveUrl: 'https://example.com/elysium-luxury',
+          gradient: 'linear-gradient(135deg, #261922 0%, #130a10 100%)',
+          accent: '#E879F9',
+          mockupBadge: 'Luxury Flagship'
+        }
+      ]
+    }
+  ];
+
+  let currentTier = TECH_STACK_PRICING[1]; // Default to Most Popular (3D Animated)
+
+  function renderTierSamples(tier) {
+    if (!tier || !samplesGrid) return;
+    currentTier = tier;
+
+    if (activeTierName) activeTierName.textContent = tier.name;
+    if (activeTierPrice) activeTierPrice.textContent = tier.price;
+    if (activeTierHeading) activeTierHeading.textContent = `${tier.name} — Live Showcases`;
+    if (activeTierDesc) activeTierDesc.textContent = tier.desc;
+    if (sampleCtaTitle) sampleCtaTitle.textContent = `Ready to launch your ${tier.name}?`;
+
+    samplesGrid.innerHTML = tier.samples.map(sample => {
+      const tagsHtml = sample.tags.map(t => `<span class="ts-sample-tag">${t}</span>`).join('');
+      const cleanUrl = sample.liveUrl.replace(/^https?:\/\//, '');
+
+      return `
+        <article class="ts-sample-card" role="listitem" tabindex="0" aria-label="${sample.name} — ${sample.category}">
+          <div class="ts-sample-browser-bar">
+            <div class="ts-browser-dots">
+              <span class="ts-browser-dot red"></span>
+              <span class="ts-browser-dot yellow"></span>
+              <span class="ts-browser-dot green"></span>
+            </div>
+            <div class="ts-browser-url">${cleanUrl}</div>
+          </div>
+          <div class="ts-sample-canvas" style="background: ${sample.gradient};">
+            <div class="ts-sample-canvas-overlay"></div>
+            <div class="ts-sample-canvas-content">
+              <span class="ts-sample-mockup-badge" style="border-color: ${sample.accent}; color: ${sample.accent};">
+                ${sample.mockupBadge}
+              </span>
+              <div class="ts-sample-wireframe-lines">
+                <div class="ts-wire-line l1" style="background: ${sample.accent}; opacity: 0.4;"></div>
+                <div class="ts-wire-line l2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ts-sample-body">
+            <span class="ts-sample-category">${sample.category}</span>
+            <h4 class="ts-sample-title">${sample.name}</h4>
+            <p class="ts-sample-desc">${sample.desc}</p>
+            <div class="ts-sample-tags">${tagsHtml}</div>
+            <div class="ts-sample-action-row">
+              <a href="${sample.liveUrl}" target="_blank" rel="noopener noreferrer" class="ts-sample-visit-link" aria-label="Visit ${sample.name}">
+                <span>Visit Live Demo</span> <span class="arrow">↗</span>
+              </a>
+              <span class="ts-sample-status-pill">Interactive Demo</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  function showSamplesView(tierId) {
+    const tier = TECH_STACK_PRICING.find(t => t.id === tierId) || TECH_STACK_PRICING[1];
+    renderTierSamples(tier);
+
+    if (overviewView) overviewView.style.display = 'none';
+    if (samplesView) {
+      samplesView.style.display = 'block';
+      setTimeout(() => {
+        if (backBtn) backBtn.focus({ preventScroll: true });
+      }, 100);
+    }
+  }
+
+  function showOverviewView() {
+    if (samplesView) samplesView.style.display = 'none';
+    if (overviewView) {
+      overviewView.style.display = 'block';
+      setTimeout(() => {
+        const firstCard = overviewView.querySelector('.ts-pricing-card');
+        if (firstCard) firstCard.focus({ preventScroll: true });
+      }, 100);
+    }
+  }
+
+  function selectPackageAndOpenInquiry(tierName, tierPrice) {
+    const name = tierName || currentTier.name;
+    const price = tierPrice || currentTier.price;
+
+    closeModal('techStackModal');
+
+    setTimeout(() => {
+      openProjectModal({
+        presetProjectType: 'Website',
+        presetMessage: `Interested in: ${name} — ${price}. Requirements: `
+      });
+    }, 120);
+  }
+
+  // Delegated event listener for cards, view samples, back, and package selection
+  modal.addEventListener('click', e => {
+    // 1. "Select This Package" inside card
+    const selectBtn = e.target.closest('.ts-btn-select-tier');
+    if (selectBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const tierName = selectBtn.dataset.tier;
+      const tierPrice = selectBtn.dataset.price;
+      selectPackageAndOpenInquiry(tierName, tierPrice);
+      return;
+    }
+
+    // 2. "View Samples" button
+    const viewSamplesBtn = e.target.closest('.ts-btn-view-samples');
+    if (viewSamplesBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const tierId = viewSamplesBtn.dataset.tierId;
+      showSamplesView(tierId);
+      return;
+    }
+
+    // 3. Card click (when not clicking select button)
+    const card = e.target.closest('.ts-pricing-card');
+    if (card && overviewView && overviewView.contains(card)) {
+      const tierId = card.dataset.tierId;
+      showSamplesView(tierId);
+      return;
+    }
+
+    // 4. Back button to return to 4-tier overview
+    const backTrigger = e.target.closest('#tsBtnBackToOverview, .ts-back-btn');
+    if (backTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+      showOverviewView();
+      return;
+    }
+
+    // 5. "Select This Package" button in sample view footer
+    const activeSelectBtn = e.target.closest('#tsBtnSelectActiveTier');
+    if (activeSelectBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      selectPackageAndOpenInquiry(currentTier.name, currentTier.price);
+      return;
+    }
+  });
+
+  // Keyboard accessibility (Enter / Space on card)
+  modal.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const focusedCard = document.activeElement ? document.activeElement.closest('.ts-pricing-card') : null;
+      if (focusedCard && document.activeElement === focusedCard) {
+        e.preventDefault();
+        const tierId = focusedCard.dataset.tierId;
+        showSamplesView(tierId);
+      }
+    }
+  });
+
+  window.resetTechStackModalView = showOverviewView;
 })();
 
 // ── Init ───────────────────────────────────────────────────────
